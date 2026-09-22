@@ -1,0 +1,1436 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lélektitok Műhely — Ladics Timi</title>
+<meta name="description" content="Ladics Timi – Lélektitok Műhely: transzformációs tréning, gyásztanácsadás, személyes női körök, egyéni mentorálás és digitális önismereti programok Budapesten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ======================= TOKENEK ======================= */
+:root{
+  --bg:#FCFAF7;
+  --surface:#FFFFFF;
+  --surface-tint:#F5F0F5;
+  --surface-warm:#FAF4EE;
+  --ink:#332A38;
+  --ink-soft:#655A6B;
+  --ink-faint:#8E8494;
+  --mauve:#8C6F9B;
+  --mauve-deep:#6E5480;
+  --mauve-wash:#EFE7F2;
+  --gold:#B08D57;
+  --gold-soft:#E4D3B4;
+  --blush:#EFDDDF;
+  --sage:#D9E2DA;
+  --line:#E7E0E6;
+  --line-soft:#F0EBEF;
+  --shadow-sm:0 1px 2px rgba(51,42,56,.04), 0 4px 14px rgba(51,42,56,.05);
+  --shadow-md:0 2px 6px rgba(51,42,56,.05), 0 14px 36px rgba(51,42,56,.08);
+  --shadow-lg:0 30px 70px rgba(51,42,56,.12);
+  --r:14px;
+  --maxw:1080px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;}
+[hidden]{display:none!important;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Montserrat',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  position:relative;
+}
+/* finom papírszemcse az egész oldalon */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{max-width:100%;}
+h1,h2,h3,h4{font-family:'Fraunces','Georgia',serif;font-weight:400;line-height:1.14;letter-spacing:-.015em;margin:0;text-wrap:balance;color:var(--ink);}
+p{margin:0;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+::selection{background:var(--mauve-wash);color:var(--ink);}
+:focus-visible{outline:2px solid var(--mauve);outline-offset:3px;border-radius:4px;}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,4vw,32px);position:relative;z-index:1;}
+.wrap--narrow{max-width:860px;}
+.section{padding-block:clamp(54px,8vw,96px);position:relative;}
+.section--tight{padding-block:clamp(38px,5vw,60px);}
+.section--tint{background:var(--surface-tint);}
+.section--warm{background:var(--surface-warm);}
+.section--surface{background:var(--surface);}
+.has-aura{position:relative;overflow:hidden;isolation:isolate;}
+
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mauve);display:flex;align-items:center;gap:.8em;margin-bottom:1em;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);flex:none;}
+.h-sec{font-size:clamp(1.8rem,3.6vw,2.5rem);}
+.lede{color:var(--ink-soft);font-size:1.05rem;max-width:58ch;}
+.mt-s{margin-top:.8em;} .mt-m{margin-top:1.4em;} .mt-l{margin-top:2.4em;}
+.section-head{max-width:60ch;margin-bottom:clamp(28px,4vw,44px);}
+.stack{display:flex;flex-direction:column;gap:1em;}
+.row-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+
+/* ======================= HANGULATI FÉNYEK ======================= */
+.aura{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.aura i{position:absolute;display:block;border-radius:50%;filter:blur(70px);opacity:.5;}
+.aura i:nth-child(1){width:46vw;height:46vw;max-width:520px;max-height:520px;left:-8vw;top:-14vw;background:radial-gradient(circle,#E4D3EC,transparent 68%);animation:drift1 26s ease-in-out infinite alternate;}
+.aura i:nth-child(2){width:38vw;height:38vw;max-width:460px;max-height:460px;right:-6vw;top:8vw;background:radial-gradient(circle,#F6E2D8,transparent 68%);animation:drift2 32s ease-in-out infinite alternate;}
+.aura i:nth-child(3){width:30vw;height:30vw;max-width:380px;max-height:380px;left:32vw;bottom:-16vw;background:radial-gradient(circle,#E2E9E4,transparent 70%);animation:drift3 38s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate3d(6vw,4vw,0) scale(1.12);}}
+@keyframes drift2{to{transform:translate3d(-5vw,6vw,0) scale(1.08);}}
+@keyframes drift3{to{transform:translate3d(4vw,-5vw,0) scale(1.15);}}
+
+/* vízjel a logó motívumból */
+.watermark{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:420px;opacity:.05;pointer-events:none;z-index:0;}
+@media (max-width:860px){.watermark{display:none;}}
+
+/* ======================= GOMBOK ======================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-size:.82rem;font-weight:600;letter-spacing:.04em;padding:.95em 1.7em;border-radius:999px;border:1px solid transparent;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);white-space:nowrap;background:none;}
+.btn--primary{background:var(--mauve);color:#fff;box-shadow:0 6px 18px rgba(140,111,155,.28);}
+.btn--primary:hover{background:var(--mauve-deep);transform:translateY(-2px);box-shadow:0 12px 26px rgba(110,84,128,.32);}
+.btn--outline{border-color:var(--line);color:var(--ink);background:var(--surface);}
+.btn--outline:hover{border-color:var(--mauve);color:var(--mauve-deep);transform:translateY(-2px);}
+.btn--link{padding:.3em 0;color:var(--mauve-deep);font-weight:600;position:relative;}
+.btn--link::after{content:"→";transition:transform .25s var(--ease);}
+.btn--link:hover::after{transform:translateX(4px);}
+.btn--full{width:100%;}
+
+/* ======================= FEJLÉC ======================= */
+header.site{position:sticky;top:0;z-index:60;background:rgba(252,250,247,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--gold-soft),var(--mauve));transition:width .1s linear;}
+.nav{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,4vw,32px);height:74px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.brand{display:flex;align-items:center;gap:11px;}
+.brand svg{width:38px;height:38px;flex:none;transition:transform .5s var(--ease);}
+.brand:hover svg{transform:rotate(8deg);}
+.brand b{font-family:'Fraunces',serif;font-weight:400;font-size:1.04rem;display:block;line-height:1.15;text-transform:none;color:var(--ink);}
+.brand i{font-style:normal;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);}
+nav.links{display:flex;align-items:center;gap:clamp(12px,2vw,24px);}
+nav.links a{font-size:.85rem;color:var(--ink-soft);font-weight:500;padding-block:5px;position:relative;}
+nav.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--mauve);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+nav.links a:hover{color:var(--mauve-deep);}
+nav.links a:hover::after,nav.links a.active::after{transform:scaleX(1);}
+nav.links a.active{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.icon-btn{position:relative;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);transition:border-color .2s,transform .2s var(--ease);}
+.icon-btn:hover{border-color:var(--mauve);transform:translateY(-1px);}
+.icon-btn svg{width:18px;height:18px;}
+.cart-count{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding-inline:4px;border-radius:999px;background:var(--mauve);color:#fff;font-size:.62rem;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.cart-count.pop{animation:pop .4s var(--ease);}
+@keyframes pop{0%{transform:scale(.6);}60%{transform:scale(1.25);}100%{transform:scale(1);}}
+.burger{display:none;}
+.nav-cta{display:inline-flex;}
+@media (max-width:940px){
+  .nav-cta{display:none;}
+  .burger{display:flex;}
+  nav.links{position:fixed;inset:74px 0 auto 0;background:var(--surface);flex-direction:column;align-items:stretch;padding:8px clamp(18px,5vw,32px) 22px;gap:0;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md);transform:translateY(-135%);transition:transform .3s var(--ease);}
+  nav.links.open{transform:translateY(0);}
+  nav.links a{padding:15px 0;border-bottom:1px solid var(--line-soft);font-size:1rem;}
+  nav.links a::after{display:none;}
+}
+
+/* ======================= OLDALFEJ ======================= */
+.page-head{background:var(--surface-tint);border-bottom:1px solid var(--line);padding-block:clamp(44px,7vw,76px);position:relative;overflow:hidden;isolation:isolate;}
+.page-head h1{font-size:clamp(2.1rem,4.6vw,3.1rem);}
+.page-head .lede{margin-top:1em;}
+
+/* ======================= HERO ======================= */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,56px);align-items:center;padding-block:clamp(52px,8vw,92px);}
+@media (max-width:880px){.hero{grid-template-columns:1fr;}}
+.hero h1{font-size:clamp(2.4rem,5.6vw,3.8rem);}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--mauve-deep);}
+.hero .sub{font-size:1.1rem;color:var(--ink-soft);max-width:44ch;margin-top:1.1em;}
+.scroll-cue{display:inline-flex;align-items:center;gap:10px;margin-top:2.6em;color:var(--ink-faint);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;}
+.scroll-cue span.line{width:34px;height:1px;background:var(--gold);display:block;animation:cue 2.4s var(--ease) infinite;transform-origin:left;}
+@keyframes cue{0%,100%{transform:scaleX(.4);opacity:.5;}50%{transform:scaleX(1);opacity:1;}}
+
+/* ív-keret illusztrációkhoz és fotókhoz */
+.frame{
+  position:relative;border-radius:260px 260px 16px 16px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(165deg,#F4ECF4 0%,#FBF1EC 55%,#F3F0E9 100%);
+  box-shadow:var(--shadow-lg);
+}
+.frame--sq{border-radius:16px;}
+.frame__art{display:block;width:100%;height:auto;}
+.frame__slot{
+  position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.88);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
+  display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);
+}
+.frame__slot svg{width:13px;height:13px;color:var(--mauve);}
+.frame-caption{font-size:.78rem;color:var(--ink-faint);margin-top:10px;text-align:center;}
+.hero-art{position:relative;transition:transform .5s var(--ease);}
+.hero-art .halo{position:absolute;inset:-8% -6%;border-radius:50%;background:radial-gradient(circle,rgba(228,211,236,.55),transparent 65%);filter:blur(30px);z-index:-1;}
+.float{animation:float 9s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* ======================= FUTÓSÁV ======================= */
+.marquee{overflow:hidden;background:var(--surface);border-block:1px solid var(--line);padding-block:14px;}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite;}
+.marquee-track span{display:inline-flex;align-items:center;gap:26px;padding-right:26px;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--ink-soft);white-space:nowrap;}
+.marquee-track span::after{content:"✦";color:var(--gold);font-size:.7rem;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+
+/* ======================= RÖVID TÉNYSÁV ======================= */
+.strip{background:var(--bg);border-bottom:1px solid var(--line);}
+.strip-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;padding-block:20px;gap:6px 0;}
+.si{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--ink-soft);padding-inline:clamp(14px,2.6vw,26px);border-right:1px solid var(--line);}
+.si:last-child{border-right:none;}
+.si svg{width:17px;height:17px;color:var(--gold);flex:none;}
+.si b{font-weight:600;color:var(--ink);}
+@media (max-width:780px){
+  .strip-inner{justify-content:flex-start;}
+  .si{border-right:none;flex:1 1 44%;padding-inline:0 14px;padding-block:5px;font-size:.84rem;}
+}
+
+/* ======================= KÁRTYÁK ======================= */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+@media (max-width:920px){.grid-3{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:660px){.grid-3,.grid-2{grid-template-columns:1fr;}}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,2.6vw,28px);display:flex;flex-direction:column;gap:11px;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.card h3{font-size:1.22rem;}
+.card p{color:var(--ink-soft);font-size:.94rem;}
+.ico{width:42px;height:42px;border-radius:999px;background:var(--mauve-wash);color:var(--mauve-deep);display:flex;align-items:center;justify-content:center;flex:none;transition:background .3s var(--ease),transform .4s var(--ease);}
+.card:hover .ico{background:var(--blush);transform:rotate(-6deg) scale(1.05);}
+.ico svg{width:20px;height:20px;}
+
+.svc{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,2.8vw,30px);display:flex;flex-direction:column;gap:13px;overflow:hidden;transition:box-shadow .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);}
+.svc::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--mauve));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);}
+.svc:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.svc:hover::before{transform:scaleX(1);}
+.svc--accent{border-color:var(--mauve);}
+.svc--accent::before{transform:scaleX(1);}
+.svc .kicker{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+.svc h3{font-size:1.42rem;}
+.svc .desc{color:var(--ink-soft);font-size:.94rem;flex:1;}
+.svc .price{border-top:1px solid var(--line-soft);padding-top:13px;font-family:'Fraunces',serif;font-size:1.3rem;display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;}
+.svc .price small{font-family:'Montserrat',sans-serif;font-size:.77rem;color:var(--ink-faint);font-weight:500;}
+.svc .price s{color:var(--ink-faint);font-size:.9rem;}
+.badge{position:absolute;top:14px;right:14px;background:var(--mauve);color:#fff;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;}
+
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.ticks li{display:flex;gap:11px;font-size:.93rem;color:var(--ink-soft);}
+.ticks li::before{content:"";flex:none;width:7px;height:7px;border-radius:999px;background:var(--gold);margin-top:.6em;}
+
+/* alkalmak idővonala */
+.sessions{position:relative;display:flex;flex-direction:column;gap:2px;}
+.sess{display:flex;gap:18px;padding:20px clamp(18px,2.4vw,24px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+.sess:hover{transform:translateX(4px);box-shadow:var(--shadow-sm);}
+.sess .n{flex:none;width:36px;height:36px;border-radius:999px;background:var(--mauve-wash);color:var(--mauve-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:.98rem;}
+.sess h4{font-size:1.06rem;font-family:'Fraunces',serif;font-weight:400;}
+.sess p{color:var(--ink-soft);font-size:.92rem;margin-top:3px;}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;}
+@media (max-width:760px){.steps{grid-template-columns:1fr;}}
+.step{display:flex;gap:15px;align-items:flex-start;}
+.step .n{flex:none;width:38px;height:38px;border-radius:999px;border:1px solid var(--mauve);color:var(--mauve-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;background:var(--surface);}
+.step h4{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0;}
+.step p{color:var(--ink-soft);font-size:.9rem;margin-top:3px;}
+
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media (max-width:860px){.months{grid-template-columns:1fr;}}
+.month{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,2.6vw,28px);display:flex;flex-direction:column;gap:11px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+.month:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.month .mo-art{width:52px;height:52px;margin-bottom:4px;color:var(--mauve-deep);}
+.month .mo{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.month h3{font-size:1.2rem;}
+.month ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.month li{font-size:.89rem;color:var(--ink-soft);padding-left:16px;position:relative;}
+.month li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--mauve);}
+
+/* idézetblokk */
+.quote-block{position:relative;padding-left:26px;font-family:'Fraunces',serif;font-size:1.22rem;line-height:1.45;margin-block:1.4em;}
+.quote-block::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:2px;background:linear-gradient(var(--mauve),var(--gold-soft));}
+.sign{display:flex;align-items:center;gap:14px;margin-top:1.6em;}
+.sign svg{width:50px;height:50px;flex:none;}
+.sign .nm{font-family:'Fraunces',serif;font-size:1.08rem;display:block;}
+.sign .rl{font-size:.76rem;color:var(--ink-faint);}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;}
+.split--top{align-items:start;}
+@media (max-width:860px){.split{grid-template-columns:1fr;}}
+
+/* ornamens elválasztó */
+.sprig{display:flex;justify-content:center;padding-block:clamp(20px,4vw,38px);}
+.sprig svg{width:86px;color:var(--gold);opacity:.75;}
+
+/* idézet-karusszel */
+.carousel{display:grid;}
+.slide{grid-area:1/1;opacity:0;transform:translateY(8px);transition:opacity .7s var(--ease),transform .7s var(--ease);pointer-events:none;text-align:center;}
+.slide.on{opacity:1;transform:none;pointer-events:auto;}
+.slide q{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.8vw,1.85rem);line-height:1.4;quotes:"„" "”";display:block;max-width:24ch;margin-inline:auto;}
+.slide .src{display:block;margin-top:14px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:26px;}
+.dots button{width:8px;height:8px;border-radius:999px;border:none;background:var(--line);padding:0;transition:background .3s,width .3s var(--ease);}
+.dots button.on{background:var(--mauve);width:24px;}
+
+/* ======================= WEBSHOP ======================= */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media (max-width:920px){.products{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:660px){.products{grid-template-columns:1fr;}}
+.product{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s var(--ease),transform .3s var(--ease);}
+.product:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.p-art{aspect-ratio:4/3;max-width:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft);}
+.p-art.v1{background:linear-gradient(150deg,#F1E7F4,#FBF2ED);}
+.p-art.v2{background:linear-gradient(150deg,#FAF0E7,#F2ECF5);}
+.p-art.v3{background:linear-gradient(150deg,#EDEFF6,#F9F0F2);}
+.p-art svg{width:46%;height:46%;color:var(--mauve-deep);opacity:.85;transition:transform .55s var(--ease);}
+.product:hover .p-art svg{transform:scale(1.07) rotate(-3deg);}
+.p-art .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--ink-soft);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;z-index:2;}
+.p-body{padding:22px;display:flex;flex-direction:column;gap:9px;flex:1;}
+.p-body h3{font-size:1.18rem;}
+.p-body .sub{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);}
+.p-body .desc{font-size:.92rem;color:var(--ink-soft);flex:1;}
+.p-foot{padding:16px 22px;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.p-price{font-family:'Fraunces',serif;font-size:1.22rem;}
+.add-btn{border:1px solid var(--mauve);background:var(--surface);color:var(--mauve-deep);font-size:.78rem;font-weight:600;padding:.62em 1.15em;border-radius:999px;transition:background .25s var(--ease),color .25s var(--ease),transform .2s var(--ease);}
+.add-btn:hover{background:var(--mauve);color:#fff;transform:translateY(-1px);}
+select.sel{width:100%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-family:inherit;font-size:.86rem;padding:.6em .8em;border-radius:8px;}
+
+.info-strip{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;display:flex;gap:15px;align-items:flex-start;color:var(--ink-soft);font-size:.88rem;}
+.info-strip svg{width:20px;height:20px;color:var(--mauve);flex:none;margin-top:3px;}
+
+/* ======================= KOSÁR ======================= */
+.overlay{position:fixed;inset:0;background:rgba(51,42,56,.38);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s var(--ease);}
+.overlay.open{opacity:1;pointer-events:auto;}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(400px,92vw);background:var(--surface);z-index:91;display:flex;flex-direction:column;transform:translateX(101%);transition:transform .38s var(--ease);box-shadow:-14px 0 50px rgba(51,42,56,.16);}
+.drawer.open{transform:translateX(0);}
+.d-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line);}
+.d-head h3{font-size:1.18rem;}
+.d-items{flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;}
+.d-empty{color:var(--ink-faint);font-size:.9rem;text-align:center;padding-block:40px;}
+.d-item{display:flex;gap:12px;justify-content:space-between;border-bottom:1px solid var(--line-soft);padding-bottom:14px;animation:slideIn .35s var(--ease);}
+@keyframes slideIn{from{opacity:0;transform:translateX(10px);}to{opacity:1;transform:none;}}
+.d-item .nm{font-size:.92rem;font-weight:500;}
+.d-item .mt{font-size:.8rem;color:var(--ink-faint);margin-top:2px;}
+.d-item .rm{background:none;border:none;padding:0;margin-top:6px;font-size:.76rem;color:var(--mauve-deep);text-decoration:underline;}
+.d-foot{border-top:1px solid var(--line);padding:18px 22px;display:flex;flex-direction:column;gap:12px;}
+.d-total{display:flex;justify-content:space-between;font-size:.95rem;font-weight:600;}
+.d-total b{font-family:'Fraunces',serif;font-weight:400;font-size:1.2rem;}
+.d-note{font-size:.76rem;color:var(--ink-faint);}
+
+/* ======================= GYIK ======================= */
+.faq{display:flex;flex-direction:column;gap:12px;}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);transition:box-shadow .3s var(--ease);}
+details.q[open]{box-shadow:var(--shadow-sm);}
+details.q summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:16px;font-weight:500;font-size:.98rem;}
+details.q summary::-webkit-details-marker{display:none;}
+details.q summary::after{content:"+";margin-left:auto;color:var(--mauve);font-size:1.3rem;line-height:1;transition:transform .3s var(--ease);}
+details.q[open] summary::after{transform:rotate(45deg);}
+details.q .a{padding:0 22px 20px;color:var(--ink-soft);font-size:.92rem;}
+
+/* ======================= KAPCSOLAT ======================= */
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,52px);align-items:start;}
+@media (max-width:860px){.contact{grid-template-columns:1fr;}}
+.c-row{display:flex;gap:13px;align-items:flex-start;color:var(--ink-soft);font-size:.94rem;}
+.c-row svg{width:19px;height:19px;color:var(--mauve);flex:none;margin-top:4px;}
+.socials{display:flex;gap:10px;}
+.socials a{width:42px;height:42px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:var(--surface);transition:border-color .2s,transform .25s var(--ease);}
+.socials a:hover{border-color:var(--mauve);transform:translateY(-2px);}
+.socials svg{width:17px;height:17px;color:var(--mauve-deep);}
+form.cform{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-sm);}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:540px){.f2{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:.78rem;font-weight:600;color:var(--ink-soft);}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:.82em .9em;font-family:inherit;font-size:.93rem;color:var(--ink);transition:border-color .2s,background .2s;}
+.field textarea{resize:vertical;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--mauve);background:var(--surface);}
+.form-msg{font-size:.85rem;color:var(--mauve-deep);min-height:1.2em;}
+
+/* ======================= ZÁRÓ CTA ======================= */
+.cta-band{position:relative;overflow:hidden;background:linear-gradient(120deg,#F4ECF5,#FBF1EB 60%,#F1F2EC);border:1px solid var(--line);border-radius:22px;padding:clamp(30px,4.5vw,52px);display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.cta-band h2{font-size:clamp(1.5rem,2.8vw,2.05rem);max-width:20ch;}
+.cta-band p{color:var(--ink-soft);font-size:.95rem;max-width:42ch;margin-top:.6em;}
+.cta-band .deco{position:absolute;right:-30px;bottom:-40px;width:210px;opacity:.16;color:var(--mauve-deep);pointer-events:none;}
+
+/* ======================= LÁBLÉC ======================= */
+footer.site{background:var(--surface);border-top:1px solid var(--line);padding-block:46px 26px;}
+.f-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start;}
+.f-tag{font-family:'Fraunces',serif;font-size:1.02rem;color:var(--ink-soft);max-width:32ch;margin-top:12px;}
+.f-nav{display:flex;gap:20px;flex-wrap:wrap;}
+.f-nav a{font-size:.85rem;color:var(--ink-soft);}
+.f-nav a:hover{color:var(--mauve-deep);}
+.f-bottom{margin-top:30px;padding-top:18px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.78rem;color:var(--ink-faint);}
+
+/* ======================= MEGJELENÉSI ANIMÁCIÓ ======================= */
+html.js [data-reveal]{opacity:0;transform:translateY(16px);}
+html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease);}
+@media (prefers-reduced-motion:reduce){
+  html.js [data-reveal]{opacity:1!important;transform:none!important;}
+  *{animation:none!important;transition:none!important;}
+  .marquee-track{animation:none!important;}
+}
+</style>
+
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ============================= FEJLÉC ============================= -->
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#/" aria-label="Lélektitok Műhely — főoldal">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22.5" stroke="#B08D57" stroke-width="1"/>
+        <path d="M24 34V22M24 22c-4-1-6-4-6-7 3 0 6 2 6 5M24 22c4-1 6-4 6-7-3 0-6 2-6 5" stroke="#8C6F9B" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M18 34c2-2 4-2 6-2s4 0 6 2" stroke="#8C6F9B" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span><b>Ladics Timi</b><i>Lélektitok Műhely</i></span>
+    </a>
+
+    <nav class="links" id="navLinks">
+      <a href="#/rolam" data-route="rolam">Rólam</a>
+      <a href="#/szolgaltatasok" data-route="szolgaltatasok">Szolgáltatások</a>
+      <a href="#/esszencia" data-route="esszencia">Esszencia Program</a>
+      <a href="#/webshop" data-route="webshop">Webshop</a>
+      <a href="#/kapcsolat" data-route="kapcsolat">Kapcsolat</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#/kapcsolat" class="btn btn--primary nav-cta">Időpontot kérek</a>
+      <button class="icon-btn" id="openCart" aria-label="Kosár megnyitása">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"/><circle cx="9.5" cy="20.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="17" cy="20.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+        <span class="cart-count" id="cartCount" hidden>0</span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Menü">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main id="main">
+
+<!-- ============================= FŐOLDAL ============================= -->
+<div class="page" id="page-home">
+
+  <div class="has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">Transzformációs tréner · Gyásztanácsadó</span>
+        <h1>Az Út <em>önmagadhoz</em> benned kezdődik</h1>
+        <p class="sub">Kísérlek az elakadásból és a veszteségből a saját belső erődhöz — személyes női körben, egyéni mentorálásban vagy otthon végezhető programokkal.</p>
+        <div class="row-actions" style="margin-top:2em;">
+          <a href="#/szolgaltatasok" class="btn btn--primary">Megnézem a programokat</a>
+          <a href="#/rolam" class="btn btn--outline">Ismerj meg</a>
+        </div>
+        <span class="scroll-cue"><span class="line"></span>Görgess tovább</span>
+      </div>
+
+      <div class="hero-art">
+        <span class="halo" aria-hidden="true"></span>
+        <div class="frame float">
+          <svg class="frame__art" viewBox="0 0 420 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#EFE3F1"/><stop offset="1" stop-color="#FBF1EA"/>
+              </linearGradient>
+              <radialGradient id="sun" cx="50%" cy="50%">
+                <stop offset="0" stop-color="#F3E2C7"/><stop offset="1" stop-color="#E9D3AE" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="420" height="520" fill="url(#sky)"/>
+            <circle cx="210" cy="190" r="120" fill="url(#sun)"/>
+            <circle cx="210" cy="190" r="74" fill="none" stroke="#B08D57" stroke-width="1.1" opacity=".55"/>
+            <circle cx="210" cy="190" r="96" fill="none" stroke="#B08D57" stroke-width=".7" opacity=".3" stroke-dasharray="2 7"/>
+            <!-- életfa -->
+            <path d="M210 430V262" stroke="#8C6F9B" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M210 262c-34-8-52-34-52-64 26 0 52 18 52 44M210 262c34-8 52-34 52-64-26 0-52 18-52 44" stroke="#8C6F9B" stroke-width="2" stroke-linecap="round"/>
+            <path d="M210 310c-24-5-38-22-40-42M210 310c24-5 38-22 40-42" stroke="#8C6F9B" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+            <path d="M210 356c-16-4-26-15-28-29M210 356c16-4 26-15 28-29" stroke="#B08D57" stroke-width="1.3" stroke-linecap="round" opacity=".8"/>
+            <!-- gyökerek -->
+            <path d="M210 430c-20 0-34 10-44 24M210 430c20 0 34 10 44 24M210 430c-8 8-12 18-13 30M210 430c8 8 12 18 13 30" stroke="#8C6F9B" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+            <!-- szív a törzsben -->
+            <path d="M210 296c-9-8-14-13-14-19a7 7 0 0 1 14-4 7 7 0 0 1 14 4c0 6-5 11-14 19Z" fill="#B08D57" fill-opacity=".45"/>
+            <!-- fénypontok -->
+            <circle cx="120" cy="118" r="2.5" fill="#B08D57" opacity=".7"/>
+            <circle cx="304" cy="140" r="2" fill="#B08D57" opacity=".55"/>
+            <circle cx="286" cy="96" r="1.6" fill="#8C6F9B" opacity=".6"/>
+            <circle cx="140" cy="228" r="1.8" fill="#8C6F9B" opacity=".5"/>
+            <!-- talajvonal -->
+            <path d="M60 470h300" stroke="#B08D57" stroke-width="1" opacity=".35"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Királynő vagy, nem áldozat</span><span>Az Út önmagadhoz benned kezdődik</span><span>Az árnyékból aranyat</span><span>A titkaid biztonságban vannak</span>
+      <span>Királynő vagy, nem áldozat</span><span>Az Út önmagadhoz benned kezdődik</span><span>Az árnyékból aranyat</span><span>A titkaid biztonságban vannak</span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <span class="si">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span><b>17 év</b> önismereti tapasztalat</span>
+      </span>
+      <span class="si">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4.6" r="1.6" fill="currentColor" stroke="none"/><circle cx="19.4" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="19.4" r="1.6" fill="currentColor" stroke="none"/><circle cx="4.6" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
+        <span><b>7 fős</b> zárt női körök</span>
+      </span>
+      <span class="si">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M17 3a9 9 0 1 1-7.5 14A11 11 0 0 0 17 3Z"/></svg>
+        <span><b>90 napos</b> VIP folyamat</span>
+      </span>
+      <span class="si">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span>Herminamező, <b>Budapest</b></span>
+      </span>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Három út a Műhelybe</span>
+      <h2 class="h-sec">Válaszd ki azt a formátumot, amelyben biztonságban érzed magad</h2>
+    </div>
+    <div class="grid-3">
+      <article class="svc" data-reveal>
+        <span class="kicker">Személyes kiscsoport</span>
+        <h3>Igazi Egyéniség Női Kör</h3>
+        <p class="desc">4 alkalmas transzformációs folyamat szigorúan 7 fős, zárt körben.</p>
+        <div class="price"><s>88.000 Ft</s> 77.000 Ft <small>Early Bird</small></div>
+        <a href="#/szolgaltatasok" class="btn btn--outline btn--full">Részletek</a>
+      </article>
+      <article class="svc" data-reveal data-delay="90">
+        <span class="kicker">Egyéni kísérés</span>
+        <h3>Exkluzív Mentorálás</h3>
+        <p class="desc">Személyre szabott konzultáció, ahol csak a te elakadásaiddal dolgozunk.</p>
+        <div class="price">20.000 Ft <small>/ alkalom</small></div>
+        <a href="#/szolgaltatasok" class="btn btn--outline btn--full">Részletek</a>
+      </article>
+      <article class="svc svc--accent" data-reveal data-delay="180">
+        <span class="badge">Legmélyebb</span>
+        <span class="kicker">3 hónapos VIP program</span>
+        <h3>Lélek Esszencia Program</h3>
+        <p class="desc">90 napos, zárt mentorprogram egyéni és csoportos alkalmakkal.</p>
+        <div class="price">288.000 Ft <small>/ 90 nap</small></div>
+        <a href="#/esszencia" class="btn btn--primary btn--full">A program</a>
+      </article>
+    </div>
+  </section>
+
+  <div class="sprig" aria-hidden="true">
+    <svg viewBox="0 0 120 24" fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M2 12h34M84 12h34"/>
+      <path d="M60 4c-5 4-7 6-7 8a7 7 0 0 0 14 0c0-2-2-4-7-8Z"/>
+      <path d="M46 12c3-3 6-3 8 0-2 3-5 3-8 0ZM74 12c-3-3-6-3-8 0 2 3 5 3 8 0Z"/>
+    </svg>
+  </div>
+
+  <section class="section section--tint has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap split">
+      <div class="hero-art" data-reveal>
+        <div class="frame frame--sq">
+          <svg class="frame__art" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="room" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6EEF6"/><stop offset="1" stop-color="#FBF2EA"/></linearGradient></defs>
+            <rect width="420" height="340" fill="url(#room)"/>
+            <!-- ablakív -->
+            <path d="M150 250V130a60 60 0 0 1 120 0v120" stroke="#B08D57" stroke-width="1.2" fill="#FDF8F2" opacity=".85"/>
+            <path d="M210 70v180M150 170h120" stroke="#B08D57" stroke-width=".8" opacity=".6"/>
+            <!-- gyertyák -->
+            <rect x="96" y="212" width="16" height="42" rx="4" fill="#EFE7F2" stroke="#8C6F9B" stroke-width="1"/>
+            <rect x="120" y="226" width="12" height="28" rx="4" fill="#EFE7F2" stroke="#8C6F9B" stroke-width="1"/>
+            <path d="M104 212c0-6 4-7 4-12 3 4 4 7 4 12" stroke="#B08D57" stroke-width="1.2" fill="none"/>
+            <path d="M126 226c0-4 3-5 3-9 2 3 3 5 3 9" stroke="#B08D57" stroke-width="1.2" fill="none"/>
+            <!-- csésze -->
+            <path d="M300 236h34v10a17 17 0 0 1-34 0v-10Z" stroke="#8C6F9B" stroke-width="1.2" fill="#FFF"/>
+            <path d="M334 240c8 0 10 10 0 12" stroke="#8C6F9B" stroke-width="1.2" fill="none"/>
+            <path d="M310 226c0-5 4-6 4-10M322 226c0-5 4-6 4-10" stroke="#B08D57" stroke-width="1" opacity=".7"/>
+            <!-- rózsa -->
+            <circle cx="210" cy="222" r="14" fill="none" stroke="#8C6F9B" stroke-width="1.2"/>
+            <circle cx="210" cy="222" r="8" fill="none" stroke="#8C6F9B" stroke-width="1"/>
+            <circle cx="210" cy="222" r="3" fill="#EFDDDF"/>
+            <path d="M210 236v26M210 250c-10 0-14-6-16-12 8-1 14 4 16 12M210 256c9 0 13-5 15-11-8-1-13 3-15 11" stroke="#8C6F9B" stroke-width="1.2" fill="none"/>
+            <!-- asztal -->
+            <path d="M40 264h340" stroke="#B08D57" stroke-width="1.4"/>
+            <path d="M60 264c0 20 8 34 20 42M360 264c0 20-8 34-20 42" stroke="#B08D57" stroke-width=".8" opacity=".5"/>
+          </svg>
+          <span class="frame__slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+            Fotóhely — a Műhely tere
+          </span>
+        </div>
+      </div>
+      <div data-reveal data-delay="90">
+        <span class="eyebrow">Rólam</span>
+        <h2 class="h-sec">Életem a veszteségeimen túl</h2>
+        <p class="lede mt-m">Ismerem azt a bénító érzést, amikor a múlt túl nehéz, a jövő pedig ködös. Megtanultam, hogy a legnagyobb fájdalmaink feldolgozása után találunk rá olyan belső kincseinkre, melyekről tudomásunk sem volt, hogy léteznek.</p>
+        <blockquote class="quote-block">„Amilyen mélyre képes vagy lemenni, olyan magasan fogsz tudni szárnyalni.”</blockquote>
+        <div class="row-actions">
+          <a href="#/rolam" class="btn btn--link">Az én történetem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="carousel" id="carousel" data-reveal>
+      <div class="slide on"><q>A veszteség nem azért jön, hogy elpusztítson. Azért jön, hogy helyet csináljon az Igazi Egyéniségnek.</q><span class="src">Lélektitok Műhely</span></div>
+      <div class="slide"><q>Az elakadásod nem a vég, hanem egy általad megálmodott új élet kezdete.</q><span class="src">Lélektitok Műhely</span></div>
+      <div class="slide"><q>Nem külső struktúráktól kell várnod a választ. A Műhely kulcsa a te kezedben van.</q><span class="src">Lélektitok Műhely</span></div>
+    </div>
+    <div class="dots" id="dots" role="tablist" aria-label="Idézetek"></div>
+  </section>
+
+  <section class="section section--surface section--tight">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Webshop</span>
+        <h2 class="h-sec">Otthon, a saját ritmusodban</h2>
+      </div>
+      <div class="grid-3">
+        <a class="card" href="#/webshop" data-reveal>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="4" width="10" height="15" rx="1.5"/><rect x="9" y="6" width="10" height="15" rx="1.5"/></svg></span>
+          <h3>Igazi Egyéniség Kártyacsomag</h3>
+          <p>44 lapos, aranyozott kártyapakli díszdobozban — napi útmutatáshoz.</p>
+          <span class="btn btn--link" style="margin-top:auto;">12.900 Ft</span>
+        </a>
+        <a class="card" href="#/webshop" data-reveal data-delay="90">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="5"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/></svg></span>
+          <h3>Királynő a Változásban</h3>
+          <p>Lelki menopauza csomag: e-book, 3 meditáció és önterápiás munkafüzet.</p>
+          <span class="btn btn--link" style="margin-top:auto;">14.900 Ft</span>
+        </a>
+        <a class="card" href="#/webshop" data-reveal data-delay="180">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 15V7l10-2v8"/><ellipse cx="6" cy="16" rx="2" ry="1.6"/><ellipse cx="16" cy="14" rx="2" ry="1.6"/></svg></span>
+          <h3>Meditációs Hanganyagtár</h3>
+          <p>10–15 perces vezetett meditációk feszültségoldásra és elengedésre.</p>
+          <span class="btn btn--link" style="margin-top:auto;">2.990 Ft</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight wrap">
+    <div class="cta-band" data-reveal>
+      <div>
+        <h2>Nem kell egyedül cipelned a nehéz csomagokat</h2>
+        <p>Írj pár mondatot az elakadásodról, és egy rövid, ingyenes beszélgetésben együtt megnézzük, melyik út szolgál téged.</p>
+      </div>
+      <a href="#/kapcsolat" class="btn btn--primary">Kapcsolatfelvétel</a>
+      <svg class="deco" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <circle cx="60" cy="60" r="52"/><path d="M60 96V52M60 52c-14-3-22-14-22-27 11 0 22 8 22 19M60 52c14-3 22-14 22-27-11 0-22 8-22 19"/>
+      </svg>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= RÓLAM ============================= -->
+<div class="page" id="page-rolam" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">Rólam</span>
+      <h1>Életem a veszteségeimen túl</h1>
+      <p class="lede">Kísérlek az útvesztőből és a krízisből a saját, belső női erőd felé.</p>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="split split--top">
+      <div class="hero-art" data-reveal>
+        <div class="frame">
+          <svg class="frame__art" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="portrait" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1E6F3"/><stop offset="1" stop-color="#FAF0E9"/></linearGradient></defs>
+            <rect width="400" height="520" fill="url(#portrait)"/>
+            <circle cx="200" cy="200" r="118" fill="#FDF7F1" opacity=".75"/>
+            <!-- alak körvonala -->
+            <path d="M200 148a44 44 0 1 1 0 88 44 44 0 0 1 0-88Z" stroke="#8C6F9B" stroke-width="1.6" fill="none"/>
+            <path d="M118 430c0-52 36-88 82-88s82 36 82 88" stroke="#8C6F9B" stroke-width="1.6" fill="none"/>
+            <path d="M156 196c4-34 22-52 44-52s40 18 44 52c-10-12-24-20-44-20s-34 8-44 20Z" fill="#8C6F9B" fill-opacity=".18"/>
+            <!-- levélág -->
+            <path d="M300 372c-18-10-26-30-24-52 20 6 32 24 30 46" stroke="#B08D57" stroke-width="1.2" fill="none"/>
+            <path d="M100 372c18-10 26-30 24-52-20 6-32 24-30 46" stroke="#B08D57" stroke-width="1.2" fill="none"/>
+            <circle cx="200" cy="112" r="3" fill="#B08D57" opacity=".7"/>
+          </svg>
+          <span class="frame__slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+            Fotóhely — a portréd
+          </span>
+        </div>
+        <p class="frame-caption">Ide kerül a profi portréd: meleg tekintet, mélybordó vagy levendula ruha, finoman elmosódott, gyertyás háttér.</p>
+      </div>
+
+      <div data-reveal data-delay="90">
+        <span class="eyebrow">Neked szól, ha</span>
+        <h2 class="h-sec">Hiszem, hogy senki sem érkezik véletlenül erre az oldalra</h2>
+        <div class="stack mt-l" style="gap:14px;">
+          <div class="card" style="flex-direction:row;align-items:flex-start;gap:16px;">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V8l8-4 8 4v12M4 20h16M9 20v-6h6v6"/></svg></span>
+            <div><h3>Láthatatlan falakba ütközöl</h3><p>Az életed egy ponton elakadt, és a halogatás mögé bújva próbálod túlélni a mindennapokat.</p></div>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:flex-start;gap:16px;">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-7-4.3-9-8.6C1.4 8 3.3 4.5 7 4.5c2 0 3.6 1.1 5 2.8 1.4-1.7 3-2.8 5-2.8 3.7 0 5.6 3.5 4 6.9-2 4.3-9 8.6-9 8.6Z"/></svg></span>
+            <div><h3>Egy veszteség darabjait szeded össze</h3><p>Egy fájdalmas szakítás, válás vagy egy fontos ember elvesztése után próbálod újra összerakni magadat.</p></div>
+          </div>
+          <div class="card" style="flex-direction:row;align-items:flex-start;gap:16px;">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+            <div><h3>El nem gyászolt űrt hordozol</h3><p>Lezárult életszakaszok, feladott álmok vagy a változókor viharai nehezednek a mindennapjaidra.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow" data-reveal>
+      <span class="eyebrow">A történetem</span>
+      <h2 class="h-sec">Miért pont a Lélektitok?</h2>
+      <div class="stack mt-m" style="color:var(--ink-soft);">
+        <p>A saját tapasztalatom és a hitem: a legnagyobb fájdalmaink feldolgozása után találunk rá azokra a belső kincsekre, amelyekről nem is tudtuk, hogy léteznek. A valódi, tartós transzformáció ott kezdődik, amikor merünk a felszín mögé nézni.</p>
+        <p>Amíg a sors ki nem húzza alólunk a régi, kényelmes, de már nem minket szolgáló struktúrákat, hajlamosak vagyunk megalkudni: bennmaradunk a lehúzó kapcsolatokban és a láthatatlanságban. A veszteség a lélek radikális ébresztője — leégeti rólunk a megfelelési kényszerek maszkjait.</p>
+        <p>Ha most gyászolsz, ha elakadásban vagy, ne bántsd magad. Az elakadásod nem a vég, hanem egy általad megálmodott új élet kezdete.</p>
+      </div>
+      <blockquote class="quote-block">„Belenézünk a veszteség szemébe, levonjuk a tanításait, és a te saját, elnyomott belső erődből felépítjük a jövődet.”</blockquote>
+    </div>
+  </section>
+
+  <section class="section wrap wrap--narrow">
+    <div data-reveal>
+      <span class="eyebrow">Hogyan dolgozom</span>
+      <h2 class="h-sec">Két minőség, ami elengedhetetlen a valódi változáshoz</h2>
+    </div>
+    <div class="grid-2 mt-l">
+      <article class="card" data-reveal>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-7-4.3-9-8.6C1.4 8 3.3 4.5 7 4.5c2 0 3.6 1.1 5 2.8 1.4-1.7 3-2.8 5-2.8 3.7 0 5.6 3.5 4 6.9-2 4.3-9 8.6-9 8.6Z"/></svg></span>
+        <h3>Mély, ítélkezésmentes empátia</h3>
+        <p>Biztonságos és megtartó teret hozok létre, ahol nem kell az „erős nő” álarcát viselned. Itt a könnyeid és az elakadásaid is meghallgatásra találnak.</p>
+      </article>
+      <article class="card" data-reveal data-delay="90">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V5m0 14h16M4 19l5-6 4 3 6-8"/></svg></span>
+        <h3>Tiszta, gyakorlatias struktúra</h3>
+        <p>Nem hagyom, hogy elveszz a fájdalomban. Lépésről lépésre haladunk az elengedéstől a konkrét, napi cselekvési tervig.</p>
+      </article>
+    </div>
+
+    <div class="sign" data-reveal>
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#EFE7F2"/><text x="24" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="17" fill="#6E5480">LT</text></svg>
+      <span>
+        <span class="nm">Ladics Timi</span>
+        <span class="rl">A Lélektitok Műhely alapítója · Transzformációs tréner</span>
+      </span>
+    </div>
+
+    <div class="row-actions mt-l" data-reveal>
+      <a href="#/szolgaltatasok" class="btn btn--primary">Megnézem a programokat</a>
+      <a href="#/kapcsolat" class="btn btn--outline">Írok neked</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= SZOLGÁLTATÁSOK ============================= -->
+<div class="page" id="page-szolgaltatasok" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">Szolgáltatások</span>
+      <h1>Személyes folyamatok a Műhelyben</h1>
+      <p class="lede">Csoportos jelenlét vagy egyéni kísérés — mindkettő ugyanoda vezet: a saját belső erődhöz.</p>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="split split--top">
+      <div data-reveal>
+        <span class="eyebrow">Személyes kiscsoport</span>
+        <h2 class="h-sec">Igazi Egyéniség Női Kör</h2>
+        <p class="lede mt-m">Ez a kör a maszkok nélküli őszinteség, a biztonság és a radikális belső gyógyulás tere. Megtörjük a halogatást, átírjuk a kontrolláló mintákat, és megérkezünk a saját, tiszta belső igazságunkba.</p>
+        <ul class="ticks mt-m">
+          <li>Szigorúan 7 fős, zárt kör a Herminamezői térben</li>
+          <li>4 alkalom, szombat délelőttönként (10:00–13:30)</li>
+          <li>Kártyás gyakorlatok, mély-meditáció, elengedő rituálék</li>
+        </ul>
+        <div class="row-actions" style="margin-top:1.8em;">
+          <span style="font-family:'Fraunces',serif;font-size:1.35rem;"><s style="color:var(--ink-faint);font-size:.88rem;">88.000 Ft</s> 77.000 Ft</span>
+          <span style="color:var(--ink-faint);font-size:.85rem;">Early Bird — az első 3 jelentkezőnek</span>
+        </div>
+        <div class="row-actions" style="margin-top:1.2em;">
+          <a href="#/kapcsolat" class="btn btn--primary" data-topic="noi-kor">Jelentkezem a körbe</a>
+        </div>
+      </div>
+
+      <div class="sessions">
+        <div class="sess" data-reveal><span class="n">1</span><div><h4>A Titok Feltárása</h4><p>Szembenézés az elakadással és a halogatással. Egyéni „elakadás-térkép” és elengedő rituálé.</p></div></div>
+        <div class="sess" data-reveal data-delay="70"><span class="n">2</span><div><h4>Az Árnyékból Aranyat</h4><p>A félelmek, a szégyen és a veszteség átírása belső erővé. Mély-meditáció a múlt fájdalmas pontjaira.</p></div></div>
+        <div class="sess" data-reveal data-delay="140"><span class="n">3</span><div><h4>A 11:11 Kód</h4><p>Az intuíció felébresztése, a szinkronicitások észrevétele. Intuitív kártyás gyakorlatok.</p></div></div>
+        <div class="sess" data-reveal data-delay="210"><span class="n">4</span><div><h4>A Királynő Aratása</h4><p>Konkrét cselekvési terv, az „Új Kezdet” szertartása és egy személyes útravaló.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap split">
+      <div data-reveal>
+        <span class="eyebrow">Egyéni kísérés</span>
+        <h2 class="h-sec">Exkluzív Mentorálás</h2>
+        <p class="lede mt-m">Tűpontos, mély, személyre szabott konzultáció a Műhelyben, ahol kizárólag a te lélektitkaiddal és elakadásaiddal dolgozunk.</p>
+        <ul class="ticks mt-m">
+          <li>50–60 perces alkalmak, szabadon ütemezve</li>
+          <li>Heti maximum 10 szabad idősáv a teljes figyelemért</li>
+          <li>Teljes diszkréció, alkalmanként fizethető</li>
+        </ul>
+        <div class="row-actions" style="margin-top:1.6em;">
+          <span style="font-family:'Fraunces',serif;font-size:1.35rem;">20.000 Ft</span>
+          <span style="color:var(--ink-faint);font-size:.85rem;">/ alkalom</span>
+        </div>
+        <div class="row-actions" style="margin-top:1.2em;">
+          <a href="#/kapcsolat" class="btn btn--primary" data-topic="egyeni">Időpontot kérek</a>
+        </div>
+      </div>
+      <div class="card" data-reveal data-delay="90">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>
+        <h3>Nem vagy biztos benne, melyik való neked?</h3>
+        <p>A női kör ereje a sorsközösség: hét nő együtt, megtartó térben. Az egyéni mentorálás akkor jobb választás, ha a témád nagyon személyes, vagy rugalmas időpontokra van szükséged.</p>
+        <p>Egy rövid, ingyenes beszélgetésben együtt eldöntjük — épp ezért kezdünk mindig ezzel.</p>
+        <a href="#/kapcsolat" class="btn btn--outline" style="align-self:flex-start;margin-top:.4em;">Beszéljünk róla</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Hogyan kezdjük</span>
+      <h2 class="h-sec">Három lépés, és már úton is vagy</h2>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal><span class="n">1</span><div><h4>Írsz nekem</h4><p>Kitöltöd az űrlapot pár mondattal az elakadásodról. Minden üzenetet én magam olvasok el.</p></div></div>
+      <div class="step" data-reveal data-delay="90"><span class="n">2</span><div><h4>Ingyenes hangolódás</h4><p>Egy rövid telefonos beszélgetésben kiderül, melyik út szolgál téged.</p></div></div>
+      <div class="step" data-reveal data-delay="180"><span class="n">3</span><div><h4>Elindul a közös munka</h4><p>Visszaigazolom a helyed és az időpontokat, majd megkapod az első hangolódó anyagot.</p></div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= ESSZENCIA ============================= -->
+<div class="page" id="page-esszencia" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">3 hónapos VIP mentorprogram</span>
+      <h1>Lélek Esszencia Program</h1>
+      <p class="lede">Nem arra születtél, hogy a múltad veszteségeinek árnyékában élj. Ez a Műhely legmélyebb folyamata — 90 napon át személyesen fogom a kezed.</p>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="split split--top">
+      <div data-reveal>
+        <span class="eyebrow">Mit tartalmaz</span>
+        <h2 class="h-sec">Maximális törődés, 90 napon át</h2>
+        <ul class="ticks mt-m">
+          <li><b>6 egyéni mély-mentorálás</b> — havi 2 alkalom, ahol terápiás szinten dolgozzuk fel a veszteségeidet</li>
+          <li><b>Havi Mastermind kör</b> — szigorúan max. 5–6 fővel, a közös megtartó erőért</li>
+          <li><b>Teljes fizikai termékcsomag ajándékba</b> — kártyacsomag és munkafüzet az első napon</li>
+          <li><b>Folyamatos elérés</b> — zárt VIP csoport a hétköznapi elakadásokra</li>
+        </ul>
+        <div class="row-actions mt-l">
+          <span style="font-family:'Fraunces',serif;font-size:1.8rem;">288.000 Ft</span>
+          <span style="color:var(--ink-faint);font-size:.88rem;">egyszeri díj · 3 hónap</span>
+        </div>
+      </div>
+      <div class="card" data-reveal data-delay="90">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 3 4 6 4 9a4 4 0 0 1-8 0c0-3 1-6 4-9Z"/><path d="M8 21c1.5-1.5 2.5-3 4-3s2.5 1.5 4 3"/></svg></span>
+        <h3>Ide nem csak jelentkezni lehet</h3>
+        <p>Jelentkezési űrlap és egy rövid, ingyenes telefonos beszélgetés alapján kapcsolódunk egymáshoz. Ebben derül ki, hogy a csoportos vagy az egyéni feldolgozás a te utad — és hogy készen állunk-e erre a közös utazásra.</p>
+        <a href="#/kapcsolat" class="btn btn--primary" data-topic="esszencia" style="align-self:flex-start;margin-top:.4em;">Jelentkezem konzultációra</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">A 90 napos ív</span>
+        <h2 class="h-sec">A klasszikus gyászfeldolgozás fázisai — a Műhely módszertanával</h2>
+      </div>
+      <div class="months">
+        <article class="month" data-reveal>
+          <svg class="mo-art" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M8 40h36M14 40V28l6-6 6 6v12M32 40V22l6-5 4 5v18"/><path d="M20 22V12"/><circle cx="20" cy="9" r="3"/>
+          </svg>
+          <span class="mo">1. hónap</span>
+          <h3>A romok feltárása</h3>
+          <ul>
+            <li>Veszteség-leltár és a maszkok levetése</li>
+            <li>A tehetetlenség és a düh transzformációja</li>
+            <li>Mastermind: a sorsközösség ereje — itt kapod meg a kártyacsomagot és a munkafüzetet</li>
+          </ul>
+        </article>
+        <article class="month" data-reveal data-delay="90">
+          <svg class="mo-art" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M26 8c8 8 12 14 12 20a12 12 0 0 1-24 0c0-6 4-12 12-20Z"/><path d="M26 44c-4-4-6-8-6-12"/><path d="M14 20c-4 2-6 6-6 10M38 20c4 2 6 6 6 10"/>
+          </svg>
+          <span class="mo">2. hónap</span>
+          <h3>A Főnix-alkímia</h3>
+          <ul>
+            <li>A transzgenerációs és anyai minták leválasztása</li>
+            <li>A „Főnix-Leltár” rituáléja — ami elpusztíthatatlan benned</li>
+            <li>Mastermind: az elengedés közös szertartása</li>
+          </ul>
+        </article>
+        <article class="month" data-reveal data-delay="180">
+          <svg class="mo-art" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <path d="M12 34l4-14 6 8 4-14 4 14 6-8 4 14Z"/><path d="M12 34h32v6H12z"/><circle cx="26" cy="10" r="2.5"/>
+          </svg>
+          <span class="mo">3. hónap</span>
+          <h3>Az Értékes Nő</h3>
+          <ul>
+            <li>Az intuíció csatornázása és a belső tekintély felépítése</li>
+            <li>Gyakorlati és anyagi cselekvési terv a program utáni életre</li>
+            <li>Záró ünnepség: az új élet elindulásának rituáléja</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= WEBSHOP ============================= -->
+<div class="page" id="page-webshop" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">Webshop</span>
+      <h1>Otthonod kényelmében, a saját ritmusodban</h1>
+      <p class="lede">Azonnal letölthető digitális programok és egy kézzelfogható önismereti kártyacsomag.</p>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="products">
+      <article class="product" data-reveal>
+        <div class="p-art v1">
+          <span class="tag">Fizikai termék</span>
+          <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <rect x="24" y="16" width="44" height="66" rx="4" transform="rotate(-9 46 49)" fill="#FFFFFF" fill-opacity=".65"/>
+            <rect x="50" y="20" width="44" height="66" rx="4" transform="rotate(8 72 53)" fill="#FFFFFF" fill-opacity=".85"/>
+            <path d="M72 42l-8 9 8 9 8-9-8-9Z"/>
+            <path d="M72 34v-6M64 38l-4-5M80 38l4-5"/>
+          </svg>
+        </div>
+        <div class="p-body">
+          <h3>Igazi Egyéniség Kártyacsomag</h3>
+          <p class="sub">44 lap · 4 témablokk</p>
+          <p class="desc">Prémium, aranyozott kártyapakli keményfedeles díszdobozban. A 44 lap négy blokkra oszlik: Belső Királynő, Elakadás átírása, Kontroll elengedése és Angyali vezetés.</p>
+        </div>
+        <div class="p-foot">
+          <span class="p-price">12.900 Ft</span>
+          <button class="add-btn" data-id="kartya" data-name="Igazi Egyéniség Kártyacsomag" data-price="12900">Kosárba</button>
+        </div>
+      </article>
+
+      <article class="product" data-reveal data-delay="90">
+        <div class="p-art v2">
+          <span class="tag">Digitális csomag</span>
+          <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <rect x="26" y="26" width="48" height="60" rx="3" fill="#FFFFFF" fill-opacity=".8"/>
+            <path d="M74 26c8 0 14 5 14 12v48H74"/>
+            <path d="M36 44h28M36 54h28M36 64h18"/>
+            <circle cx="88" cy="26" r="12" fill="#FFFFFF" fill-opacity=".6"/>
+            <path d="M88 20v12M82 26h12"/>
+          </svg>
+        </div>
+        <div class="p-body">
+          <h3>Királynő a Változásban</h3>
+          <p class="sub">Lelki Menopauza csomag</p>
+          <p class="desc">E-book a változókor lelki jelentéséről, 3 prémium meditáció (hőhullámok szelídítése, múlt mintáinak elengedése, belső stabilitás) és nyomtatható önterápiás munkafüzet.</p>
+        </div>
+        <div class="p-foot">
+          <span class="p-price">14.900 Ft</span>
+          <button class="add-btn" data-id="menopauza" data-name="Királynő a Változásban — Menopauza csomag" data-price="14900">Kosárba</button>
+        </div>
+      </article>
+
+      <article class="product" data-reveal data-delay="180">
+        <div class="p-art v3">
+          <span class="tag">Letöltés</span>
+          <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <path d="M46 62V32l38-8v30"/>
+            <ellipse cx="38" cy="64" rx="8" ry="6" fill="#FFFFFF" fill-opacity=".7"/>
+            <ellipse cx="76" cy="56" rx="8" ry="6" fill="#FFFFFF" fill-opacity=".7"/>
+            <path d="M24 44c-3 4-3 10 0 14M18 38c-6 8-6 18 0 26M96 44c3 4 3 10 0 14M102 38c6 8 6 18 0 26" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="p-body">
+          <h3>Meditációs Hanganyagtár</h3>
+          <p class="sub">10–15 perc · MP3</p>
+          <p class="desc">Rövid, vezetett meditációk arra a napra, amikor épp erőt kívánsz.</p>
+          <div class="field" style="margin-top:2px;">
+            <label for="meditSelect">Meditáció kiválasztása</label>
+            <select id="meditSelect" class="sel">
+              <option>Feszültségoldó meditáció</option>
+              <option>Belső Erő-Aktiváló meditáció</option>
+              <option>Elengedést segítő meditáció</option>
+            </select>
+          </div>
+        </div>
+        <div class="p-foot">
+          <span class="p-price">2.990 Ft</span>
+          <button class="add-btn" data-id="medit" data-name="Meditációs hanganyag" data-price="2990" data-variant="meditSelect">Kosárba</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="info-strip mt-l" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <span>A kosár lezárásakor egy előre kitöltött megrendelő e-mail nyílik meg. Nem történik azonnali online fizetés — Timi 24–48 órán belül személyesen visszaigazolja a részleteket és a fizetési módot. A digitális csomagok e-mailben, letölthető formában érkeznek. Nem orvosi tanács: a menopauza csomag kiegészíti, de nem helyettesíti a szakorvosi ellátást.</span>
+    </div>
+  </section>
+
+  <section class="section section--tint has-aura">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">A kártyacsomagról</span>
+        <h2 class="h-sec">Hogyan használd a mindennapokban?</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card" data-reveal><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><h3>Reggeli útmutatás</h3><p>Mielőtt a világ zajába lépnél, csendesedj el és húzz egy lapot. A mondat lesz a napi emlékeztetőd.</p></div>
+        <div class="card" data-reveal data-delay="90"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5Z"/></svg></span><h3>Válasz az elakadásra</h3><p>Amikor feszültség ér, vagy elakadsz egy döntésben, húzz egy tisztító kódot a pakliból.</p></div>
+        <div class="card" data-reveal data-delay="180"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h9a3 3 0 0 1 3 3v11a2.5 2.5 0 0 0-2.5-2.5H4Z"/><path d="M20 5h-1a3 3 0 0 0-3 3v11"/></svg></span><h3>Mélymunkához</h3><p>Írd be a kihúzott mondatot a naplódba, és meditálj rajta: mit akar ez megvilágítani most az életemben?</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= GYIK ============================= -->
+<div class="page" id="page-gyik" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">Gyakori kérdések</span>
+      <h1>Amit a legtöbben megkérdeznek</h1>
+    </div>
+  </div>
+  <section class="section wrap wrap--narrow">
+    <div class="faq">
+      <details class="q" open data-reveal>
+        <summary>Honnan tudom, hogy a női kör vagy az egyéni mentorálás való nekem?</summary>
+        <p class="a">A női kör ereje a sorsközösség: hét nő együtt, megtartó térben. Az egyéni mentorálás akkor jobb választás, ha a témád nagyon személyes, vagy ha rugalmas időpontokra van szükséged. Egy rövid, ingyenes beszélgetésben együtt döntjük el, melyik szolgál téged.</p>
+      </details>
+      <details class="q" data-reveal data-delay="60">
+        <summary>Terápia ez, vagy tanácsadás?</summary>
+        <p class="a">Gyásztanácsadói és transzformációs tréneri munkát végzek: önismereti kísérés, nem orvosi vagy pszichiátriai ellátás. A folyamat kiegészíti, de nem helyettesíti a szakorvosi vagy pszichoterápiás kezelést. Ha úgy látom, hogy másfajta segítségre van szükséged, ezt őszintén jelezni fogom.</p>
+      </details>
+      <details class="q" data-reveal data-delay="120">
+        <summary>Hogyan történik a fizetés?</summary>
+        <p class="a">A személyes folyamatoknál banki átutalással, a helyed a díj beérkezésével véglegesedik — az adatokat a visszaigazoló levélben küldöm. A webshopos termékeknél a kosár lezárása egy megrendelő e-mailt állít össze, amire 24–48 órán belül személyesen válaszolok.</p>
+      </details>
+      <details class="q" data-reveal data-delay="180">
+        <summary>Mikor indul a következő női kör?</summary>
+        <p class="a">A körök évente néhány alkalommal, szigorúan 7 fővel indulnak, szombat délelőttönként (10:00–13:30), négy alkalommal. Írj az űrlapon, és elküldöm a legközelebbi induló kör pontos dátumait és az Early Bird feltételeket.</p>
+      </details>
+      <details class="q" data-reveal data-delay="240">
+        <summary>Mennyi időt kell rászánnom otthon?</summary>
+        <p class="a">Napi 10–20 perc bőven elég: egy kártyahúzás reggel, egy rövid meditáció, és heti egy-két önterápiás feladat a munkafüzetből. A folyamat nem attól működik, hogy sokat csinálsz, hanem attól, hogy rendszeresen.</p>
+      </details>
+    </div>
+    <div class="row-actions mt-l" data-reveal>
+      <a href="#/kapcsolat" class="btn btn--primary">Nem találtad meg a kérdésed? Írj nekem</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================= KAPCSOLAT ============================= -->
+<div class="page" id="page-kapcsolat" hidden>
+  <div class="page-head">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="wrap wrap--narrow">
+      <span class="eyebrow">Kapcsolat</span>
+      <h1>Lépj be a szentélybe</h1>
+      <p class="lede">Ha bizonytalan vagy, melyik folyamat támogatna leginkább, írj bizalommal. Minden üzenetet magam olvasok el, és maximális diszkrécióval kezelek.</p>
+    </div>
+  </div>
+
+  <section class="section wrap">
+    <div class="contact">
+      <div class="stack" style="gap:18px;" data-reveal>
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
+          <span>+36 70 123 4567</span>
+        </div>
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>
+          <span>ladicstimi@gmail.com</span>
+        </div>
+        <div class="c-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span>Herminamező, Budapest<br><span style="color:var(--ink-faint);font-size:.86rem;">A pontos címet a visszaigazoló levélben küldöm.</span></span>
+        </div>
+        <div class="socials">
+          <a href="#/kapcsolat" aria-label="Facebook: Ladics Timi Lélek Titok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9.6c0-.3.3-.6.6-.6Z"/></svg></a>
+          <a href="#/kapcsolat" aria-label="Instagram: ladicstimi.lelektitok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+        <p style="color:var(--ink-faint);font-size:.85rem;">Válaszidő: általában 24–48 óra.</p>
+
+        <div class="frame frame--sq" style="margin-top:8px;">
+          <svg class="frame__art" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><linearGradient id="door" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3EBF5"/><stop offset="1" stop-color="#FAF2EB"/></linearGradient></defs>
+            <rect width="400" height="220" fill="url(#door)"/>
+            <path d="M160 190V96a40 40 0 0 1 80 0v94Z" fill="#FDF8F3" stroke="#B08D57" stroke-width="1.2"/>
+            <circle cx="224" cy="146" r="3" fill="#8C6F9B"/>
+            <path d="M120 190h160" stroke="#B08D57" stroke-width="1.2"/>
+            <path d="M104 170c8-4 14-12 14-22M296 170c-8-4-14-12-14-22" stroke="#8C6F9B" stroke-width="1.2"/>
+            <circle cx="200" cy="66" r="3" fill="#B08D57" opacity=".8"/>
+          </svg>
+          <span class="frame__slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+            Fotóhely — bejárat / szentély
+          </span>
+        </div>
+      </div>
+
+      <form class="cform" id="contactForm" data-reveal data-delay="90">
+        <div class="f2">
+          <div class="field">
+            <label for="fname">Vezetéknév &amp; keresztnév</label>
+            <input id="fname" name="fname" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="femail">E-mail cím</label>
+            <input id="femail" name="femail" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="f2">
+          <div class="field">
+            <label for="fphone">Telefonszám <span style="font-weight:400;color:var(--ink-faint);">(opcionális)</span></label>
+            <input id="fphone" name="fphone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="ftopic">Mi érdekel?</label>
+            <select id="ftopic" name="ftopic">
+              <option value="noi-kor">Igazi Egyéniség Női Kör</option>
+              <option value="egyeni">Egyéni exkluzív mentorálás</option>
+              <option value="esszencia">Lélek Esszencia Program</option>
+              <option value="menopauza">Lelki menopauza / változókor</option>
+              <option value="veszteseg">Veszteség / gyász</option>
+              <option value="egyeb">Egyéb önismereti kérdés</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fmsg">Üzeneted — pár mondat az elakadásodról</label>
+          <textarea id="fmsg" name="fmsg" rows="5"></textarea>
+        </div>
+        <div class="row-actions">
+          <button type="submit" class="btn btn--primary">Üzenet küldése</button>
+          <span class="form-msg" id="formMsg"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ============================= KOSÁR ============================= -->
+<div class="overlay" id="cartOverlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Kosár">
+  <div class="d-head">
+    <h3>A kosarad</h3>
+    <button class="icon-btn" id="closeCart" aria-label="Kosár bezárása">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="d-items" id="cartItems">
+    <p class="d-empty">A kosarad még üres — nézz körül a webshopban.</p>
+  </div>
+  <div class="d-foot">
+    <div class="d-total">Összesen <b id="cartTotal">0 Ft</b></div>
+    <button class="btn btn--primary btn--full" id="checkoutBtn">Megrendelés elküldése e-mailben</button>
+    <p class="d-note">A gomb egy előre kitöltött levelet nyit meg a ladicstimi@gmail.com címre.</p>
+  </div>
+</aside>
+
+<!-- ============================= LÁBLÉC ============================= -->
+<footer class="site">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="brand" href="#/">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="22.5" stroke="#B08D57" stroke-width="1"/>
+            <path d="M24 34V22M24 22c-4-1-6-4-6-7 3 0 6 2 6 5M24 22c4-1 6-4 6-7-3 0-6 2-6 5" stroke="#8C6F9B" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M18 34c2-2 4-2 6-2s4 0 6 2" stroke="#8C6F9B" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span><b>Ladics Timi</b><i>Lélektitok Műhely</i></span>
+        </a>
+        <p class="f-tag">„Az Út önmagadhoz benned kezdődik.”</p>
+      </div>
+      <nav class="f-nav">
+        <a href="#/rolam">Rólam</a>
+        <a href="#/szolgaltatasok">Szolgáltatások</a>
+        <a href="#/esszencia">Esszencia Program</a>
+        <a href="#/webshop">Webshop</a>
+        <a href="#/gyik">GYIK</a>
+        <a href="#/kapcsolat">Kapcsolat</a>
+      </nav>
+    </div>
+    <div class="f-bottom">
+      <span>© Ladics Timi — Lélektitok Műhely</span>
+      <span>ladicstimi@gmail.com · +36 70 123 4567</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- megjelenési animációk ---------- */
+  var observer = null;
+  if('IntersectionObserver' in window && !reduced){
+    observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var d = en.target.dataset.delay || 0;
+          en.target.style.transitionDelay = d + 'ms';
+          en.target.classList.add('in');
+          observer.unobserve(en.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+  }
+  function bindReveals(scope){
+    var els = (scope || document).querySelectorAll('[data-reveal]:not(.in)');
+    els.forEach(function(el){
+      if(observer) observer.observe(el);
+      else el.classList.add('in');
+    });
+  }
+  /* biztonsági háló: ha bármi elakadna, minden láthatóvá válik */
+  setTimeout(function(){
+    document.querySelectorAll('[data-reveal]:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight) el.classList.add('in');
+    });
+  }, 1600);
+
+  /* ---------- aloldalak ---------- */
+  var ROUTES = ['home','rolam','szolgaltatasok','esszencia','webshop','gyik','kapcsolat'];
+  var navAnchors = document.querySelectorAll('nav.links a[data-route]');
+
+  function routeFromHash(){
+    var h = (location.hash || '').replace(/^#\/?/, '');
+    return ROUTES.indexOf(h) !== -1 ? h : 'home';
+  }
+  function showRoute(name, scroll){
+    ROUTES.forEach(function(r){
+      var el = document.getElementById('page-' + r);
+      if(el) el.hidden = (r !== name);
+    });
+    navAnchors.forEach(function(a){
+      a.classList.toggle('active', a.dataset.route === name);
+    });
+    if(scroll) window.scrollTo({top:0, behavior:'auto'});
+    var page = document.getElementById('page-' + name);
+    if(page) bindReveals(page);
+  }
+  window.addEventListener('hashchange', function(){
+    showRoute(routeFromHash(), true);
+    document.getElementById('navLinks').classList.remove('open');
+  });
+
+  /* ---------- idézet-karusszel ---------- */
+  var slides = document.querySelectorAll('#carousel .slide');
+  var dotsWrap = document.getElementById('dots');
+  var current = 0, timer = null;
+  if(slides.length && dotsWrap){
+    slides.forEach(function(_, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', (i+1) + '. idézet');
+      if(i === 0) b.classList.add('on');
+      b.addEventListener('click', function(){ go(i); restart(); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = dotsWrap.querySelectorAll('button');
+    function go(i){
+      current = i;
+      slides.forEach(function(s,k){ s.classList.toggle('on', k === i); });
+      dots.forEach(function(d,k){ d.classList.toggle('on', k === i); });
+    }
+    function restart(){
+      if(reduced) return;
+      clearInterval(timer);
+      timer = setInterval(function(){ go((current + 1) % slides.length); }, 6500);
+    }
+    restart();
+    var car = document.getElementById('carousel');
+    car.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    car.addEventListener('mouseleave', restart);
+  }
+
+  /* ---------- görgetésjelző ---------- */
+  var bar = document.getElementById('progress');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+      ticking = false;
+    });
+  }, {passive:true});
+
+  /* ---------- hero enyhe parallaxa ---------- */
+  var heroArt = document.querySelector('#page-home .hero-art');
+  if(heroArt && !reduced && window.matchMedia('(pointer:fine)').matches){
+    window.addEventListener('mousemove', function(e){
+      var x = (e.clientX / window.innerWidth - .5) * 10;
+      var y = (e.clientY / window.innerHeight - .5) * 10;
+      heroArt.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+    }, {passive:true});
+  }
+
+  /* ---------- mobil menü ---------- */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  /* ---------- CTA -> űrlap téma ---------- */
+  document.querySelectorAll('[data-topic]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var sel = document.getElementById('ftopic');
+      if(sel) sel.value = el.dataset.topic;
+    });
+  });
+
+  /* ---------- kosár ---------- */
+  var KEY = 'lelektitok_cart_v2';
+  var cart = [];
+  try{ var s = localStorage.getItem(KEY); if(s) cart = JSON.parse(s) || []; }
+  catch(e){ cart = []; } /* privát mód: üres kosárral indulunk */
+
+  var countEl = document.getElementById('cartCount');
+  var itemsEl = document.getElementById('cartItems');
+  var totalEl = document.getElementById('cartTotal');
+  var overlay = document.getElementById('cartOverlay');
+  var drawer  = document.getElementById('cartDrawer');
+
+  function fmt(n){ return n.toLocaleString('hu-HU') + ' Ft'; }
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify(cart)); }
+    catch(e){ /* tárolás nem elérhető — a kosár csak a munkamenetre marad meg */ }
+  }
+  function render(pop){
+    var count = cart.reduce(function(s,i){ return s + i.qty; }, 0);
+    countEl.hidden = count === 0;
+    countEl.textContent = count;
+    if(pop){ countEl.classList.remove('pop'); void countEl.offsetWidth; countEl.classList.add('pop'); }
+
+    if(cart.length === 0){
+      itemsEl.innerHTML = '<p class="d-empty">A kosarad még üres — nézz körül a webshopban.</p>';
+    } else {
+      itemsEl.innerHTML = '';
+      cart.forEach(function(item, idx){
+        var row = document.createElement('div');
+        row.className = 'd-item';
+        var left = document.createElement('div');
+        var nm = document.createElement('div');
+        nm.className = 'nm';
+        nm.textContent = item.name + (item.variant ? ' — ' + item.variant : '');
+        var mt = document.createElement('div');
+        mt.className = 'mt';
+        mt.textContent = item.qty + ' × ' + fmt(item.price);
+        var rm = document.createElement('button');
+        rm.type = 'button';
+        rm.className = 'rm';
+        rm.textContent = 'Eltávolítás';
+        rm.addEventListener('click', function(){ cart.splice(idx,1); save(); render(false); });
+        left.appendChild(nm); left.appendChild(mt); left.appendChild(rm);
+        var price = document.createElement('div');
+        price.style.whiteSpace = 'nowrap';
+        price.textContent = fmt(item.qty * item.price);
+        row.appendChild(left); row.appendChild(price);
+        itemsEl.appendChild(row);
+      });
+    }
+    totalEl.textContent = fmt(cart.reduce(function(s,i){ return s + i.qty*i.price; }, 0));
+  }
+  function openCart(){ overlay.classList.add('open'); drawer.classList.add('open'); }
+  function closeCart(){ overlay.classList.remove('open'); drawer.classList.remove('open'); }
+
+  document.querySelectorAll('.add-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.dataset.id, variant = null;
+      if(btn.dataset.variant){
+        var sel = document.getElementById(btn.dataset.variant);
+        if(sel) variant = sel.value;
+      }
+      var found = cart.find(function(i){ return i.id === id && i.variant === variant; });
+      if(found){ found.qty += 1; }
+      else {
+        cart.push({id:id, name:btn.dataset.name, price:Number.parseInt(btn.dataset.price, 10), qty:1, variant:variant});
+      }
+      save(); render(true); openCart();
+    });
+  });
+  document.getElementById('openCart').addEventListener('click', openCart);
+  document.getElementById('closeCart').addEventListener('click', closeCart);
+  overlay.addEventListener('click', closeCart);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeCart(); });
+
+  document.getElementById('checkoutBtn').addEventListener('click', function(){
+    if(cart.length === 0) return;
+    var lines = cart.map(function(i){
+      return '- ' + i.name + (i.variant ? ' (' + i.variant + ')' : '') + ' x' + i.qty + ' — ' + fmt(i.qty*i.price);
+    });
+    var total = cart.reduce(function(s,i){ return s + i.qty*i.price; }, 0);
+    var body = 'Kedves Timi!\n\nSzeretnék rendelni a Lélektitok Webshopból:\n\n' + lines.join('\n') +
+               '\n\nVégösszeg: ' + fmt(total) + '\n\nNevem:\nElérhetőségem:\nSzállítási cím (fizikai termék esetén):\n\nKöszönöm!';
+    location.href = 'mailto:ladicstimi@gmail.com?subject=' +
+      encodeURIComponent('Webshop megrendelés — Lélektitok Műhely') + '&body=' + encodeURIComponent(body);
+  });
+  render(false);
+
+  /* ---------- kapcsolati űrlap ---------- */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('fname').value.trim();
+    var email = document.getElementById('femail').value.trim();
+    var phone = document.getElementById('fphone').value.trim();
+    var topicSel = document.getElementById('ftopic');
+    var topic = topicSel.options[topicSel.selectedIndex].text;
+    var msg = document.getElementById('fmsg').value.trim();
+    var out = document.getElementById('formMsg');
+    if(!name || !email){
+      out.textContent = 'Kérlek, add meg a neved és az e-mail címed.';
+      return;
+    }
+    var body = 'Név: ' + name + '\nE-mail: ' + email + '\nTelefon: ' + (phone || '-') +
+               '\nTéma: ' + topic + '\n\nÜzenet:\n' + (msg || '-');
+    location.href = 'mailto:ladicstimi@gmail.com?subject=' +
+      encodeURIComponent('Kapcsolatfelvétel — ' + topic) + '&body=' + encodeURIComponent(body);
+    out.textContent = 'Megnyitottam a levelet — már csak elküldeni kell.';
+  });
+
+  /* indulás */
+  showRoute(routeFromHash(), false);
+  bindReveals(document);
+})();
+</script>
+</body>
+</html>
