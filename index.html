@@ -361,67 +361,98 @@ footer.site{background:var(--surface);border-top:1px solid var(--line);padding-b
 .f-nav a:hover{color:var(--mauve-deep);}
 .f-bottom{margin-top:30px;padding-top:18px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.78rem;color:var(--ink-faint);}
 
+/* ======================= HOSSZÚ SZÖVEG ÖSSZECSUKÁSA (mobil) ======================= */
+.clamped{max-height:11.5em;overflow:hidden;position:relative;}
+.clamped::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5em;background:linear-gradient(transparent,var(--bg));pointer-events:none;}
+.section--tint .clamped::after{background:linear-gradient(transparent,var(--surface-tint));}
+.section--warm .clamped::after{background:linear-gradient(transparent,var(--surface-warm));}
+.section--surface .clamped::after{background:linear-gradient(transparent,var(--surface));}
+.clamped.open{max-height:none;}
+.clamped.open::after{display:none;}
+.clamp-btn{align-self:flex-start;background:none;border:none;padding:10px 0 0;color:var(--mauve-deep);font-weight:600;font-size:.86rem;text-align:left;}
+.info-strip{flex-wrap:wrap;}
+.info-strip .clamp-btn{flex:1 0 100%;padding-left:34px;}
+.clamp-btn::after{content:" ↓";}
+.clamp-btn.open::after{content:" ↑";}
+
 /* ======================= MOBIL ======================= */
 @media (max-width:640px){
+  /* kényelmesebb olvasás: nagyobb alapszöveg, több sorköz */
+  body{font-size:16.5px;line-height:1.78;}
+
   .nav{height:64px;}
   nav.links{inset:64px 0 auto 0;}
   .brand svg{width:32px;height:32px;}
   .brand b{font-size:.95rem;}
   .brand i{font-size:.56rem;}
-  .btn{padding:.85em 1.35em;font-size:.8rem;}
+  .btn{padding:.9em 1.4em;font-size:.82rem;}
 
-  .section{padding-block:38px;}
-  .section--tight{padding-block:30px;}
-  .page-head{padding-block:32px;}
-  .page-head h1{font-size:1.85rem;}
-  .h-sec{font-size:1.5rem;}
-  .lede{font-size:.98rem;}
-  .section-head{margin-bottom:22px;}
-  .split,.feature{gap:22px;}
-  .feature + .feature{margin-top:34px;}
+  /* minden szekció külön „fejezet”: több levegő és látható határ */
+  .section{padding-block:54px;border-top:1px solid var(--line-soft);}
+  .section--tight{padding-block:40px;}
+  .section--tint,.section--warm,.section--surface,.page-head + .section{border-top:none;}
+  .page-head{padding-block:36px;}
+  .page-head h1{font-size:2rem;}
+  .h-sec{font-size:1.72rem;line-height:1.2;}
+  .lede{font-size:1rem;}
+  .section-head{margin-bottom:26px;}
+  .eyebrow{margin-bottom:1.1em;}
+  .stack{gap:1.15em;}
+  .split,.feature{gap:30px;}
+  .feature + .feature{margin-top:46px;}
 
-  .hero{padding-block:26px 16px;gap:24px;}
-  .hero h1{font-size:2.05rem;}
-  .hero .sub{font-size:1rem;}
+  .hero{padding-block:30px 20px;gap:30px;}
+  .hero h1{font-size:2.15rem;}
+  .hero .sub{font-size:1.02rem;}
   .scroll-cue{display:none;}
-  .hero-art{max-width:270px;margin-inline:auto;}
-  .frame{border-radius:160px 160px 12px 12px;box-shadow:0 12px 28px rgba(51,42,56,.1);}
-  .frame--sq{border-radius:12px;}
+
+  /* a képek nagyobbak: pihenőpont a szövegblokkok között */
+  .hero-art{max-width:330px;margin-inline:auto;}
+  .feature__art{max-width:360px;margin-inline:auto;}
+  .frame{border-radius:180px 180px 14px 14px;box-shadow:0 14px 30px rgba(51,42,56,.1);}
+  .frame--sq{border-radius:14px;}
   .frame__slot{font-size:.6rem;padding:4px 9px;left:10px;bottom:10px;}
 
-  .grid-3,.grid-2,.products,.steps{gap:14px;}
-  .card,.svc{padding:18px;border-radius:12px;}
-  .card h3,.svc h3{font-size:1.12rem;}
-  .card p,.svc .desc{font-size:.9rem;}
-  .rows > li,.rows > div{padding-block:18px;gap:14px;}
-  .timeline{padding-left:44px;gap:26px;}
+  .grid-3,.grid-2,.products,.steps{gap:16px;}
+  .card,.svc{padding:20px;border-radius:12px;}
+  .card h3,.svc h3{font-size:1.16rem;}
+  .card p,.svc .desc{font-size:.94rem;}
+
+  /* listák: minden pont külön sor, hajszálvonallal elválasztva */
+  .ticks{gap:0;}
+  .ticks li{padding-block:13px;border-bottom:1px solid var(--line-soft);}
+  .ticks li:last-child{border-bottom:none;padding-bottom:0;}
+  .ticks li::before{margin-top:.72em;}
+  .rows > li,.rows > div{padding-block:22px;gap:15px;}
+
+  .timeline{padding-left:44px;gap:30px;}
   .timeline::before{left:15px;}
   .tl .n{left:-44px;width:31px;height:31px;font-size:.9rem;}
-  .tl h4{font-size:1.1rem;}
+  .tl h4{font-size:1.14rem;}
 
   .p-art{aspect-ratio:16/10;}
-  .p-body{padding:18px;gap:7px;}
-  .p-foot{padding:14px 18px;}
-  .info-strip{font-size:.83rem;}
+  .p-body{padding:20px;gap:8px;}
+  .p-foot{padding:16px 20px;}
+  .info-strip{font-size:.85rem;}
 
-  .cta-band{padding:24px;border-radius:16px;gap:16px;}
-  .cta-band h2{font-size:1.3rem;max-width:none;}
-  .cta-band p{font-size:.9rem;}
+  .cta-band{padding:26px;border-radius:16px;gap:18px;}
+  .cta-band h2{font-size:1.36rem;max-width:none;}
+  .cta-band p{font-size:.94rem;}
   .cta-band .deco{width:140px;right:-36px;bottom:-46px;}
 
-  form.cform{padding:18px;border-radius:12px;}
-  details.q summary{padding:16px 0;font-size:.94rem;}
-  .sprig{padding-block:14px;}
+  form.cform{padding:20px;border-radius:12px;}
+  details.q summary{padding:18px 0;font-size:.97rem;}
+  .sprig{padding-block:18px;}
   .sprig svg{width:64px;}
-  .slide q{font-size:1.15rem;max-width:20ch;}
-  .quote-block{font-size:1.08rem;padding-left:18px;}
-  .marquee{padding-block:11px;}
+  .slide q{font-size:1.2rem;max-width:22ch;}
+  .quote-block{font-size:1.12rem;padding-left:18px;}
+  .marquee{padding-block:12px;}
   .marquee-track span{font-size:.95rem;gap:18px;padding-right:18px;}
   .aura i{filter:blur(46px);opacity:.42;}
   .aura i:nth-child(3){display:none;}
 }
 @media (max-width:400px){
-  .hero-art{max-width:230px;}
+  .hero-art{max-width:280px;}
   .si{flex:1 1 100%;}
   .row-actions .btn:not(.btn--link){width:100%;}
   .p-foot{flex-direction:column;align-items:stretch;gap:10px;}
@@ -818,7 +849,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="wrap wrap--narrow" data-reveal>
       <span class="eyebrow">A történetem</span>
       <h2 class="h-sec">Miért pont a Lélektitok?</h2>
-      <div class="stack mt-m muted">
+      <div class="stack mt-m muted" data-clamp>
         <p>A saját tapasztalatom és a hitem: a legnagyobb fájdalmaink feldolgozása után találunk rá azokra a belső kincsekre, amelyekről nem is tudtuk, hogy léteznek. A valódi, tartós transzformáció ott kezdődik, amikor merünk a felszín mögé nézni.</p>
         <p>Amíg a sors ki nem húzza alólunk a régi, kényelmes, de már nem minket szolgáló struktúrákat, hajlamosak vagyunk megalkudni: bennmaradunk a lehúzó kapcsolatokban és a láthatatlanságban. A veszteség a lélek radikális ébresztője — leégeti rólunk a megfelelési kényszerek maszkjait.</p>
         <p>Ha most gyászolsz, ha elakadásban vagy, ne bántsd magad. Az elakadásod nem a vég, hanem egy általad megálmodott új élet kezdete.</p>
@@ -1019,8 +1050,10 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       <div data-reveal>
         <span class="eyebrow">Amiről szól</span>
         <h2 class="h-sec">90 nap, amíg végig fogom a kezed</h2>
-        <p class="lede mt-m">Ez a Műhely legmélyebb folyamata. Három hónapon át egyéni és zárt csoportos alkalmakon dolgozunk azon, hogy a múltad elnyomó mintái végleg lezáruljanak, és a helyükre a saját, szuverén belső tekintélyed kerüljön.</p>
-        <p class="muted mt-m">A folyamat a klasszikus gyászfeldolgozás fázisait követi, de a Lélektitok Műhely módszertanával — felemelve a tudatosság és a cselekvő belső erő szintjére.</p>
+        <div class="stack mt-m" data-clamp>
+          <p class="lede">Ez a Műhely legmélyebb folyamata. Három hónapon át egyéni és zárt csoportos alkalmakon dolgozunk azon, hogy a múltad elnyomó mintái végleg lezáruljanak.</p>
+          <p class="muted">A helyükre a saját, szuverén belső tekintélyed kerül. A folyamat a klasszikus gyászfeldolgozás fázisait követi, de a Lélektitok Műhely módszertanával — felemelve a tudatosság és a cselekvő belső erő szintjére.</p>
+        </div>
         <div class="pricetag mt-l">288.000 Ft <small>egyszeri díj · 3 hónap</small></div>
         <div class="row-actions mt-m">
           <a href="#/kapcsolat" class="btn btn--primary" data-topic="esszencia">Jelentkezem konzultációra</a>
@@ -1303,7 +1336,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
 
     <div class="info-strip mt-l" data-reveal>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-      <span>A kosár lezárásakor egy előre kitöltött megrendelő e-mail nyílik meg. Nem történik azonnali online fizetés — Timi 24–48 órán belül személyesen visszaigazolja a részleteket és a fizetési módot. A digitális csomagok e-mailben, letölthető formában érkeznek.</span>
+      <span data-clamp>A kosár lezárásakor egy előre kitöltött megrendelő e-mail nyílik meg. Nem történik azonnali online fizetés — Timi 24–48 órán belül személyesen visszaigazolja a részleteket és a fizetési módot. A digitális csomagok e-mailben, letölthető formában érkeznek.</span>
     </div>
   </section>
 </div>
@@ -1752,6 +1785,44 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     });
   }, 1600);
 
+  /* ---------- hosszú szövegek összecsukása mobilon ---------- */
+  var isMobile = function(){ return window.matchMedia('(max-width:640px)').matches; };
+
+  function setupClamps(){
+    var mobile = isMobile();
+    document.querySelectorAll('[data-clamp]').forEach(function(el){
+      var btn = el.nextElementSibling;
+      if(!btn || !btn.classList.contains('clamp-btn')) btn = null;
+
+      if(!mobile){
+        el.classList.remove('clamped','open');
+        if(btn) btn.hidden = true;
+        return;
+      }
+      if(!btn){
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'clamp-btn';
+        btn.textContent = 'Tovább olvasom';
+        el.parentNode.insertBefore(btn, el.nextSibling);
+        btn.addEventListener('click', function(){
+          var open = el.classList.toggle('open');
+          btn.classList.toggle('open', open);
+          btn.textContent = open ? 'Kevesebb' : 'Tovább olvasom';
+        });
+      }
+      el.classList.add('clamped');
+      var needed = el.scrollHeight > el.clientHeight + 8;
+      btn.hidden = !needed && !el.classList.contains('open');
+      if(btn.hidden) el.classList.remove('clamped');
+    });
+  }
+  var clampTimer = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(clampTimer);
+    clampTimer = setTimeout(setupClamps, 200);
+  }, {passive:true});
+
   /* ---------- aloldalak ---------- */
   var ROUTES = ['home','rolam','szolgaltatasok','esszencia','webshop','gyik','kapcsolat',
                 'termek-kartya','termek-menopauza','termek-meditacio'];
@@ -1776,6 +1847,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     if(scroll) window.scrollTo({top:0, behavior:'auto'});
     var page = document.getElementById('page-' + name);
     if(page) bindReveals(page);
+    setupClamps();
   }
   window.addEventListener('hashchange', function(){
     showRoute(routeFromHash(), true);
