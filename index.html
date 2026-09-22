@@ -361,6 +361,33 @@ footer.site{background:var(--surface);border-top:1px solid var(--line);padding-b
 .f-nav a:hover{color:var(--mauve-deep);}
 .f-bottom{margin-top:30px;padding-top:18px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.78rem;color:var(--ink-faint);}
 
+/* ======================= FÜLEK ======================= */
+.tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:30px;overflow-x:auto;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{border:none;background:none;padding:12px 2px;font-size:.92rem;font-weight:600;color:var(--ink-faint);position:relative;white-space:nowrap;transition:color .25s var(--ease);}
+.tab:hover{color:var(--mauve-deep);}
+.tab[aria-selected="true"]{color:var(--ink);}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--mauve);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.tab[aria-selected="true"]::after{transform:scaleX(1);}
+.tabpanel{animation:panelIn .45s var(--ease);}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+
+/* lenyíló sorok (pl. „Mit kapsz”) */
+details.qrow{border-bottom:1px solid var(--line);}
+details.qrow:last-of-type{border-bottom:none;}
+details.qrow summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;align-items:center;gap:15px;font-family:'Fraunces',serif;font-size:1.16rem;}
+details.qrow summary::-webkit-details-marker{display:none;}
+details.qrow summary::after{content:"+";margin-left:auto;color:var(--mauve);font-size:1.3rem;line-height:1;transition:transform .3s var(--ease);}
+details.qrow[open] summary::after{transform:rotate(45deg);}
+details.qrow .a{padding:0 0 20px 49px;color:var(--ink-soft);font-size:.94rem;max-width:62ch;}
+details.qrow .mark{flex:none;width:34px;height:34px;border-radius:999px;background:var(--mauve-wash);color:var(--mauve-deep);display:flex;align-items:center;justify-content:center;}
+details.qrow .mark svg{width:17px;height:17px;}
+@media (max-width:640px){
+  details.qrow summary{padding:17px 0;font-size:1.08rem;gap:13px;}
+  details.qrow .a{padding-left:0;padding-bottom:18px;}
+  .tabs{gap:18px;margin-bottom:24px;}
+}
+
 /* ======================= HOSSZÚ SZÖVEG ÖSSZECSUKÁSA (mobil) ======================= */
 .clamped{max-height:11.5em;overflow:hidden;position:relative;}
 .clamped::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5em;background:linear-gradient(transparent,var(--bg));pointer-events:none;}
@@ -1095,24 +1122,37 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <span class="eyebrow">Mit kapsz</span>
         <h2 class="h-sec">Maximális törődés, három hónapon át</h2>
       </div>
-      <ul class="rows" data-reveal>
-        <li>
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
-          <div><h3>6 egyéni mély-mentorálás</h3><p>Havi két alkalom, ahol terápiás szinten dolgozzuk fel a veszteségeidet, az elakadásaidat és a hozott mintáidat.</p></div>
-        </li>
-        <li>
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="5" r="1.4" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></span>
-          <div><h3>Havi Mastermind kör</h3><p>Szigorúan 5–6 fős, zárt csoport a közös megtartó erőért — ahol a legmélyebb lélektitkok is biztonságban vannak.</p></div>
-        </li>
-        <li>
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 11h18M12 7V4M9 4h6"/></svg></span>
-          <div><h3>Teljes termékcsomag ajándékba</h3><p>Az első alkalmon megkapod az Igazi Egyéniség kártyacsomagot és A Királynő Naplója munkafüzetet.</p></div>
-        </li>
-        <li>
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>
-          <div><h3>Folyamatos elérés a 3 hónapban</h3><p>Zárt VIP csoport, ahol a hétköznapi elakadásokkal is fordulhatsz hozzám két alkalom között.</p></div>
-        </li>
-      </ul>
+      <div data-reveal>
+        <details class="qrow">
+          <summary>
+            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+            6 egyéni mély-mentorálás
+          </summary>
+          <p class="a">Havi két alkalom, ahol terápiás szinten dolgozzuk fel a veszteségeidet, az elakadásaidat és a hozott mintáidat.</p>
+        </details>
+        <details class="qrow">
+          <summary>
+            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="5" r="1.4" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.4" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+            Havi Mastermind kör
+          </summary>
+          <p class="a">Szigorúan 5–6 fős, zárt csoport a közös megtartó erőért — ahol a legmélyebb lélektitkok is biztonságban vannak.</p>
+        </details>
+        <details class="qrow">
+          <summary>
+            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M3 11h18M12 7V4M9 4h6"/></svg></span>
+            Teljes termékcsomag ajándékba
+          </summary>
+          <p class="a">Az első alkalmon megkapod az Igazi Egyéniség kártyacsomagot és A Királynő Naplója munkafüzetet.</p>
+        </details>
+        <details class="qrow">
+          <summary>
+            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>
+            Folyamatos elérés a 3 hónapban
+          </summary>
+          <p class="a">Zárt VIP csoport, ahol a hétköznapi elakadásokkal is fordulhatsz hozzám két alkalom között.</p>
+        </details>
+        <p class="small" style="margin-top:14px;">Koppints egy sorra a részletekért.</p>
+      </div>
     </div>
   </section>
 
@@ -1122,6 +1162,13 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       <h2 class="h-sec">Három hónap, három mélység</h2>
     </div>
 
+    <div class="tabs" role="tablist" aria-label="A 90 napos ív hónapjai" data-reveal>
+      <button class="tab" type="button" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">1. hónap</button>
+      <button class="tab" type="button" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false">2. hónap</button>
+      <button class="tab" type="button" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false">3. hónap</button>
+    </div>
+
+    <div class="tabpanel" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
@@ -1151,6 +1198,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </div>
     </div>
 
+    </div>
+
+    <div class="tabpanel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
     <div class="feature feature--rev">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
@@ -1182,6 +1232,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </div>
     </div>
 
+    </div>
+
+    <div class="tabpanel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
@@ -1212,6 +1265,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
           <li>Záró ünnepség: rituálé rózsával és pezsgővel az új élet elindulására</li>
         </ul>
       </div>
+    </div>
     </div>
   </section>
 
@@ -1784,6 +1838,33 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
     });
   }, 1600);
+
+  /* ---------- fülek ---------- */
+  document.querySelectorAll('.tabs').forEach(function(tablist){
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('.tab'));
+    function select(i){
+      tabs.forEach(function(t, k){
+        var on = (k === i);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if(!panel) return;
+        panel.hidden = !on;
+        if(on){
+          panel.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
+        }
+      });
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener('click', function(){ select(i); });
+      t.addEventListener('keydown', function(e){
+        if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        var n = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[n].focus();
+        select(n);
+      });
+    });
+  });
 
   /* ---------- hosszú szövegek összecsukása mobilon ---------- */
   var isMobile = function(){ return window.matchMedia('(max-width:640px)').matches; };
