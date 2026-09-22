@@ -1,3 +1,7 @@
+# A megrendelői brief belső üzleti tervezést is tartalmaz — helyben marad
+*.pdf
+*.docx
+
 .DS_Store
 Thumbs.db
 desktop.ini
