@@ -388,6 +388,62 @@ details.qrow .mark svg{width:17px;height:17px;}
   .tabs{gap:18px;margin-bottom:24px;}
 }
 
+/* ======================= LÉPEGETŐS ALKALOM-BEMUTATÓ ======================= */
+.rail{position:relative;display:flex;justify-content:space-between;gap:6px;padding:6px 0 28px;}
+.rail::before{content:"";position:absolute;left:8%;right:8%;top:24px;height:1px;background:var(--line);}
+.rail-fill{position:absolute;left:8%;top:23px;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--mauve));transition:width .5s var(--ease);border-radius:2px;}
+.rail-dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:11px;background:none;border:none;padding:0;color:var(--ink-faint);transition:color .3s var(--ease);}
+.rail-dot span{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1rem;position:relative;z-index:1;transition:transform .35s var(--ease),background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);}
+.rail-dot em{font-style:normal;font-size:.76rem;line-height:1.3;max-width:15ch;text-align:center;}
+.rail-dot:hover span{border-color:var(--mauve);}
+.rail-dot.done span{border-color:var(--mauve);color:var(--mauve-deep);}
+.rail-dot[aria-selected="true"]{color:var(--ink);}
+.rail-dot[aria-selected="true"] span{background:var(--mauve);border-color:var(--mauve);color:#fff;transform:scale(1.1);box-shadow:0 8px 20px rgba(140,111,155,.34);}
+.step-panel{animation:panelIn .45s var(--ease);max-width:62ch;}
+.step-panel .meta{display:block;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;}
+.step-panel h4{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:400;}
+.step-panel p{color:var(--ink-soft);margin-top:10px;}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:var(--mauve-wash);color:var(--mauve-deep);border-radius:999px;padding:8px 15px;font-size:.8rem;font-weight:600;}
+.step-nav{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap;}
+.step-count{font-size:.85rem;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+.step-nav .btn[disabled]{opacity:.4;pointer-events:none;}
+@media (max-width:640px){
+  .rail-dot em{display:none;}
+  .rail{padding-bottom:20px;}
+  .rail::before,.rail-fill{top:20px;}
+  .rail-dot span{width:32px;height:32px;font-size:.92rem;}
+  .step-panel h4{font-size:1.3rem;}
+  .step-nav{gap:10px;}
+  .step-nav .btn{flex:1;}
+  .step-count{order:-1;flex-basis:100%;}
+}
+
+/* ======================= IRÁNYTŰ-KÉRDŐÍV ======================= */
+.quiz{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3.4vw,40px);box-shadow:var(--shadow-sm);}
+.quiz-progress{position:absolute;left:0;top:0;width:100%;height:3px;background:var(--line-soft);}
+.quiz-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--mauve));transition:width .45s var(--ease);}
+.quiz-q{animation:panelIn .4s var(--ease);}
+.quiz-q h3{font-size:clamp(1.25rem,2.4vw,1.6rem);margin-top:.2em;}
+.quiz-opts{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+.quiz-opt{display:flex;align-items:center;gap:14px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:16px 18px;font-size:.95rem;color:var(--ink);transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease);}
+.quiz-opt::before{content:"";flex:none;width:18px;height:18px;border-radius:999px;border:1px solid var(--line);transition:border-color .25s var(--ease),box-shadow .25s var(--ease);}
+.quiz-opt:hover{border-color:var(--mauve);transform:translateX(4px);background:var(--surface);}
+.quiz-opt:hover::before{border-color:var(--mauve);box-shadow:inset 0 0 0 4px var(--mauve-wash);}
+.quiz-result{animation:panelIn .5s var(--ease);}
+.quiz-result .rec{display:flex;align-items:flex-start;gap:16px;margin-top:4px;}
+.quiz-result .rec .ico{width:48px;height:48px;}
+.quiz-result h3{font-size:clamp(1.3rem,2.6vw,1.7rem);}
+.quiz-restart{background:none;border:none;padding:0;color:var(--mauve-deep);font-weight:600;font-size:.86rem;}
+.quiz-restart::before{content:"↺ ";}
+
+/* ======================= LEBEGŐ JELENTKEZÉS SÁV (mobil) ======================= */
+.sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);box-shadow:0 14px 34px rgba(51,42,56,.18);transform:translateY(160%);transition:transform .4s var(--ease);}
+.sticky-cta.show{transform:none;}
+.sticky-cta b{display:block;font-size:.85rem;line-height:1.25;}
+.sticky-cta span{font-size:.74rem;color:var(--ink-faint);}
+.sticky-cta .btn{padding:.72em 1.25em;font-size:.78rem;}
+@media (min-width:641px){.sticky-cta{display:none;}}
+
 /* ======================= HOSSZÚ SZÖVEG ÖSSZECSUKÁSA (mobil) ======================= */
 .clamped{max-height:11.5em;overflow:hidden;position:relative;}
 .clamped::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5em;background:linear-gradient(transparent,var(--bg));pointer-events:none;}
@@ -974,33 +1030,49 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </div>
     </div>
 
-    <div class="mt-l" style="margin-top:clamp(40px,6vw,68px);">
-      <h3 style="font-size:1.35rem;margin-bottom:26px;" data-reveal>A négy alkalom íve</h3>
-      <div class="timeline">
-        <div class="tl" data-reveal>
-          <span class="n">1</span>
-          <span class="meta">Első alkalom</span>
+    <div class="stepper" id="sessions" style="margin-top:clamp(40px,6vw,68px);" data-reveal>
+      <h3 style="font-size:1.35rem;margin-bottom:6px;">A négy alkalom íve</h3>
+      <p class="small" style="margin-bottom:18px;">Lépegess végig rajta — így néz ki a folyamat elejétől a végéig.</p>
+
+      <div class="rail" role="tablist" aria-label="A négy alkalom">
+        <span class="rail-fill" id="railFill" aria-hidden="true"></span>
+        <button class="rail-dot" type="button" role="tab" aria-selected="true" data-i="0"><span>1</span><em>A Titok Feltárása</em></button>
+        <button class="rail-dot" type="button" role="tab" aria-selected="false" data-i="1"><span>2</span><em>Az Árnyékból Aranyat</em></button>
+        <button class="rail-dot" type="button" role="tab" aria-selected="false" data-i="2"><span>3</span><em>A 11:11 Kód</em></button>
+        <button class="rail-dot" type="button" role="tab" aria-selected="false" data-i="3"><span>4</span><em>A Királynő Aratása</em></button>
+      </div>
+
+      <div class="step-panels">
+        <article class="step-panel" data-i="0">
+          <span class="meta">Első alkalom · szombat 10:00–13:30</span>
           <h4>A Titok Feltárása</h4>
-          <p>Szembenézés az elakadással és a halogatással: kimondjuk, hol tartunk most, és levesszük a maszkokat. Egyéni „elakadás-térkép” és elengedő rituálé zárja a napot.</p>
-        </div>
-        <div class="tl" data-reveal data-delay="70">
-          <span class="n">2</span>
-          <span class="meta">Második alkalom</span>
+          <p>Szembenézünk azzal, ahol most vagy: kimondjuk az elakadást, és levesszük a maszkokat. Megnézzük, hogyan bénít meg a halogatás és a bizonytalanság — ítélkezés nélkül, egy olyan körben, ahol nem kell erősnek mutatnod magad.</p>
+          <span class="chip">Gyakorlat: egyéni „elakadás-térkép” és elengedő rituálé</span>
+        </article>
+        <article class="step-panel" data-i="1" hidden>
+          <span class="meta">Második alkalom · két héttel később</span>
           <h4>Az Árnyékból Aranyat</h4>
-          <p>A félelmek, a szégyen és a veszteség átírása belső erővé. Megvizsgáljuk, hol van a belső sziklád, amikor a külső biztonság megszűnik — mély-meditációval a múlt fájdalmas pontjaira.</p>
-        </div>
-        <div class="tl" data-reveal data-delay="140">
-          <span class="n">3</span>
-          <span class="meta">Harmadik alkalom</span>
+          <p>A félelem, a szégyen és a veszteség átírása belső erővé. Megkeressük, hol van a belső sziklád akkor, amikor a külső biztonság — állás, státusz, kapcsolat — megszűnik. Előkerülnek azok az erőforrásaid, amikről elfelejtetted, hogy megvannak.</p>
+          <span class="chip">Gyakorlat: „Lélek Titok” mély-meditáció</span>
+        </article>
+        <article class="step-panel" data-i="2" hidden>
+          <span class="meta">Harmadik alkalom · a folyamat fordulópontja</span>
           <h4>A 11:11 Kód</h4>
-          <p>Az intuíció felébresztése és a szinkronicitások észrevétele. Hogyan hangolódj a saját belső iránytűdre ahelyett, hogy a külvilág elvárásainak akarnál megfelelni.</p>
-        </div>
-        <div class="tl" data-reveal data-delay="210">
-          <span class="n">4</span>
-          <span class="meta">Negyedik alkalom</span>
+          <p>Az intuíció felébresztése és a szinkronicitások észrevétele. Hogyan kérj és fogadj el segítséget, amikor egyedül nem megy, és hogyan hangolódj a saját belső iránytűdre ahelyett, hogy a külvilág elvárásainak akarnál megfelelni.</p>
+          <span class="chip">Gyakorlat: intuitív kártyás gyakorlatok, ébresztő kódok</span>
+        </article>
+        <article class="step-panel" data-i="3" hidden>
+          <span class="meta">Negyedik alkalom · zárás</span>
           <h4>A Királynő Aratása</h4>
-          <p>Konkrét cselekvési terv a hétköznapokra, az „Új Kezdet” szertartása és egy személyes útravaló, amit hazaviszel.</p>
-        </div>
+          <p>Konkrét cselekvési terv a hétköznapokra: hogyan lépj ki a körből a világba, és hogyan indítsd be a saját lehetőségeidet. A folyamatot ünnepi szertartás zárja, és egy személyes útravalóval mész haza.</p>
+          <span class="chip">Gyakorlat: az „Új Kezdet” szertartása és útravaló</span>
+        </article>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn btn--outline" type="button" id="stepPrev">Előző</button>
+        <span class="step-count" id="stepCount">1 / 4</span>
+        <button class="btn btn--primary" type="button" id="stepNext">Következő alkalom</button>
       </div>
     </div>
   </section>
@@ -1049,6 +1121,32 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
 
   <section class="section wrap">
     <div class="section-head" data-reveal>
+      <span class="eyebrow">Iránytű</span>
+      <h2 class="h-sec">Melyik út való neked?</h2>
+      <p class="lede mt-s">Három kérdés, fél perc — és megmutatom, melyik formátummal kezdeném a helyedben.</p>
+    </div>
+
+    <div class="quiz" id="quiz" data-reveal>
+      <div class="quiz-progress" aria-hidden="true"><i id="quizBar"></i></div>
+
+      <div class="quiz-stage" id="quizStage">
+        <div class="quiz-q">
+          <span class="eyebrow">1. kérdés</span>
+          <h3>Mire vágysz most a legjobban?</h3>
+          <div class="quiz-opts">
+            <button class="quiz-opt" type="button" data-pick="kor">Hogy ne legyek egyedül ezzel — más nők jelenlétére</button>
+            <button class="quiz-opt" type="button" data-pick="egyeni">Teljes figyelemre, ami csak rólam szól</button>
+            <button class="quiz-opt" type="button" data-pick="esszencia">Egy hosszabb, mély átalakulásra</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-result" id="quizResult" hidden></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head" data-reveal>
       <span class="eyebrow">Hogyan kezdjük</span>
       <h2 class="h-sec">Három lépés, és már úton is vagy</h2>
       <p class="lede mt-s">Nem kell előre eldöntened, melyik programra van szükséged — ezt együtt tisztázzuk.</p>
@@ -1059,6 +1157,14 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       <div class="step" data-reveal data-delay="180"><span class="n">3</span><div><h4>Elindul a közös munka</h4><p>Visszaigazolom a helyed és az időpontokat, majd megkapod az első hangolódó anyagot.</p></div></div>
     </div>
   </section>
+
+  <div class="sticky-cta" id="stickyCta" hidden>
+    <div>
+      <b>Igazi Egyéniség Női Kör</b>
+      <span>77.000 Ft · Early Bird, 7 fő</span>
+    </div>
+    <a href="#/kapcsolat" class="btn btn--primary" data-topic="noi-kor">Jelentkezem</a>
+  </div>
 </div>
 
 <!-- ============================= ESSZENCIA PROGRAM ============================= -->
@@ -1839,6 +1945,200 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     });
   }, 1600);
 
+  /* ---------- lépegetős alkalom-bemutató ---------- */
+  (function(){
+    var dots = document.querySelectorAll('#sessions .rail-dot');
+    var panels = document.querySelectorAll('#sessions .step-panel');
+    if(!dots.length) return;
+    var fill = document.getElementById('railFill');
+    var count = document.getElementById('stepCount');
+    var prev = document.getElementById('stepPrev');
+    var next = document.getElementById('stepNext');
+    var i = 0;
+
+    function show(n){
+      i = Math.max(0, Math.min(panels.length - 1, n));
+      dots.forEach(function(d, k){
+        d.setAttribute('aria-selected', k === i ? 'true' : 'false');
+        d.classList.toggle('done', k < i);
+      });
+      panels.forEach(function(p, k){ p.hidden = (k !== i); });
+      fill.style.width = (i / (panels.length - 1)) * 84 + '%';
+      count.textContent = (i + 1) + ' / ' + panels.length;
+      prev.disabled = (i === 0);
+      next.textContent = (i === panels.length - 1) ? 'Újra az elejéről' : 'Következő alkalom';
+    }
+    dots.forEach(function(d, k){ d.addEventListener('click', function(){ show(k); }); });
+    prev.addEventListener('click', function(){ show(i - 1); });
+    next.addEventListener('click', function(){ show(i === panels.length - 1 ? 0 : i + 1); });
+    show(0);
+  })();
+
+  /* ---------- iránytű-kérdőív ---------- */
+  (function(){
+    var quiz = document.getElementById('quiz');
+    if(!quiz) return;
+    var stage = document.getElementById('quizStage');
+    var bar = document.getElementById('quizBar');
+    var resultEl = document.getElementById('quizResult');
+
+    var QUESTIONS = [
+      {
+        q: 'Mire vágysz most a legjobban?',
+        opts: [
+          ['kor', 'Hogy ne legyek egyedül ezzel — más nők jelenlétére'],
+          ['egyeni', 'Teljes figyelemre, ami csak rólam szól'],
+          ['esszencia', 'Egy hosszabb, mély átalakulásra']
+        ]
+      },
+      {
+        q: 'Mennyi idő fér bele a következő hónapokban?',
+        opts: [
+          ['kor', 'Néhány szombat délelőtt'],
+          ['egyeni', 'Rugalmasan, alkalmanként'],
+          ['esszencia', 'Három hónapon át, rendszeresen']
+        ]
+      },
+      {
+        q: 'Milyen mély a téma, amivel érkezel?',
+        opts: [
+          ['kor', 'Most kezdem felfejteni'],
+          ['egyeni', 'Konkrét, nagyon személyes ügy'],
+          ['esszencia', 'Régi veszteség, ami sok mindenre kihat']
+        ]
+      }
+    ];
+
+    var RESULTS = {
+      kor: {
+        title: 'Igazi Egyéniség Női Kör',
+        text: 'Téged a sorsközösség ereje visz előre. Hét nő, zárt tér, négy alkalom — ahol kimondhatod azt is, amit eddig senkinek.',
+        price: '77.000 Ft · Early Bird',
+        topic: 'noi-kor',
+        href: '#/kapcsolat',
+        cta: 'Jelentkezem a körbe'
+      },
+      egyeni: {
+        title: 'Egyéni Exkluzív Mentorálás',
+        text: 'A te témád teljes figyelmet kíván. Rugalmas időpontok, tűpontos, személyre szabott kísérés — csak a te elakadásaiddal dolgozunk.',
+        price: '20.000 Ft / alkalom',
+        topic: 'egyeni',
+        href: '#/kapcsolat',
+        cta: 'Időpontot kérek'
+      },
+      esszencia: {
+        title: 'Lélek Esszencia Program',
+        text: 'Amivel érkezel, az mélyebb annál, hogy néhány alkalom alatt lezárjuk. A 90 napos folyamat egyéni és csoportos alkalmakkal kísér végig.',
+        price: '288.000 Ft · 3 hónap',
+        topic: 'esszencia',
+        href: '#/esszencia',
+        cta: 'Megnézem a programot'
+      }
+    };
+
+    var step = 0, picks = [];
+
+    function renderQuestion(){
+      var item = QUESTIONS[step];
+      bar.style.width = (step / QUESTIONS.length) * 100 + '%';
+      resultEl.hidden = true;
+      stage.hidden = false;
+      stage.innerHTML = '';
+
+      var wrap = document.createElement('div');
+      wrap.className = 'quiz-q';
+      var eyebrow = document.createElement('span');
+      eyebrow.className = 'eyebrow';
+      eyebrow.textContent = (step + 1) + '. kérdés';
+      var h = document.createElement('h3');
+      h.textContent = item.q;
+      var opts = document.createElement('div');
+      opts.className = 'quiz-opts';
+
+      item.opts.forEach(function(o){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'quiz-opt';
+        b.textContent = o[1];
+        b.addEventListener('click', function(){
+          picks.push(o[0]);
+          step += 1;
+          if(step < QUESTIONS.length) renderQuestion();
+          else renderResult();
+        });
+        opts.appendChild(b);
+      });
+
+      wrap.appendChild(eyebrow); wrap.appendChild(h); wrap.appendChild(opts);
+      stage.appendChild(wrap);
+    }
+
+    function renderResult(){
+      bar.style.width = '100%';
+      stage.hidden = true;
+
+      var counts = {};
+      picks.forEach(function(p){ counts[p] = (counts[p] || 0) + 1; });
+      var best = picks[picks.length - 1];
+      Object.keys(counts).forEach(function(k){
+        if(counts[k] > (counts[best] || 0)) best = k;
+      });
+      var r = RESULTS[best];
+
+      resultEl.hidden = false;
+      resultEl.innerHTML =
+        '<span class="eyebrow">A javaslatom</span>' +
+        '<div class="rec">' +
+          '<span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 3 4 6 4 9a4 4 0 0 1-8 0c0-3 1-6 4-9Z"/><path d="M8 21c1.5-1.5 2.5-3 4-3s2.5 1.5 4 3"/></svg></span>' +
+          '<div><h3></h3><p class="muted" style="margin-top:8px;"></p>' +
+          '<p class="small" style="margin-top:10px;"></p></div>' +
+        '</div>' +
+        '<div class="row-actions mt-m">' +
+          '<a class="btn btn--primary" href="' + r.href + '" data-topic="' + r.topic + '"></a>' +
+          '<button class="quiz-restart" type="button">Újrakezdem</button>' +
+        '</div>';
+
+      resultEl.querySelector('h3').textContent = r.title;
+      resultEl.querySelector('.rec p.muted').textContent = r.text;
+      resultEl.querySelector('.rec p.small').textContent = r.price;
+      var cta = resultEl.querySelector('.btn');
+      cta.textContent = r.cta;
+      cta.addEventListener('click', function(){
+        var sel = document.getElementById('ftopic');
+        if(sel) sel.value = r.topic;
+      });
+      resultEl.querySelector('.quiz-restart').addEventListener('click', function(){
+        step = 0; picks = []; renderQuestion();
+      });
+    }
+
+    /* az első kérdés a HTML-ben van, hogy JS nélkül is látszódjon */
+    stage.querySelectorAll('.quiz-opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        picks.push(b.dataset.pick);
+        step = 1;
+        renderQuestion();
+      });
+    });
+    bar.style.width = '0%';
+  })();
+
+  /* ---------- lebegő jelentkezés sáv (mobil, Szolgáltatások oldal) ---------- */
+  var stickyCta = document.getElementById('stickyCta');
+  function updateSticky(){
+    if(!stickyCta) return;
+    var onPage = (location.hash || '').indexOf('szolgaltatasok') !== -1;
+    var mobileView = window.matchMedia('(max-width:640px)').matches;
+    if(!onPage || !mobileView){
+      stickyCta.hidden = true;
+      stickyCta.classList.remove('show');
+      return;
+    }
+    stickyCta.hidden = false;
+    stickyCta.classList.toggle('show', window.scrollY > 520);
+  }
+  window.addEventListener('scroll', updateSticky, {passive:true});
+
   /* ---------- fülek ---------- */
   document.querySelectorAll('.tabs').forEach(function(tablist){
     var tabs = Array.prototype.slice.call(tablist.querySelectorAll('.tab'));
@@ -1901,7 +2201,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
   var clampTimer = null;
   window.addEventListener('resize', function(){
     clearTimeout(clampTimer);
-    clampTimer = setTimeout(setupClamps, 200);
+    clampTimer = setTimeout(function(){ setupClamps(); updateSticky(); }, 200);
   }, {passive:true});
 
   /* ---------- aloldalak ---------- */
@@ -1929,6 +2229,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     var page = document.getElementById('page-' + name);
     if(page) bindReveals(page);
     setupClamps();
+    updateSticky();
   }
   window.addEventListener('hashchange', function(){
     showRoute(routeFromHash(), true);
