@@ -1959,6 +1959,17 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     });
   }, 1600);
 
+  /* ---------- a teljes termékkártya kattintható ---------- */
+  document.querySelectorAll('.product').forEach(function(card){
+    var link = card.querySelector('a.p-art');
+    if(!link) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a, button, select, label, input')) return;
+      location.hash = link.getAttribute('href').replace(/^#/, '');
+    });
+  });
+
   /* ---------- oldalra húzható kártyasorok ---------- */
   document.querySelectorAll('[data-swipe]').forEach(function(wrap){
     var track = wrap.querySelector('.swipe-track');
@@ -2276,8 +2287,12 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     navAnchors.forEach(function(a){
       a.classList.toggle('active', a.dataset.route === navName);
     });
-    if(scroll) window.scrollTo({top:0, behavior:'auto'});
     var page = document.getElementById('page-' + name);
+    if(scroll){
+      window.scrollTo({top:0, behavior:'auto'});
+      /* beágyazott nézetben a window.scrollTo nem mozdítja a külső lapot */
+      try{ document.body.scrollIntoView({block:'start'}); }catch(e){ /* régi böngésző: marad a scrollTo */ }
+    }
     if(page) bindReveals(page);
     setupClamps();
     updateSticky();
