@@ -388,6 +388,26 @@ details.qrow .mark svg{width:17px;height:17px;}
   .tabs{gap:18px;margin-bottom:24px;}
 }
 
+/* ======================= OLDALRA HÚZHATÓ KÁRTYASOR (mobil) ======================= */
+.swipe-hint{display:none;}
+.swipe-dots{display:none;}
+@media (max-width:640px){
+  .swipe-hint{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.78rem;letter-spacing:.06em;color:var(--ink-faint);}
+  .swipe-hint::after{content:"→";color:var(--gold);animation:nudge 1.8s var(--ease) infinite;}
+  @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
+
+  .swipe-track{
+    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding-inline:18px;margin-inline:-18px;scroll-padding-inline:18px;
+    padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  }
+  .swipe-track::-webkit-scrollbar{display:none;}
+  .swipe-track > *{flex:0 0 84%;scroll-snap-align:center;}
+  .swipe-dots{display:flex;justify-content:center;gap:7px;margin-top:18px;}
+  .swipe-dots button{width:7px;height:7px;border-radius:999px;border:none;padding:0;background:var(--line);transition:background .3s var(--ease),width .3s var(--ease);}
+  .swipe-dots button.on{background:var(--mauve);width:22px;}
+}
+
 /* ======================= LÉPEGETŐS ALKALOM-BEMUTATÓ ======================= */
 .rail{position:relative;display:flex;justify-content:space-between;gap:6px;padding:6px 0 28px;}
 .rail::before{content:"";position:absolute;left:8%;right:8%;top:24px;height:1px;background:var(--line);}
@@ -676,8 +696,10 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="section-head" data-reveal>
       <span class="eyebrow">Három út a Műhelybe</span>
       <h2 class="h-sec">Válaszd ki azt a formátumot, amelyben biztonságban érzed magad</h2>
+      <p class="swipe-hint">Húzd oldalra a másik kettőért</p>
     </div>
-    <div class="grid-3">
+    <div class="swipe-wrap" data-swipe>
+    <div class="grid-3 swipe-track">
       <article class="svc" data-reveal>
         <span class="kicker">Személyes kiscsoport</span>
         <h3>Igazi Egyéniség Női Kör</h3>
@@ -700,6 +722,8 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <div class="price">288.000 Ft <small>/ 90 nap</small></div>
         <a href="#/esszencia" class="btn btn--primary btn--full">A program</a>
       </article>
+    </div>
+    <div class="swipe-dots" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -767,8 +791,10 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       <div class="section-head" data-reveal>
         <span class="eyebrow">Webshop</span>
         <h2 class="h-sec">Otthon, a saját ritmusodban</h2>
+        <p class="swipe-hint">Húzd oldalra a többi termékért</p>
       </div>
-      <div class="products">
+      <div class="swipe-wrap" data-swipe>
+      <div class="products swipe-track">
         <article class="product" data-reveal>
           <a class="p-art" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
             <span class="tag">Fizikai termék</span>
@@ -851,6 +877,8 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
             <button class="add-btn" data-id="medit" data-name="Meditációs hanganyag" data-price="2990" data-variant="meditSelectHome">Kosárba</button>
           </div>
         </article>
+      </div>
+      <div class="swipe-dots" aria-hidden="true"></div>
       </div>
       <select id="meditSelectHome" hidden>
         <option>Feszültségoldó meditáció</option>
@@ -1944,6 +1972,43 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
     });
   }, 1600);
+
+  /* ---------- oldalra húzható kártyasorok ---------- */
+  document.querySelectorAll('[data-swipe]').forEach(function(wrap){
+    var track = wrap.querySelector('.swipe-track');
+    var dotsBox = wrap.querySelector('.swipe-dots');
+    if(!track || !dotsBox) return;
+    var cards = Array.prototype.slice.call(track.children);
+
+    cards.forEach(function(card, i){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', (i + 1) + '. elem');
+      if(i === 0) b.classList.add('on');
+      b.addEventListener('click', function(){
+        track.scrollTo({left: card.offsetLeft - track.offsetLeft, behavior:'smooth'});
+      });
+      dotsBox.appendChild(b);
+    });
+
+    var dots = dotsBox.querySelectorAll('button');
+    var pending = false;
+    track.addEventListener('scroll', function(){
+      if(pending) return;
+      pending = true;
+      requestAnimationFrame(function(){
+        var middle = track.scrollLeft + track.clientWidth / 2;
+        var best = 0, bestDist = Infinity;
+        cards.forEach(function(card, i){
+          var center = card.offsetLeft - track.offsetLeft + card.offsetWidth / 2;
+          var dist = Math.abs(center - middle);
+          if(dist < bestDist){ bestDist = dist; best = i; }
+        });
+        dots.forEach(function(d, i){ d.classList.toggle('on', i === best); });
+        pending = false;
+      });
+    }, {passive:true});
+  });
 
   /* ---------- lépegetős alkalom-bemutató ---------- */
   (function(){
