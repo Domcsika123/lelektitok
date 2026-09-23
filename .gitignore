@@ -2,6 +2,9 @@
 *.pdf
 *.docx
 
+# nyers, feldolgozatlan képforrások (a webre optimalizált változat kerül be)
+*.jfif
+
 .DS_Store
 Thumbs.db
 desktop.ini
