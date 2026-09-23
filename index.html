@@ -399,12 +399,16 @@ details.qrow .mark svg{width:17px;height:17px;}
   @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(5px);}}
 
   .swipe-track{
-    display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    display:flex;align-items:stretch;gap:14px;
+    overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
     padding-inline:18px;margin-inline:-18px;scroll-padding-inline:18px;
-    padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    padding-block:4px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
   }
   .swipe-track::-webkit-scrollbar{display:none;}
   .swipe-track > *{flex:0 0 84%;scroll-snap-align:center;}
+  /* érintésnél nincs emelkedő hover, hogy ne lógjon ki a sávból */
+  .swipe-track .svc:hover,.swipe-track .product:hover{transform:none;}
   .swipe-dots{display:flex;justify-content:center;gap:7px;margin-top:18px;}
   .swipe-dots button{width:7px;height:7px;border-radius:999px;border:none;padding:0;background:var(--line);transition:background .3s var(--ease),width .3s var(--ease);}
   .swipe-dots button.on{background:var(--mauve);width:22px;}
