@@ -297,9 +297,9 @@ select.sel{width:100%;border:1px solid var(--line);background:var(--surface);col
 .pd{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,52px);align-items:start;}
 @media (max-width:860px){.pd{grid-template-columns:1fr;}}
 .pd-buy{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line);padding-top:20px;margin-top:6px;}
-/* a ragadós fejléc és a kiemelt címke ne takarja a terméknevet ugráskor */
-.pd h1{scroll-margin-top:118px;}
-@media (max-width:640px){.pd h1{scroll-margin-top:102px;}}
+/* a ragadós fejléc ne takarja a célcímet ugráskor */
+.jump-target{scroll-margin-top:110px;}
+@media (max-width:640px){.jump-target{scroll-margin-top:94px;}}
 
 .info-strip{border-top:1px solid var(--line);padding-top:20px;display:flex;gap:15px;align-items:flex-start;color:var(--ink-faint);font-size:.86rem;}
 .info-strip svg{width:19px;height:19px;color:var(--gold);flex:none;margin-top:3px;}
@@ -694,14 +694,14 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <h3>Igazi Egyéniség Női Kör</h3>
         <p class="desc">4 alkalmas transzformációs folyamat szigorúan 7 fős, zárt körben.</p>
         <div class="price"><s>88.000 Ft</s> 77.000 Ft <small>Early Bird</small></div>
-        <a href="#/szolgaltatasok" class="btn btn--outline btn--full">Részletek</a>
+        <a href="#/szolgaltatasok" class="btn btn--outline btn--full" data-jump="noi-kor-cim">Részletek</a>
       </article>
       <article class="svc" data-reveal data-delay="90">
         <span class="kicker">Egyéni kísérés</span>
         <h3>Exkluzív Mentorálás</h3>
         <p class="desc">Személyre szabott konzultáció, ahol csak a te elakadásaiddal dolgozunk.</p>
         <div class="price">20.000 Ft <small>/ alkalom</small></div>
-        <a href="#/szolgaltatasok" class="btn btn--outline btn--full">Részletek</a>
+        <a href="#/szolgaltatasok" class="btn btn--outline btn--full" data-jump="egyeni-cim">Részletek</a>
       </article>
       <article class="svc svc--accent" data-reveal data-delay="180">
         <span class="badge">Legmélyebb</span>
@@ -709,7 +709,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <h3>Lélek Esszencia Program</h3>
         <p class="desc">90 napos, zárt mentorprogram egyéni és csoportos alkalmakkal.</p>
         <div class="price">288.000 Ft <small>/ 90 nap</small></div>
-        <a href="#/esszencia" class="btn btn--primary btn--full">A program</a>
+        <a href="#/esszencia" class="btn btn--primary btn--full" data-jump="esszencia-cim">A program</a>
       </article>
     </div>
     <div class="swipe-dots" aria-hidden="true"></div>
@@ -1033,7 +1033,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </div>
       <div data-reveal data-delay="90">
         <span class="eyebrow">Személyes kiscsoport</span>
-        <h2 class="h-sec">Igazi Egyéniség Női Kör</h2>
+        <h2 class="h-sec jump-target" id="noi-kor-cim">Igazi Egyéniség Női Kör</h2>
         <p class="lede mt-m">A maszkok nélküli őszinteség, a biztonság és a radikális belső gyógyulás tere. Megtörjük a halogatást, átírjuk a kontrolláló mintákat, és megérkezünk a saját, tiszta belső igazságunkba.</p>
         <ul class="ticks mt-m">
           <li>Szigorúan 7 fős, zárt kör a Herminamezői térben</li>
@@ -1121,7 +1121,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </div>
       <div data-reveal data-delay="90">
         <span class="eyebrow">Egyéni kísérés</span>
-        <h2 class="h-sec">Exkluzív Mentorálás</h2>
+        <h2 class="h-sec jump-target" id="egyeni-cim">Exkluzív Mentorálás</h2>
         <p class="lede mt-m">Tűpontos, mély, személyre szabott konzultáció, ahol kizárólag a te lélektitkaiddal és elakadásaiddal dolgozunk — a saját tempódban, a saját témáiddal.</p>
         <ul class="ticks mt-m">
           <li>50–60 perces alkalmak, szabadon ütemezve</li>
@@ -1190,7 +1190,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="wrap wrap--narrow">
       <span class="eyebrow">3 hónapos VIP mentorprogram</span>
-      <h1>Lélek Esszencia Program</h1>
+      <h1 class="jump-target" id="esszencia-cim">Lélek Esszencia Program</h1>
       <p class="lede">Nem arra születtél, hogy a múltad veszteségeinek árnyékában, halogatásban és megfelelési kényszerekben élj. Ideje, hogy kibontsd a saját Lélek Esszenciádat.</p>
     </div>
   </div>
@@ -1973,6 +1973,17 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     });
   });
 
+  /* ---------- a teljes programkártya kattintható a főoldalon ---------- */
+  document.querySelectorAll('#page-home .svc').forEach(function(card){
+    var link = card.querySelector('a[href^="#/"]');
+    if(!link) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a, button, select, label, input')) return;
+      link.click();
+    });
+  });
+
   /* ---------- oldalra húzható kártyasorok ---------- */
   document.querySelectorAll('[data-swipe]').forEach(function(wrap){
     var track = wrap.querySelector('.swipe-track');
@@ -2276,6 +2287,20 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     'termek-kartya':'webshop', 'termek-menopauza':'webshop', 'termek-meditacio':'webshop'
   };
   var navAnchors = document.querySelectorAll('nav.links a[data-route]');
+  var pendingJump = null;
+
+  /* a főoldali programkártyák a céloldal megfelelő címére visznek */
+  document.querySelectorAll('[data-jump]').forEach(function(el){
+    el.addEventListener('click', function(){
+      pendingJump = el.dataset.jump;
+      var sameRoute = (location.hash || '').replace(/^#\/?/, '') === el.getAttribute('href').replace(/^#\/?/, '');
+      if(sameRoute){
+        var t = document.getElementById(pendingJump);
+        pendingJump = null;
+        if(t) t.scrollIntoView({block:'start'});
+      }
+    });
+  });
 
   function routeFromHash(){
     var h = (location.hash || '').replace(/^#\/?/, '');
@@ -2292,10 +2317,11 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     });
     var page = document.getElementById('page-' + name);
     if(scroll){
-      /* termékoldalon a termék címéhez, máshol a lap tetejére */
-      var anchor = (name.indexOf('termek-') === 0 && page) ? page.querySelector('.pd h1') : null;
-      if(anchor){
-        anchor.scrollIntoView({block:'start'});
+      /* ha a kártya konkrét címet jelölt meg, oda állunk; egyébként a lap tetejére */
+      var target = pendingJump ? document.getElementById(pendingJump) : null;
+      pendingJump = null;
+      if(target && page && page.contains(target)){
+        target.scrollIntoView({block:'start'});
       } else {
         window.scrollTo({top:0, behavior:'auto'});
         /* beágyazott nézetben a window.scrollTo nem mozdítja a külső lapot */
