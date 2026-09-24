@@ -75,7 +75,7 @@ button{font-family:inherit;cursor:pointer;}
 
 /* ======================= HANGULATI FÉNYEK ======================= */
 .aura{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-.aura i{position:absolute;display:block;border-radius:50%;filter:blur(70px);opacity:.5;}
+.aura i{position:absolute;display:block;border-radius:50%;filter:blur(60px);opacity:.5;will-change:transform;}
 .aura i:nth-child(1){width:46vw;height:46vw;max-width:520px;max-height:520px;left:-8vw;top:-14vw;background:radial-gradient(circle,#E4D3EC,transparent 68%);animation:drift1 26s ease-in-out infinite alternate;}
 .aura i:nth-child(2){width:38vw;height:38vw;max-width:460px;max-height:460px;right:-6vw;top:8vw;background:radial-gradient(circle,#F6E2D8,transparent 68%);animation:drift2 32s ease-in-out infinite alternate;}
 .aura i:nth-child(3){width:30vw;height:30vw;max-width:380px;max-height:380px;left:32vw;bottom:-16vw;background:radial-gradient(circle,#E2E9E4,transparent 70%);animation:drift3 38s ease-in-out infinite alternate;}
@@ -205,18 +205,23 @@ nav.links a.active{color:var(--ink);}
 .svc .price{border-top:1px solid var(--line-soft);padding-top:13px;font-family:'Fraunces',serif;font-size:1.3rem;display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;}
 .svc .price small{font-family:'Montserrat',sans-serif;font-size:.77rem;color:var(--ink-faint);font-weight:500;}
 .svc .price s{color:var(--ink-faint);font-size:.9rem;}
-.badge{position:absolute;top:14px;right:14px;background:var(--mauve);color:#fff;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;}
+/* a címke a tartalom fölött áll, nem takarja a kicker szöveget */
+.badge{align-self:flex-start;background:var(--mauve);color:#fff;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:2px;}
 
 /* hajszálvonalas lista dobozok helyett */
 .rows{display:flex;flex-direction:column;}
 .rows > li,.rows > div{display:flex;gap:18px;align-items:flex-start;padding-block:22px;border-bottom:1px solid var(--line);}
 .rows > li:first-child,.rows > div:first-child{padding-top:4px;}
 .rows > li:last-child,.rows > div:last-child{border-bottom:none;}
-.rows h3,.rows h4{font-size:1.14rem;font-family:'Fraunces',serif;font-weight:400;}
-.rows p{color:var(--ink-soft);font-size:.94rem;margin-top:4px;}
+.rows h3,.rows h4{font-size:1.14rem;font-family:'Fraunces',serif;font-weight:400;line-height:1.32;}
+.rows p{color:var(--ink-soft);font-size:.94rem;margin-top:7px;}
 .rows .mark{flex:none;width:34px;height:34px;border-radius:999px;background:var(--mauve-wash);color:var(--mauve-deep);display:flex;align-items:center;justify-content:center;}
 .rows .mark svg{width:17px;height:17px;}
 ul.rows{list-style:none;margin:0;padding:0;}
+/* a térköz-segédosztályok erősebbek a lista alapértelmezett nullázásánál */
+ul.rows.mt-l{margin-top:2.4em;}
+ul.rows.mt-m{margin-top:1.4em;}
+.rows > li:first-child,.rows > div:first-child{padding-top:10px;}
 
 .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
 .ticks li{display:flex;gap:12px;font-size:.95rem;color:var(--ink-soft);}
@@ -561,7 +566,10 @@ details.qrow .mark svg{width:17px;height:17px;}
   .quote-block{font-size:1.12rem;padding-left:18px;}
   .marquee{padding-block:12px;}
   .marquee-track span{font-size:.95rem;gap:18px;padding-right:18px;}
-  .aura i{filter:blur(46px);opacity:.42;}
+  /* görgetési teljesítmény: nincs homályosított fejléc, szemcse és mozgó fény */
+  header.site{backdrop-filter:none;background:rgba(252,250,247,.98);}
+  body::after{display:none;}
+  .aura i{filter:blur(40px);opacity:.38;animation:none;will-change:auto;}
   .aura i:nth-child(3){display:none;}
 }
 @media (max-width:400px){
@@ -970,14 +978,6 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
           <div><h3>Tiszta, gyakorlatias struktúra</h3><p>Nem hagyom, hogy elveszz a fájdalomban. Lépésről lépésre haladunk az elengedéstől a konkrét, napi cselekvési tervig.</p></div>
         </li>
       </ul>
-    </div>
-
-    <div class="sign" data-reveal>
-      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#EFE7F2"/><text x="24" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="17" fill="#6E5480">LT</text></svg>
-      <span>
-        <span class="nm">Ladics Timi</span>
-        <span class="rl">A Lélektitok Műhely alapítója · Transzformációs tréner</span>
-      </span>
     </div>
 
     <div class="row-actions mt-l" data-reveal>
@@ -1395,8 +1395,8 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="wrap wrap--narrow">
       <div class="section-head" data-reveal>
         <span class="eyebrow">Jelentkezés</span>
-        <h2 class="h-sec">Ide nem csak jelentkezni lehet</h2>
-        <p class="lede mt-s">Jelentkezési űrlap és egy rövid, ingyenes telefonos beszélgetés alapján kapcsolódunk egymáshoz. Ebben derül ki, hogy a csoportos vagy az egyéni feldolgozás a te utad — és hogy készen állunk-e erre a közös utazásra.</p>
+        <h2 class="h-sec">Beszélgetéssel kezdünk</h2>
+        <p class="lede mt-s">Töltsd ki az űrlapot, és felhívlak egy rövid, ingyenes beszélgetésre. Ebből derül ki, hogy tényleg ez a folyamat szolgál-e téged, és hogy a csoportos vagy az egyéni út illik jobban hozzád.</p>
       </div>
       <div class="steps">
         <div class="step" data-reveal><span class="n">1</span><div><h4>Jelentkezési űrlap</h4><p>Néhány mondat arról, hol tartasz most és mit szeretnél lezárni.</p></div></div>
@@ -2211,7 +2211,6 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     stickyCta.hidden = false;
     stickyCta.classList.toggle('show', window.scrollY > 520);
   }
-  window.addEventListener('scroll', updateSticky, {passive:true});
 
   /* ---------- fülek ---------- */
   document.querySelectorAll('.tabs').forEach(function(tablist){
@@ -2365,7 +2364,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     car.addEventListener('mouseleave', restart);
   }
 
-  /* ---------- görgetésjelző ---------- */
+  /* ---------- görgetéshez kötött frissítések (egy képkockára összevonva) ---------- */
   var bar = document.getElementById('progress');
   var ticking = false;
   window.addEventListener('scroll', function(){
@@ -2374,6 +2373,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     requestAnimationFrame(function(){
       var h = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+      if(stickyCta && !stickyCta.hidden){
+        stickyCta.classList.toggle('show', window.scrollY > 520);
+      }
       ticking = false;
     });
   }, {passive:true});
