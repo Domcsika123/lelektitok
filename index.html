@@ -289,8 +289,8 @@ ul.rows.mt-m{margin-top:1.4em;}
 .product{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s var(--ease),transform .3s var(--ease);}
 .product:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
 .p-art{display:block;aspect-ratio:4/3;max-width:100%;position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft);}
-.p-art svg{width:100%;height:100%;display:block;transition:transform .55s var(--ease);}
-.product:hover .p-art svg{transform:scale(1.04);}
+.p-art svg,.p-art img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .55s var(--ease);}
+.product:hover .p-art svg,.product:hover .p-art img{transform:scale(1.04);}
 .p-art .tag{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--ink-soft);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;z-index:2;}
 .p-body{padding:22px;display:flex;flex-direction:column;gap:9px;flex:1;}
 .p-body h3{font-size:1.18rem;}
@@ -745,29 +745,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="wrap split">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="room" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6EEF6"/><stop offset="1" stop-color="#FBF2EA"/></linearGradient></defs>
-            <rect width="420" height="340" fill="url(#room)"/>
-            <path d="M150 250V130a60 60 0 0 1 120 0v120" stroke="#B08D57" stroke-width="1.2" fill="#FDF8F2" opacity=".85"/>
-            <path d="M210 70v180M150 170h120" stroke="#B08D57" stroke-width=".8" opacity=".6"/>
-            <rect x="96" y="212" width="16" height="42" rx="4" fill="#EFE7F2" stroke="#8C6F9B" stroke-width="1"/>
-            <rect x="120" y="226" width="12" height="28" rx="4" fill="#EFE7F2" stroke="#8C6F9B" stroke-width="1"/>
-            <path d="M104 212c0-6 4-7 4-12 3 4 4 7 4 12" stroke="#B08D57" stroke-width="1.2" fill="none"/>
-            <path d="M126 226c0-4 3-5 3-9 2 3 3 5 3 9" stroke="#B08D57" stroke-width="1.2" fill="none"/>
-            <path d="M300 236h34v10a17 17 0 0 1-34 0v-10Z" stroke="#8C6F9B" stroke-width="1.2" fill="#FFF"/>
-            <path d="M334 240c8 0 10 10 0 12" stroke="#8C6F9B" stroke-width="1.2" fill="none"/>
-            <path d="M310 226c0-5 4-6 4-10M322 226c0-5 4-6 4-10" stroke="#B08D57" stroke-width="1" opacity=".7"/>
-            <circle cx="210" cy="222" r="14" fill="none" stroke="#8C6F9B" stroke-width="1.2"/>
-            <circle cx="210" cy="222" r="8" fill="none" stroke="#8C6F9B" stroke-width="1"/>
-            <circle cx="210" cy="222" r="3" fill="#EFDDDF"/>
-            <path d="M210 236v26M210 250c-10 0-14-6-16-12 8-1 14 4 16 12M210 256c9 0 13-5 15-11-8-1-13 3-15 11" stroke="#8C6F9B" stroke-width="1.2" fill="none"/>
-            <path d="M40 264h340" stroke="#B08D57" stroke-width="1.4"/>
-            <path d="M60 264c0 20 8 34 20 42M360 264c0 20-8 34-20 42" stroke="#B08D57" stroke-width=".8" opacity=".5"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — a Műhely tere
-          </span>
+          <img class="frame__art" src="images/uresszoba.jpg" width="1000" height="546" loading="lazy" alt="A Lélektitok Műhely tere: nyugodt, meleg fényű szoba">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -801,20 +779,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       <div class="swipe-wrap" data-swipe>
       <div class="products swipe-track">
         <article class="product" data-reveal>
-          <a class="p-art" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
+          <a class="p-art p-art--photo" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
             <span class="tag">Fizikai termék</span>
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="400" height="300" fill="url(#cardsBg)"/>
-              <rect x="112" y="72" width="104" height="156" rx="8" transform="rotate(-12 164 150)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-              <rect x="148" y="66" width="104" height="156" rx="8" transform="rotate(-2 200 144)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-              <rect x="186" y="72" width="104" height="156" rx="8" transform="rotate(10 238 150)" fill="#FFFEFC" stroke="#B08D57" stroke-width="1.2"/>
-              <path d="M238 128l-13 16 13 16 13-16-13-16Z" stroke="#B08D57" stroke-width="1.3"/>
-              <path d="M200 112c-6 6-9 10-9 14a9 9 0 0 0 18 0c0-4-3-8-9-14Z" stroke="#8C6F9B" stroke-width="1.2"/>
-              <path d="M186 166h28M190 178h20" stroke="#8C6F9B" stroke-width="1" opacity=".7"/>
-              <circle cx="96" cy="108" r="3" fill="#B08D57" opacity=".7"/>
-              <circle cx="318" cy="96" r="2.4" fill="#8C6F9B" opacity=".6"/>
-              <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-            </svg>
+            <img src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag">
           </a>
           <div class="p-body">
             <h3><a href="#/termek-kartya">Igazi Egyéniség Kártyacsomag</a></h3>
@@ -829,20 +796,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         </article>
 
         <article class="product" data-reveal data-delay="90">
-          <a class="p-art" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
+          <a class="p-art p-art--photo" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
             <span class="tag">Digitális csomag</span>
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="400" height="300" fill="url(#bookBg)"/>
-              <rect x="104" y="74" width="96" height="140" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-              <path d="M200 74c20 0 32 12 32 30v110h-32" fill="#FFFDFB" stroke="#8C6F9B" stroke-width="1.2"/>
-              <path d="M124 110h56M124 128h56M124 146h36" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-              <circle cx="268" cy="120" r="34" fill="#FFFFFF" fill-opacity=".8" stroke="#B08D57" stroke-width="1.2"/>
-              <path d="M268 100v40M248 120h40" stroke="#B08D57" stroke-width="1.1" opacity=".8"/>
-              <circle cx="268" cy="120" r="16" fill="none" stroke="#8C6F9B" stroke-width="1" opacity=".6"/>
-              <rect x="232" y="176" width="72" height="44" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-              <path d="M244 192h48M244 204h30" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-              <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-            </svg>
+            <img src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban digitális csomag">
           </a>
           <div class="p-body">
             <h3><a href="#/termek-menopauza">Királynő a Változásban</a></h3>
@@ -919,24 +875,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
   <section class="section wrap">
     <div class="split split--top">
       <div class="hero-art" data-reveal>
-        <div class="frame">
-          <svg class="frame__art" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="portrait" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1E6F3"/><stop offset="1" stop-color="#FAF0E9"/></linearGradient></defs>
-            <rect width="400" height="520" fill="url(#portrait)"/>
-            <circle cx="200" cy="200" r="118" fill="#FDF7F1" opacity=".75"/>
-            <path d="M200 148a44 44 0 1 1 0 88 44 44 0 0 1 0-88Z" stroke="#8C6F9B" stroke-width="1.6" fill="none"/>
-            <path d="M118 430c0-52 36-88 82-88s82 36 82 88" stroke="#8C6F9B" stroke-width="1.6" fill="none"/>
-            <path d="M156 196c4-34 22-52 44-52s40 18 44 52c-10-12-24-20-44-20s-34 8-44 20Z" fill="#8C6F9B" fill-opacity=".18"/>
-            <path d="M300 372c-18-10-26-30-24-52 20 6 32 24 30 46" stroke="#B08D57" stroke-width="1.2" fill="none"/>
-            <path d="M100 372c18-10 26-30 24-52-20 6-32 24-30 46" stroke="#B08D57" stroke-width="1.2" fill="none"/>
-            <circle cx="200" cy="112" r="3" fill="#B08D57" opacity=".7"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — a portréd
-          </span>
+        <div class="frame frame--sq">
+          <img class="frame__art" src="images/portre.jpg" width="1000" height="546" loading="lazy" alt="Ladics Timi a Műhely szobájában">
         </div>
-        <p class="frame-caption">Ide kerül a profi portréd: meleg tekintet, elegáns ruha, finoman elmosódott, gyertyás háttér.</p>
       </div>
 
       <div data-reveal data-delay="90">
@@ -1012,31 +953,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="circleBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4ECF5"/><stop offset="1" stop-color="#FBF2EA"/></linearGradient></defs>
-            <rect width="420" height="360" fill="url(#circleBg)"/>
-            <circle cx="210" cy="188" r="132" fill="#FDF8F3" opacity=".7"/>
-            <circle cx="210" cy="188" r="120" fill="none" stroke="#B08D57" stroke-width="1" opacity=".45" stroke-dasharray="3 8"/>
-            <g stroke="#8C6F9B" stroke-width="1.3" fill="#FFFFFF">
-              <rect x="192" y="52" width="36" height="26" rx="12"/>
-              <rect x="286" y="96" width="36" height="26" rx="12" transform="rotate(38 304 109)"/>
-              <rect x="310" y="196" width="36" height="26" rx="12" transform="rotate(77 328 209)"/>
-              <rect x="244" y="276" width="36" height="26" rx="12" transform="rotate(115 262 289)"/>
-              <rect x="140" y="276" width="36" height="26" rx="12" transform="rotate(-115 158 289)"/>
-              <rect x="74" y="196" width="36" height="26" rx="12" transform="rotate(-77 92 209)"/>
-              <rect x="98" y="96" width="36" height="26" rx="12" transform="rotate(-38 116 109)"/>
-            </g>
-            <circle cx="210" cy="188" r="34" fill="#FFFFFF" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M210 170c-6 7-9 11-9 15a9 9 0 0 0 18 0c0-4-3-8-9-15Z" fill="#EFDDDF" stroke="#8C6F9B" stroke-width="1"/>
-            <rect x="186" y="196" width="9" height="20" rx="4" fill="#FFF" stroke="#8C6F9B" stroke-width="1"/>
-            <rect x="225" y="196" width="9" height="20" rx="4" fill="#FFF" stroke="#8C6F9B" stroke-width="1"/>
-            <path d="M190 196c0-4 2-5 2-8 2 3 2 4 2 8M229 196c0-4 2-5 2-8 2 3 2 4 2 8" stroke="#B08D57" stroke-width="1"/>
-            <circle cx="210" cy="188" r="58" fill="none" stroke="#8C6F9B" stroke-width=".8" opacity=".35"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — női kör
-          </span>
+          <img class="frame__art" src="images/noikor.jpg" width="1000" height="546" loading="lazy" alt="Női kör a Műhely szobájában">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1107,24 +1024,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="wrap feature feature--rev">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="mentorBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7EFE8"/><stop offset="1" stop-color="#F3ECF5"/></linearGradient></defs>
-            <rect width="420" height="340" fill="url(#mentorBg)"/>
-            <rect x="286" y="48" width="88" height="130" rx="44" fill="#FDF9F3" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M330 48v130M286 113h88" stroke="#B08D57" stroke-width=".8" opacity=".55"/>
-            <path d="M70 250v-52a26 26 0 0 1 26-26h34a26 26 0 0 1 26 26v52" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.3"/>
-            <path d="M62 206c0-10 8-14 14-12v40c-8 2-14-4-14-12v-16ZM164 206c0-10-8-14-14-12v40c8 2 14-4 14-12v-16Z" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M252 250v-52a26 26 0 0 1 26-26h34a26 26 0 0 1 26 26v52" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.3"/>
-            <path d="M244 206c0-10 8-14 14-12v40c-8 2-14-4-14-12v-16ZM346 206c0-10-8-14-14-12v40c8 2 14-4 14-12v-16Z" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <rect x="182" y="212" width="56" height="10" rx="4" fill="#FFFFFF" stroke="#B08D57" stroke-width="1.1"/>
-            <path d="M196 212v-8a14 14 0 0 1 28 0v8" fill="none" stroke="#8C6F9B" stroke-width="1.1"/>
-            <path d="M204 188c0-5 3-6 3-10 2 3 3 5 3 10M212 190c0-4 2-5 2-8 2 2 2 4 2 8" stroke="#B08D57" stroke-width="1" opacity=".8"/>
-            <path d="M40 274h340" stroke="#B08D57" stroke-width="1.2" opacity=".5"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — mentorálás
-          </span>
+          <img class="frame__art" src="images/mentoralas.jpg" width="1000" height="546" loading="lazy" alt="Egyéni mentorálás két fotelben, a Műhelyben">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1435,18 +1335,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
   <section class="section wrap">
     <div class="products">
       <article class="product" data-reveal>
-        <a class="p-art" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
+        <a class="p-art p-art--photo" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
           <span class="tag">Fizikai termék</span>
-          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#cardsBg)"/>
-            <rect x="112" y="72" width="104" height="156" rx="8" transform="rotate(-12 164 150)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <rect x="148" y="66" width="104" height="156" rx="8" transform="rotate(-2 200 144)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <rect x="186" y="72" width="104" height="156" rx="8" transform="rotate(10 238 150)" fill="#FFFEFC" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M238 128l-13 16 13 16 13-16-13-16Z" stroke="#B08D57" stroke-width="1.3"/>
-            <path d="M200 112c-6 6-9 10-9 14a9 9 0 0 0 18 0c0-4-3-8-9-14Z" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M186 166h28M190 178h20" stroke="#8C6F9B" stroke-width="1" opacity=".7"/>
-            <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-          </svg>
+          <img src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag">
         </a>
         <div class="p-body">
           <h3><a href="#/termek-kartya">Igazi Egyéniség Kártyacsomag</a></h3>
@@ -1461,20 +1352,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
       </article>
 
       <article class="product" data-reveal data-delay="90">
-        <a class="p-art" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
+        <a class="p-art p-art--photo" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
           <span class="tag">Digitális csomag</span>
-          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#bookBg)"/>
-            <rect x="104" y="74" width="96" height="140" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M200 74c20 0 32 12 32 30v110h-32" fill="#FFFDFB" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M124 110h56M124 128h56M124 146h36" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-            <circle cx="268" cy="120" r="34" fill="#FFFFFF" fill-opacity=".8" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M268 100v40M248 120h40" stroke="#B08D57" stroke-width="1.1" opacity=".8"/>
-            <circle cx="268" cy="120" r="16" fill="none" stroke="#8C6F9B" stroke-width="1" opacity=".6"/>
-            <rect x="232" y="176" width="72" height="44" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M244 192h48M244 204h30" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-            <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-          </svg>
+          <img src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban digitális csomag">
         </a>
         <div class="p-body">
           <h3><a href="#/termek-menopauza">Királynő a Változásban</a></h3>
@@ -1533,20 +1413,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="pd mt-m">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#cardsBg)"/>
-            <rect x="112" y="72" width="104" height="156" rx="8" transform="rotate(-12 164 150)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <rect x="148" y="66" width="104" height="156" rx="8" transform="rotate(-2 200 144)" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <rect x="186" y="72" width="104" height="156" rx="8" transform="rotate(10 238 150)" fill="#FFFEFC" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M238 128l-13 16 13 16 13-16-13-16Z" stroke="#B08D57" stroke-width="1.3"/>
-            <path d="M200 112c-6 6-9 10-9 14a9 9 0 0 0 18 0c0-4-3-8-9-14Z" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M186 166h28M190 178h20" stroke="#8C6F9B" stroke-width="1" opacity=".7"/>
-            <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — kártyacsomag
-          </span>
+          <img class="frame__art" src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag lapjai és díszdoboza">
         </div>
       </div>
 
@@ -1620,22 +1487,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
     <div class="pd mt-m">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#bookBg)"/>
-            <rect x="104" y="74" width="96" height="140" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M200 74c20 0 32 12 32 30v110h-32" fill="#FFFDFB" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M124 110h56M124 128h56M124 146h36" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-            <circle cx="268" cy="120" r="34" fill="#FFFFFF" fill-opacity=".8" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M268 100v40M248 120h40" stroke="#B08D57" stroke-width="1.1" opacity=".8"/>
-            <circle cx="268" cy="120" r="16" fill="none" stroke="#8C6F9B" stroke-width="1" opacity=".6"/>
-            <rect x="232" y="176" width="72" height="44" rx="6" fill="#FFFFFF" stroke="#8C6F9B" stroke-width="1.2"/>
-            <path d="M244 192h48M244 204h30" stroke="#8C6F9B" stroke-width="1" opacity=".65"/>
-            <path d="M72 244h256" stroke="#B08D57" stroke-width="1" opacity=".35"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — digitális csomag
-          </span>
+          <img class="frame__art" src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban csomag e-bookja és munkafüzete">
         </div>
       </div>
 
@@ -1831,19 +1683,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <p class="small">Válaszidő: általában 24–48 óra.</p>
 
         <div class="frame frame--sq" style="margin-top:8px;">
-          <svg class="frame__art" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="door" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3EBF5"/><stop offset="1" stop-color="#FAF2EB"/></linearGradient></defs>
-            <rect width="400" height="220" fill="url(#door)"/>
-            <path d="M160 190V96a40 40 0 0 1 80 0v94Z" fill="#FDF8F3" stroke="#B08D57" stroke-width="1.2"/>
-            <circle cx="224" cy="146" r="3" fill="#8C6F9B"/>
-            <path d="M120 190h160" stroke="#B08D57" stroke-width="1.2"/>
-            <path d="M104 170c8-4 14-12 14-22M296 170c-8-4-14-12-14-22" stroke="#8C6F9B" stroke-width="1.2"/>
-            <circle cx="200" cy="66" r="3" fill="#B08D57" opacity=".8"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — bejárat
-          </span>
+          <img class="frame__art" src="images/bejarat.jpg" width="1000" height="546" loading="lazy" alt="A Műhely bejárata">
         </div>
       </div>
 
