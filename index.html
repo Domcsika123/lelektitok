@@ -120,6 +120,10 @@ nav.links a.active{color:var(--ink);}
 .cart-count.pop{animation:pop .4s var(--ease);}
 @keyframes pop{0%{transform:scale(.6);}60%{transform:scale(1.25);}100%{transform:scale(1);}}
 .burger{display:none;}
+.burger .ico-close{display:none;}
+.burger.open{background:var(--mauve);border-color:var(--mauve);color:#fff;}
+.burger.open .ico-bars{display:none;}
+.burger.open .ico-close{display:block;}
 .nav-cta{display:inline-flex;}
 @media (max-width:940px){
   .nav-cta{display:none;}
@@ -141,6 +145,7 @@ nav.links a.active{color:var(--ink);}
 .hero h1{font-size:clamp(2.4rem,5.6vw,3.8rem);}
 .hero h1 em{font-style:italic;font-weight:300;color:var(--mauve-deep);}
 .hero .sub{font-size:1.1rem;color:var(--ink-soft);max-width:44ch;margin-top:1.1em;}
+.hero .hero-actions{margin-top:2em;}
 .scroll-cue{display:inline-flex;align-items:center;gap:10px;margin-top:2.6em;color:var(--ink-faint);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;}
 .scroll-cue span.line{width:34px;height:1px;background:var(--gold);display:block;animation:cue 2.4s var(--ease) infinite;transform-origin:left;}
 @keyframes cue{0%,100%{transform:scaleX(.4);opacity:.5;}50%{transform:scaleX(1);opacity:1;}}
@@ -518,14 +523,17 @@ details.qrow .mark svg{width:17px;height:17px;}
   .split,.feature{gap:30px;}
   .feature + .feature{margin-top:46px;}
 
-  .hero{padding-block:30px 20px;gap:30px;}
-  .hero h1{font-size:2.15rem;}
-  .hero .sub{font-size:1.02rem;}
+  /* a fa a fogadóképernyőn: kisebb méretben, a főcím fölött */
+  .hero{padding-block:12px 18px;gap:14px;}
+  .hero > .hero-art{order:-1;}
+  .hero h1{font-size:2.05rem;}
+  .hero .sub{font-size:1rem;margin-top:.7em;}
+  .hero .hero-actions{margin-top:1.3em;}
   .scroll-cue{display:none;}
 
   /* a képek nagyobbak: pihenőpont a szövegblokkok között */
   .hero-art{max-width:330px;margin-inline:auto;}
-  .hero-img{max-width:300px;}
+  .hero-img{max-width:180px;}
   .feature__art{max-width:360px;margin-inline:auto;}
   .frame{border-radius:180px 180px 14px 14px;box-shadow:0 14px 30px rgba(51,42,56,.1);}
   .frame--sq{border-radius:14px;}
@@ -574,6 +582,7 @@ details.qrow .mark svg{width:17px;height:17px;}
 }
 @media (max-width:400px){
   .hero-art{max-width:280px;}
+  .hero-img{max-width:158px;}
   .si{flex:1 1 100%;}
   .row-actions .btn:not(.btn--link){width:100%;}
   .p-foot{flex-direction:column;align-items:stretch;gap:10px;}
@@ -627,8 +636,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"/><circle cx="9.5" cy="20.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="17" cy="20.5" r="1.3" fill="currentColor" stroke="none"/></svg>
         <span class="cart-count" id="cartCount" hidden>0</span>
       </button>
-      <button class="icon-btn burger" id="burger" aria-label="Menü">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <button class="icon-btn burger" id="burger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="navLinks">
+        <svg class="ico-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
   </div>
@@ -645,7 +655,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
         <span class="eyebrow">Transzformációs tréner · Gyásztanácsadó</span>
         <h1>Az Út <em>önmagadhoz</em> benned kezdődik</h1>
         <p class="sub">Kísérlek az elakadásból és a veszteségből a saját belső erődhöz — személyes női körben, egyéni mentorálásban vagy otthon végezhető programokkal.</p>
-        <div class="row-actions" style="margin-top:2em;">
+        <div class="row-actions hero-actions">
           <a href="#/szolgaltatasok" class="btn btn--primary">Megnézem a programokat</a>
           <a href="#/rolam" class="btn btn--outline">Ismerj meg</a>
         </div>
@@ -2331,7 +2341,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
   }
   window.addEventListener('hashchange', function(){
     showRoute(routeFromHash(), true);
-    document.getElementById('navLinks').classList.remove('open');
+    setMenu(false);
   });
 
   /* ---------- idézet-karusszel ---------- */
@@ -2383,9 +2393,18 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .7s var(--e
   /* ---------- mobil menü ---------- */
   var burger = document.getElementById('burger');
   var navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  function setMenu(open){
+    navLinks.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Menü bezárása' : 'Menü megnyitása');
+  }
+  burger.addEventListener('click', function(){ setMenu(!navLinks.classList.contains('open')); });
   navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+    a.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && navLinks.classList.contains('open')) setMenu(false);
   });
 
   /* ---------- CTA -> űrlap téma ---------- */
