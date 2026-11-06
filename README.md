@@ -25,7 +25,7 @@ Egyoldalas alkalmazás hash-alapú útvonalakkal — minden útvonal külön alo
 | `#/szolgaltatasok` | Szolgáltatások (női kör, egyéni mentorálás) |
 | `#/esszencia` | Lélek Esszencia Program |
 | `#/menedek` | Otthoni Lelki Menedék (webshop; a régi `#/webshop` link ide irányít) |
-| `#/blog` | Blog (a bejegyzések helye, jelenleg „Hamarosan” jelöléssel) |
+| `#/blog` | Blog (az első írásig egy „hamarosan” üzenettel) |
 | `#/gyik` | Gyakori kérdések |
 | `#/kapcsolat` | Kapcsolat |
 
@@ -50,18 +50,19 @@ Egyoldalas alkalmazás hash-alapú útvonalakkal — minden útvonal külön alo
 | Szövegbetű | Montserrat |
 
 Minimál, letisztult stílus: egyszínű felületek, vékony arany vonalak, színátmenetek, árnyékok és háttérdíszek nélkül.
-A kehely-szimbólum (`images/kehely.jpg`) csak a hero-ban jelenik meg.
+A logó a felfelé ívelő arany nyíl (`images/logo.jpg`). A hero teljes háttere a fény felé vezető lépcső fotója (`images/hero-lepcso.jpg`), rajta a szöveg.
 
 A színek és a betűtípusok a fájl elején, a `:root` blokk CSS változóiban módosíthatók.
 
 ## Teendők
 
-- [ ] Új, az arculathoz illő (sötét, arany tónusú) termékfotók — a mostani képek még a régi, világos stílusban készültek
-- [ ] Fotó a Meditációs Hanganyagtárhoz (jelenleg illusztráció, „Fotóhely" jelöléssel)
-- [ ] Blogbejegyzések megírása és bekötése (most három „Hamarosan” kártya áll a helyükön)
+- [ ] Valódi termékfotók, ha elkészül a kártyacsomag és az e-book borítója — a mostani termék- és Esszencia-képek
+      AI-generált hangulatképek, a valódi termék kinézete eltérhet tőlük
 - [ ] Automatikus számlázás vásárlás után — ehhez valódi webshop-rendszer és számlázó (pl. Számlázz.hu, Billingo) kell
 - [ ] Facebook és Instagram linkek kitöltése (jelenleg `#/kapcsolat` helyettesíti őket)
-- [ ] Valódi telefonszám a helykitöltő `+36 70 123 4567` helyett
+- [ ] Új e-mail-cím, ha elkészül (most: `ladicstimea@gmail.com` — a `mailto:` linkekben és a kosár / űrlap szkriptjében is)
+- [ ] A Szentély (a Műhely helyszíne) megadása, ha megvan — most csak „Budapest” szerepel
+- [ ] Fotók a női körökről és a mentorálásról, ha elindulnak — most Timi saját kristályfa-fotói állnak a helyükön
 - [ ] A következő női kör időpontjainak felvétele
 - [ ] Online fizetés vagy webshop-rendszer bekötése, ha szükséges
 - [ ] Adatkezelési tájékoztató és impresszum oldal

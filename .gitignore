@@ -4,6 +4,7 @@
 
 # nyers, feldolgozatlan képforrások (a webre optimalizált változat kerül be)
 *.jfif
+_forras/
 
 .DS_Store
 Thumbs.db

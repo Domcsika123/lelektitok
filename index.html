@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <title>Lélektitok Műhely — Ladics Timi</title>
 <meta name="description" content="Ladics Timi – Lélektitok Műhely: transzformációs tréning, gyásztanácsadás, személyes női körök, egyéni mentorálás és digitális önismereti programok Budapesten.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +79,8 @@ button{font-family:inherit;cursor:pointer;}
 .section-head{max-width:62ch;margin-bottom:clamp(22px,3vw,34px);}
 .section-head--center{margin-inline:auto;text-align:center;}
 .section-head--center .eyebrow{justify-content:center;}
+.soon-note .lede{margin-inline:auto;}
+.soon-note .row-actions{justify-content:center;}
 .section-head--center .eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);flex:none;}
 .stack{display:flex;flex-direction:column;gap:1em;}
 .row-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
@@ -104,7 +108,8 @@ header.site{position:sticky;top:0;z-index:60;background:rgba(14,8,11,.84);backdr
 .progress{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--gold);transition:width .1s linear;}
 .nav{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px);height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
 .brand{display:flex;align-items:center;gap:12px;white-space:nowrap;flex:none;margin-right:clamp(4px,1.5vw,20px);}
-.brand svg{width:36px;height:36px;flex:none;}
+.logo{display:block;border-radius:50%;border:1px solid var(--line);flex:none;object-fit:cover;}
+.brand .logo{width:38px;height:38px;}
 .brand b{font-family:var(--f-display);font-weight:600;font-size:.92rem;letter-spacing:.12em;display:block;line-height:1.1;text-transform:uppercase;color:var(--gold);}
 .brand i{font-style:normal;font-size:.54rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-faint);}
 nav.links{display:flex;align-items:center;gap:clamp(14px,1.8vw,26px);}
@@ -144,24 +149,30 @@ nav.links a.nav-hl{color:var(--gold-pale);}
 
 /* ======================= HERO ======================= */
 .hero-band{position:relative;overflow:hidden;isolation:isolate;background:var(--bg-deep);border-bottom:1px solid var(--line-soft);}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(56px,8vw,112px);min-height:0;}
-@media (max-width:880px){.hero{grid-template-columns:1fr;min-height:0;}}
+.hero{display:flex;align-items:center;min-height:clamp(520px,46vw,680px);padding-block:clamp(56px,7vw,96px);}
+.hero-copy{max-width:min(560px,52%);}
 .hero h1{font-size:clamp(1.75rem,3.4vw,2.6rem);line-height:1.15;}
 .hero h1 em{display:block;font-size:.9em;margin-top:.08em;}
 .hero .sub{font-size:1rem;color:var(--ink-soft);max-width:44ch;margin-top:1.5em;}
 .hero .hero-actions{margin-top:2.2em;}
-/* a kehely képe a sötét háttérbe olvad: screen keverés + lágy maszk */
-.hero-sigil{--sz:360px;position:relative;display:flex;justify-content:center;}
-.hero-sigil img{display:block;width:100%;max-width:var(--sz);height:auto;mix-blend-mode:screen;
-  -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);
-          mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);}
+/* a lépcső-fotó a teljes sáv háttere: a szöveg balra, a sötét függöny elé kerül, jobbra a fény felé
+   vezető lépcső és a gyertya marad szabadon; a sötétítés balról és alulról segíti az olvashatóságot */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 0%;z-index:-2;}
+.hero-band::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(10,6,8,.88) 0%,rgba(10,6,8,.62) 38%,rgba(10,6,8,.12) 68%,transparent 100%),
+             linear-gradient(180deg,transparent 62%,var(--bg-deep) 100%);}
+/* keskenyebb kijelzőn a kép kitölti a képernyőt: felül a gyertya és a lépcső, alul a szöveg */
+@media (max-width:880px){
+  .hero-bg{object-position:72% 0%;}
+  .hero-band::before{background:linear-gradient(180deg,rgba(10,6,8,.1) 0%,rgba(10,6,8,.45) 38%,rgba(10,6,8,.88) 62%,var(--bg-deep) 100%);}
+  .hero{min-height:min(calc(100svh - 60px),760px);align-items:flex-end;}
+  .hero-copy{max-width:none;}
+}
 
 /* ======================= KÉPKERETEK ======================= */
 .frame{position:relative;border-radius:260px 260px 4px 4px;overflow:hidden;border:1px solid var(--line-soft);background:var(--surface);}
 .frame--sq{border-radius:4px;}
 .frame__art{display:block;width:100%;height:auto;}
-.frame__slot{position:absolute;left:14px;bottom:14px;background:rgba(10,6,8,.8);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:7px;backdrop-filter:blur(4px);z-index:1;}
-.frame__slot svg{width:13px;height:13px;color:var(--gold);}
 .frame-caption{font-size:.78rem;color:var(--ink-faint);margin-top:10px;}
 .hero-art{position:relative;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
@@ -249,9 +260,12 @@ ul.ticks.mt-m{margin-top:1.4em;}
 .pricetag s{color:var(--ink-faint);font-size:.95rem;}
 
 .quote-block{position:relative;padding-left:26px;font-family:var(--f-serif);font-style:italic;font-size:1.1rem;line-height:1.5;margin-block:1.3em;color:var(--gold-pale);}
+.credo{list-style:none;margin:0;padding:0;}
+.credo li{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.5;color:var(--gold-pale);padding-block:18px;border-bottom:1px solid var(--line-soft);}
+.credo li:last-child{border-bottom:none;padding-bottom:0;}
 .quote-block::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:1px;background:var(--gold);}
 .sign{display:flex;align-items:center;gap:14px;margin-top:1.8em;}
-.sign svg{width:52px;height:52px;flex:none;}
+.sign .logo{width:52px;height:52px;}
 .sign .nm{font-family:var(--f-display);letter-spacing:.12em;text-transform:uppercase;font-size:.98rem;color:var(--gold);display:block;}
 .sign .rl{font-size:.74rem;color:var(--ink-faint);letter-spacing:.06em;}
 
@@ -312,15 +326,6 @@ select.sel{width:100%;border:1px solid var(--line);background:var(--bg-deep);col
 .info-strip{border-top:1px solid var(--line-soft);padding-top:20px;display:flex;gap:15px;align-items:flex-start;color:var(--ink-faint);font-size:.86rem;}
 .info-strip svg{width:19px;height:19px;color:var(--gold);flex:none;margin-top:3px;}
 
-/* ======================= BLOG ======================= */
-.post{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:clamp(20px,2.2vw,26px);display:flex;flex-direction:column;gap:10px;position:relative;transition:border-color .3s var(--ease),transform .3s var(--ease);}
-.post:hover{border-color:var(--line);}
-.post .meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);}
-.post .soon{border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink-faint);letter-spacing:.14em;}
-.post h3{font-size:1.12rem;}
-.post p{color:var(--ink-soft);font-size:.88rem;}
-.post .num{font-family:var(--f-display);font-size:1.8rem;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.5);}
-
 /* ======================= KOSÁR ======================= */
 .overlay{position:fixed;inset:0;background:rgba(5,2,4,.66);z-index:90;opacity:0;pointer-events:none;transition:opacity .3s var(--ease);}
 .overlay.open{opacity:1;pointer-events:auto;}
@@ -354,6 +359,7 @@ details.q .a{padding:0 0 22px;color:var(--ink-soft);font-size:.95rem;max-width:7
 .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,56px);align-items:start;}
 @media (max-width:860px){.contact{grid-template-columns:1fr;}}
 .c-row{display:flex;gap:13px;align-items:flex-start;color:var(--ink-soft);font-size:.94rem;}
+.c-row a:hover,.f-bottom a:hover{color:var(--gold-pale);}
 .c-row svg{width:19px;height:19px;color:var(--gold);flex:none;margin-top:4px;}
 .socials{display:flex;gap:10px;}
 .socials a{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02);transition:border-color .2s,transform .25s var(--ease),background .25s;}
@@ -511,7 +517,7 @@ details.qrow .mark svg{width:17px;height:17px;}
 
   .nav{height:60px;}
   nav.links{inset:60px 0 auto 0;}
-  .brand svg{width:32px;height:32px;}
+  .brand .logo{width:34px;height:34px;}
   .brand b{font-size:.84rem;letter-spacing:.1em;}
   .brand i{font-size:.54rem;letter-spacing:.2em;}
   .btn{padding:.9em 1.4em;font-size:.68rem;}
@@ -529,10 +535,7 @@ details.qrow .mark svg{width:17px;height:17px;}
   .split,.feature{gap:30px;}
   .feature + .feature{margin-top:46px;}
 
-  /* a kehely a fogadóképernyőn: kisebb méretben, a főcím fölött */
-  .hero{padding-block:8px 40px;gap:4px;}
-  .hero > .hero-sigil{order:-1;}
-  .hero-sigil{--sz:210px;}
+  .hero{padding-bottom:40px;}
   .hero h1{font-size:1.55rem;}
   .hero .sub{font-size:.95rem;margin-top:.9em;}
   .hero .hero-actions{margin-top:1.5em;}
@@ -541,10 +544,9 @@ details.qrow .mark svg{width:17px;height:17px;}
   .feature__art{max-width:360px;margin-inline:auto;}
   .frame{border-radius:180px 180px 4px 4px;}
   .frame--sq{border-radius:4px;}
-  .frame__slot{font-size:.6rem;padding:4px 9px;left:10px;bottom:10px;}
 
   .grid-3,.grid-2,.products,.steps{gap:16px;}
-  .card,.svc,.post{padding:20px;border-radius:10px;}
+  .card,.svc{padding:20px;border-radius:10px;}
   .card h3,.svc h3{font-size:1.14rem;}
   .card p,.svc .desc{font-size:.9rem;}
 
@@ -576,7 +578,6 @@ details.qrow .mark svg{width:17px;height:17px;}
   header.site{backdrop-filter:none;background:rgba(14,8,11,.98);}
 }
 @media (max-width:400px){
-  .hero-sigil{--sz:186px;}
   .si{flex:1 1 100%;}
   .row-actions .btn:not(.btn--link){width:100%;}
   .p-foot{flex-direction:column;align-items:stretch;gap:10px;}
@@ -595,35 +596,13 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
 <body>
 <script>document.documentElement.classList.add('js');</script>
 
-<!-- közös színátmenetek a termékillusztrációkhoz és a logóhoz (több helyen is hivatkozzuk) -->
+<!-- közös színátmenetek a termékillusztrációkhoz (több helyen is hivatkozzuk) -->
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
   <defs>
     <linearGradient id="cardsBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
     <linearGradient id="bookBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
     <linearGradient id="audioBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
-    <linearGradient id="brandGold" gradientUnits="userSpaceOnUse" x1="4" y1="2" x2="44" y2="46"><stop offset="0" stop-color="#F0D98A"/><stop offset=".45" stop-color="#D4AF37"/><stop offset="1" stop-color="#A9822F"/></linearGradient>
     <!-- logó: holdfázisok a kör tetején, életfa gyökerekkel — a névjegykártya emblémája nyomán -->
-    <symbol id="emblem" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="22.5" fill="none" stroke="url(#brandGold)" stroke-width="1"/>
-      <circle cx="24" cy="24" r="16.5" fill="none" stroke="url(#brandGold)" stroke-width=".5" opacity=".45"/>
-      <g fill="url(#brandGold)">
-        <circle cx="24" cy="5" r="1.9"/>
-        <circle cx="16.9" cy="6.4" r="1.4" opacity=".8"/>
-        <circle cx="31.1" cy="6.4" r="1.4" opacity=".8"/>
-        <circle cx="11" cy="10.2" r="1" opacity=".55"/>
-        <circle cx="37" cy="10.2" r="1" opacity=".55"/>
-      </g>
-      <g fill="none" stroke="url(#brandGold)" stroke-width="1.1" stroke-linecap="round">
-        <path d="M24 36V16M24 29c-3-1-6-3.5-7-7M24 29c3-1 6-3.5 7-7M24 24.5c-2-1.5-3.5-4-3.5-7M24 24.5c2-1.5 3.5-4 3.5-7"/>
-        <path d="M24 36c-2 1.5-5 2.2-8 2.2M24 36c2 1.5 5 2.2 8 2.2M24 36c-.8 1.6-1.8 2.8-3 3.6M24 36c.8 1.6 1.8 2.8 3 3.6"/>
-      </g>
-      <g fill="url(#brandGold)">
-        <circle cx="16.4" cy="21" r="1.4"/><circle cx="31.6" cy="21" r="1.4"/>
-        <circle cx="20.3" cy="16.6" r="1.3"/><circle cx="27.7" cy="16.6" r="1.3"/>
-        <circle cx="24" cy="14.4" r="1.4"/>
-        <circle cx="13.8" cy="25.4" r="1"/><circle cx="34.2" cy="25.4" r="1"/>
-      </g>
-    </symbol>
   </defs>
 </svg>
 
@@ -631,7 +610,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
 <header class="site">
   <div class="nav">
     <a class="brand" href="#/" aria-label="Lélektitok Műhely — főoldal">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#emblem"/></svg>
+      <img class="logo" src="images/logo.jpg" width="160" height="160" alt="" aria-hidden="true">
       <span><b>Ladics Timi</b><i>Lélektitok Műhely</i></span>
     </a>
 
@@ -664,8 +643,9 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
 <!-- ============================= FŐOLDAL ============================= -->
 <div class="page" id="page-home">
   <div class="hero-band">
+    <img class="hero-bg" src="images/hero-lepcso.jpg" width="1600" height="1195" alt="" aria-hidden="true" fetchpriority="high">
     <section class="wrap hero">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow">Transzformációs tréner · Gyásztanácsadó</span>
         <h1>Az Út önmagadhoz <em>benned kezdődik</em></h1>
         <p class="sub">Biztos menedék nőknek az életút elakadásaiban, a női szerepvállalásokban és a krízisekben — személyes női körben, egyéni mentorálásban vagy otthon, a saját ritmusodban.</p>
@@ -674,11 +654,6 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
           <a href="#/menedek" class="btn btn--outline">Otthoni Lelki Menedék</a>
         </div>
       </div>
-
-      <div class="hero-sigil" id="heroSigil">
-        <img src="images/kehely.jpg" width="800" height="768"
-             alt="Aranyló kehely-szimbólum: felfelé mutató nyíl, köré tekeredő fényspirál és csepegő arany">
-      </div>
     </section>
   </div>
 
@@ -686,7 +661,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="wrap strip-inner">
       <span class="si">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        <span><b>17 év</b> önismereti tapasztalat</span>
+        <span><b>15 év</b> önismereti tapasztalat</span>
       </span>
       <span class="si">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4.6" r="1.6" fill="currentColor" stroke="none"/><circle cx="19.4" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="19.4" r="1.6" fill="currentColor" stroke="none"/><circle cx="4.6" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg>
@@ -698,7 +673,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       </span>
       <span class="si">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        <span>Herminamező, <b>Budapest</b></span>
+        <span><b>Budapest</b></span>
       </span>
     </div>
   </div>
@@ -752,7 +727,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <article class="product" data-reveal>
           <a class="p-art p-art--photo" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
             <span class="tag">Fizikai termék</span>
-            <img src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag">
+            <img src="images/kartyacsomag.jpg" width="1024" height="765" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag díszdoboza és kiterített lapjai">
           </a>
           <div class="p-body">
             <h3><a href="#/termek-kartya">Igazi Egyéniség Kártyacsomag</a></h3>
@@ -769,7 +744,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <article class="product" data-reveal data-delay="90">
           <a class="p-art p-art--photo" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
             <span class="tag">Digitális csomag</span>
-            <img src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban digitális csomag">
+            <img src="images/kiralyno-csomag.jpg" width="1024" height="765" loading="lazy" alt="A Királynő a Változásban csomag: e-book tableten és nyitott napló">
           </a>
           <div class="p-body">
             <h3><a href="#/termek-menopauza">Királynő a Változásban</a></h3>
@@ -786,17 +761,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <article class="product" data-reveal data-delay="180">
           <a class="p-art" href="#/termek-meditacio" aria-label="Meditációs hanganyagtár megnyitása">
             <span class="tag">Letöltés</span>
-            <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect width="400" height="300" fill="url(#audioBg)"/>
-              <path d="M130 90a70 70 0 0 1 140 0v54" stroke="#C99AA3" stroke-width="1.4" fill="none"/>
-              <rect x="112" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-              <rect x="258" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-              <path d="M166 214c8-5 16-5 24 0s16 5 24 0 16-5 24 0" stroke="#D4AF37" stroke-width="1.2" fill="none"/>
-              <path d="M158 226c10-6 20-6 30 0s20 6 30 0 20-6 30 0" stroke="#D4AF37" stroke-width="1" opacity=".6" fill="none"/>
-              <circle cx="200" cy="110" r="22" fill="none" stroke="#D4AF37" stroke-width="1" opacity=".5"/>
-              <path d="M194 100v20l18-10-18-10Z" fill="#C99AA3" fill-opacity=".5"/>
-              <path d="M72 250h256" stroke="#D4AF37" stroke-width="1" opacity=".35"/>
-            </svg>
+            <img src="images/meditacio.jpg" width="1024" height="765" loading="lazy" alt="Fejhallgató bársonyon, mellette égő gyertya és ametiszt">
           </a>
           <div class="p-body">
             <h3><a href="#/termek-meditacio">Meditációs Hanganyagtár</a></h3>
@@ -827,7 +792,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       <p class="big">Azért vagyok itt, hogy fogjam a kezed az Életút elakadásaidban, a női szerepvállalásokban és a kríziseidben.</p>
       <p class="lede mt-m" style="margin-inline:auto;">Azzal a szándékkal indítom el ezt az oldalt, hogy minden ide látogató nő megérezze az <em>értékességét</em>. Köszönöm, ha velem tartasz ezen az úton — nézz körül az új honlapomon.</p>
       <div class="sign">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#emblem"/></svg>
+        <img class="logo" src="images/logo.jpg" width="160" height="160" alt="" aria-hidden="true">
         <span><span class="nm">Ladics Timi</span><span class="rl">Transzformációs tréner · Gyásztanácsadó</span></span>
       </div>
     </div>
@@ -837,7 +802,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="split">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/uresszoba.jpg" width="1000" height="546" loading="lazy" alt="A Lélektitok Műhely tere: nyugodt, meleg fényű szoba">
+          <img class="frame__art" src="images/timi-kert.jpg" width="880" height="1100" loading="lazy" alt="Ladics Timi mosolyog egy függőfotelben, őszi kertben">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -856,7 +821,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
   <section class="section wrap" style="padding-top:0;">
     <div class="carousel" id="carousel" data-reveal>
       <div class="slide on"><q>A veszteség nem azért jön, hogy elpusztítson. Azért jön, hogy helyet csináljon az Igazi Egyéniségnek.</q><span class="src">Lélektitok Műhely</span></div>
-      <div class="slide"><q>Az elakadásod nem a vég, hanem egy általad megálmodott új élet kezdete.</q><span class="src">Lélektitok Műhely</span></div>
+      <div class="slide"><q>Az elakadásod nem a vég, hanem egy új kezdet.</q><span class="src">Lélektitok Műhely</span></div>
       <div class="slide"><q>Nem külső struktúráktól kell várnod a választ. A Műhely kulcsa a te kezedben van.</q><span class="src">Lélektitok Műhely</span></div>
     </div>
     <div class="dots" id="dots" role="tablist" aria-label="Idézetek"></div>
@@ -887,7 +852,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="split split--top">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/portre.jpg" width="1000" height="546" loading="lazy" alt="Ladics Timi a Műhely szobájában">
+          <img class="frame__art" src="images/timi-portre.jpg" width="880" height="1100" loading="lazy" alt="Ladics Timi portréja">
         </div>
       </div>
 
@@ -897,7 +862,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <ul class="rows mt-l">
           <li>
             <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20V8l8-4 8 4v12M4 20h16M9 20v-6h6v6"/></svg></span>
-            <div><h3>Láthatatlan falakba ütközöl</h3><p>Az életed egy ponton elakadt, és a halogatás mögé bújva próbálod túlélni a mindennapokat.</p></div>
+            <div><h3>Láthatatlan falakba ütközöl</h3><p>Az életed egy ponton elakadt, és a fájdalmak mögé bújva próbálod túlélni a mindennapokat.</p></div>
           </li>
           <li>
             <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.3-9-8.6C1.4 8 3.3 4.5 7 4.5c2 0 3.6 1.1 5 2.8 1.4-1.7 3-2.8 5-2.8 3.7 0 5.6 3.5 4 6.9-2 4.3-9 8.6-9 8.6Z"/></svg></span>
@@ -912,16 +877,58 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     </div>
   </section>
 
+  <section class="section section--surface">
+    <div class="wrap feature feature--rev">
+      <div class="feature__art hero-art" data-reveal>
+        <div class="frame frame--sq">
+          <img class="frame__art" src="images/rozsabimbo.jpg" width="880" height="1100" loading="lazy" alt="Kinyílás előtt álló rózsabimbó">
+        </div>
+      </div>
+      <div data-reveal data-delay="90">
+        <span class="eyebrow">A történetem</span>
+        <h2 class="h-sec">A Lélek Titok születése</h2>
+        <div class="stack mt-m muted" data-clamp>
+          <p>Mindannyiunk életében eljöhet a pillanat, amikor a megszokott világunk összeomlik. Amikor egy veszteség ér — legyen az egy szeretett személy halála, egy házasság vége, egy magzat elvesztése vagy a megszokott szerepeink darabokra hullása. Az ilyen életesemények kihúzzák a talajt a lábunk alól. Megáll az idő, és ott maradunk a kérdéssel: hogy éljem túl az életem?</p>
+          <p>Tudom, milyen érzés sötétben lenni. Azt is tudom, milyen érzés a fájdalmat átminősíteni, megérteni az üzeneteit. A Lélek Titok azért született meg, hogy számodra is nyilvánvalóvá váljon: a legnehezebb elakadásokból és a legmélyebb gyászokból is van kiút.</p>
+          <p>A női krízis számomra a munkahelyem megszűnése volt, amely egybeesett az 50. születésnapommal. Előtte erős nőnek éreztem magam. Egyszer csak minden megváltozott, mint egy rossz álom. Ott álltam, az ismeretlen helyzettől megbénulva. Akkor még nem tudtam, hogy ez egy hosszú belső utazásom kezdete lesz.</p>
+          <p>Gyászoltam a biztos, sikeres munkámat, a ragyogó, sugárzó fiatalságomat. Tulajdonképpen a sikeres női létről való képem veszett el — valami örökre megszűnt bennem. A külvilágnak már nem azt a képet mutatom, amit addig láttak belőlem. Bűntudatot éreztem, hogy nem a régi Timi vagyok.</p>
+          <p>Addig, amíg egyszer csak fény gyúlt a sötétségben. Megszületett a Bölcs női minőségem, amely a fókuszt nem a külsőségekre helyezi. Felváltotta egy nagyon mély világlátás, amely az Életet tartja a Legnagyobb Értéknek.</p>
+          <p>Ebből a megtapasztalt látásmódomból tudok Neked segíteni a legnagyobb fájdalmaid közepette.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap wrap--narrow">
+    <div data-reveal>
+      <span class="eyebrow">Hitvallásom</span>
+      <h2 class="h-sec">Transzformáció a veszteségből a belső fénybe</h2>
+      <ul class="credo mt-m">
+        <li>„Hiszem, hogy a léleknek mély gyógyító ereje van.”</li>
+        <li>„Minden nő rendelkezik ezzel a varázslattal.”</li>
+        <li>„Az Élet maga a misztérium: ahogy neveled a gyermekeidet, unokáidat, ahogy vélekedsz magadról, amilyen mélyen éled a szerelmet, a szenvedélyt, az örömöt — ezt nevezem Csodának.”</li>
+        <li>„50 felett az Élet Élményjáték.”</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section section--tint">
-    <div class="wrap wrap--narrow" data-reveal>
-      <span class="eyebrow">A történetem</span>
+    <div class="wrap feature">
+      <div class="feature__art hero-art" data-reveal>
+        <div class="frame frame--sq">
+          <img class="frame__art" src="images/kukucska.jpg" width="880" height="1100" loading="lazy" alt="Kilátás egy kerítés tulipán alakú nyílásán át az őszi, bogyós bokorra">
+        </div>
+      </div>
+      <div data-reveal data-delay="90">
+      <span class="eyebrow">A Lélektitok</span>
       <h2 class="h-sec">Miért pont a Lélektitok?</h2>
       <div class="stack mt-m muted" data-clamp>
         <p>A saját tapasztalatom és a hitem: a legnagyobb fájdalmaink feldolgozása után találunk rá azokra a belső kincsekre, amelyekről nem is tudtuk, hogy léteznek. A valódi, tartós transzformáció ott kezdődik, amikor merünk a felszín mögé nézni.</p>
-        <p>Amíg a sors ki nem húzza alólunk a régi, kényelmes, de már nem minket szolgáló struktúrákat, hajlamosak vagyunk megalkudni: bennmaradunk a lehúzó kapcsolatokban és a láthatatlanságban. A veszteség a lélek radikális ébresztője — leégeti rólunk a megfelelési kényszerek maszkjait.</p>
-        <p>Ha most gyászolsz, ha elakadásban vagy, ne bántsd magad. Az elakadásod nem a vég, hanem egy általad megálmodott új élet kezdete.</p>
+        <p>Amíg a sors ki nem húzza alólunk a régi, kényelmes, de már nem minket szolgáló struktúrákat, hajlamosak vagyunk megalkudni: bennmaradunk a lehúzó kapcsolatokban és a láthatatlanságban. A veszteség a lélek radikális ébresztője.</p>
+        <p>Ha most gyászolsz, ha elakadásban vagy, ne bántsd magad. Az elakadásod nem a vég, hanem egy új kezdet.</p>
       </div>
       <blockquote class="quote-block">„Belenézünk a veszteség szemébe, levonjuk a tanításait, és a te saját, elnyomott belső erődből felépítjük a jövődet.”</blockquote>
+      </div>
     </div>
   </section>
 
@@ -962,7 +969,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/noikor.jpg" width="1000" height="546" loading="lazy" alt="Női kör a Műhely szobájában">
+          <img class="frame__art" src="images/eletfak.jpg" width="880" height="1100" loading="lazy" alt="Faragott életfa körben, körülötte négy kristályfa — Timi saját kompozíciója">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -970,7 +977,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <h2 class="h-sec jump-target" id="noi-kor-cim">Igazi Egyéniség Női Kör</h2>
         <p class="lede mt-m">A maszkok nélküli őszinteség, a biztonság és a radikális belső gyógyulás tere. Megtörjük a halogatást, átírjuk a kontrolláló mintákat, és megérkezünk a saját, tiszta belső igazságunkba.</p>
         <ul class="ticks mt-m">
-          <li>Szigorúan 7 fős, zárt kör a Herminamezői térben</li>
+          <li>Szigorúan 7 fős, zárt kör</li>
           <li>4 alkalom, szombat délelőttönként (10:00–13:30)</li>
           <li>Kártyás gyakorlatok, mély-meditáció, elengedő rituálék</li>
         </ul>
@@ -1032,7 +1039,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="wrap feature feature--rev">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/mentoralas.jpg" width="1000" height="546" loading="lazy" alt="Egyéni mentorálás két fotelben, a Műhelyben">
+          <img class="frame__art" src="images/kristalyfa.jpg" width="880" height="1100" loading="lazy" alt="Ametiszt talpú, rézdrótos kristályfa téglafal előtt">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1041,7 +1048,6 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         <p class="lede mt-m">Tűpontos, mély, személyre szabott konzultáció, ahol kizárólag a te lélektitkaiddal és elakadásaiddal dolgozunk — a saját tempódban, a saját témáiddal.</p>
         <ul class="ticks mt-m">
           <li>50–60 perces alkalmak, szabadon ütemezve</li>
-          <li>Heti maximum 10 szabad idősáv a teljes figyelemért</li>
           <li>Teljes diszkréció, alkalmanként fizethető</li>
         </ul>
         <div class="pricetag mt-m">20.000 Ft <small>/ alkalom</small></div>
@@ -1126,28 +1132,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       </div>
       <div class="feature__art hero-art" data-reveal data-delay="90">
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="journeyBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
-              <radialGradient id="glow" cx="50%" cy="50%"><stop offset="0" stop-color="#6A4A16"/><stop offset="1" stop-color="#6A4A16" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="420" height="380" fill="url(#journeyBg)"/>
-            <circle cx="320" cy="96" r="80" fill="url(#glow)"/>
-            <path d="M40 300c70 0 74-56 140-56s78-64 142-64" stroke="#D4AF37" stroke-width="1.4" fill="none" stroke-dasharray="4 9"/>
-            <circle cx="88" cy="292" r="26" fill="#1F1118" stroke="#C99AA3" stroke-width="1.2"/>
-            <path d="M88 280v24M88 292c-8-2-12-8-12-14 6 0 12 4 12 10M88 292c8-2 12-8 12-14-6 0-12 4-12 10" stroke="#C99AA3" stroke-width="1.1"/>
-            <circle cx="210" cy="244" r="28" fill="#1F1118" stroke="#D4AF37" stroke-width="1.2"/>
-            <path d="M210 228c7 8 11 13 11 18a11 11 0 0 1-22 0c0-5 4-10 11-18Z" fill="#6B1724" stroke="#C99AA3" stroke-width="1"/>
-            <circle cx="322" cy="180" r="32" fill="#1F1118" stroke="#D4AF37" stroke-width="1.3"/>
-            <path d="M306 188l4-16 6 9 6-15 6 15 6-9 4 16Z" fill="none" stroke="#D4AF37" stroke-width="1.2" stroke-linejoin="round"/>
-            <path d="M306 194h32" stroke="#D4AF37" stroke-width="1.2"/>
-            <text x="88" y="338" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#A8989E">1. hó</text>
-            <text x="210" y="300" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#A8989E">2. hó</text>
-            <text x="322" y="238" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#A8989E">3. hó</text>
-            <circle cx="140" cy="86" r="2.6" fill="#D4AF37" opacity=".7"/>
-            <circle cx="196" cy="120" r="2" fill="#C99AA3" opacity=".6"/>
-            <circle cx="96" cy="140" r="1.8" fill="#C99AA3" opacity=".5"/>
-          </svg>
+          <img class="frame__art" src="images/esszencia-90nap.jpg" width="1024" height="765" loading="lazy" alt="Két összekulcsolt kéz bordó bársonyon, gyertyafényben">
         </div>
       </div>
     </div>
@@ -1209,18 +1194,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="m1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient></defs>
-            <rect width="420" height="300" fill="url(#m1)"/>
-            <path d="M120 210V120M170 210V96M220 210v-64" stroke="#C99AA3" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-            <path d="M104 120h32M154 96h32M204 146h32" stroke="#D4AF37" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M60 210h300" stroke="#D4AF37" stroke-width="1.4"/>
-            <path d="M290 210v-44a22 22 0 0 1 44 0v44" fill="#1F1118" stroke="#C99AA3" stroke-width="1.2"/>
-            <path d="M312 166c-8-6-10-12-6-18 6 2 8 8 6 18Z" fill="#6B1724" stroke="#C99AA3" stroke-width="1"/>
-            <path d="M120 210c-16 8-24 22-26 40M170 210c14 10 20 24 20 40M220 210c-12 10-16 24-14 40" stroke="#C99AA3" stroke-width="1.1" opacity=".55"/>
-            <circle cx="96" cy="74" r="2.4" fill="#D4AF37" opacity=".7"/>
-            <circle cx="256" cy="90" r="2" fill="#C99AA3" opacity=".55"/>
-          </svg>
+          <img class="frame__art" src="images/esszencia-1-romok.jpg" width="1024" height="765" loading="lazy" alt="Darabjaira tört sötét kerámiatál palalapon">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1241,20 +1215,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="feature feature--rev">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="m2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
-              <radialGradient id="flame" cx="50%" cy="60%"><stop offset="0" stop-color="#6A4A16"/><stop offset="1" stop-color="#6A4A16" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="420" height="300" fill="url(#m2)"/>
-            <circle cx="210" cy="160" r="104" fill="url(#flame)"/>
-            <path d="M210 74c26 30 40 52 40 74a40 40 0 0 1-80 0c0-22 14-44 40-74Z" fill="#1F1118" stroke="#D4AF37" stroke-width="1.4"/>
-            <path d="M210 128c12 16 18 26 18 36a18 18 0 0 1-36 0c0-10 6-20 18-36Z" fill="#6B1724" stroke="#C99AA3" stroke-width="1.1"/>
-            <path d="M170 150c-24-6-40-22-46-44 24 2 42 18 46 44ZM250 150c24-6 40-22 46-44-24 2-42 18-46 44Z" fill="none" stroke="#C99AA3" stroke-width="1.2"/>
-            <path d="M210 212v42M196 244c-10-2-16-8-18-16 10 0 16 6 18 16M224 244c10-2 16-8 18-16-10 0-16 6-18 16" stroke="#C99AA3" stroke-width="1.2"/>
-            <circle cx="120" cy="86" r="2.4" fill="#D4AF37" opacity=".7"/>
-            <circle cx="308" cy="98" r="2" fill="#C99AA3" opacity=".55"/>
-          </svg>
+          <img class="frame__art" src="images/esszencia-2-fonix.jpg" width="1024" height="765" loading="lazy" alt="Arany toll izzó parázson és hamun">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1275,21 +1236,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="feature">
       <div class="feature__art hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="m3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26121B"/><stop offset="1" stop-color="#14090E"/></linearGradient>
-              <radialGradient id="dawn" cx="50%" cy="70%"><stop offset="0" stop-color="#6A4A16"/><stop offset="1" stop-color="#6A4A16" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="420" height="300" fill="url(#m3)"/>
-            <circle cx="210" cy="196" r="120" fill="url(#dawn)"/>
-            <path d="M60 196h300" stroke="#D4AF37" stroke-width="1.4"/>
-            <circle cx="210" cy="196" r="56" fill="none" stroke="#D4AF37" stroke-width="1.2"/>
-            <path d="M210 128v-18M154 140l-12-14M266 140l12-14M140 196h-20M300 196h-20" stroke="#D4AF37" stroke-width="1.1" opacity=".7"/>
-            <path d="M176 168l6-26 10 15 10-25 10 25 10-15 6 26Z" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M176 174h52" stroke="#C99AA3" stroke-width="1.3"/>
-            <path d="M120 226c14 10 22 26 22 44M300 226c-14 10-22 26-22 44" stroke="#C99AA3" stroke-width="1.1" opacity=".5"/>
-            <circle cx="210" cy="96" r="2.6" fill="#D4AF37" opacity=".75"/>
-          </svg>
+          <img class="frame__art" src="images/esszencia-3-kintsugi.jpg" width="1024" height="765" loading="lazy" alt="Arannyal javított, kintsugi kerámiatál sötét fán">
         </div>
       </div>
       <div data-reveal data-delay="90">
@@ -1341,7 +1288,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       <article class="product" data-reveal>
         <a class="p-art p-art--photo" href="#/termek-kartya" aria-label="Igazi Egyéniség Kártyacsomag megnyitása">
           <span class="tag">Fizikai termék</span>
-          <img src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag">
+          <img src="images/kartyacsomag.jpg" width="1024" height="765" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag díszdoboza és kiterített lapjai">
         </a>
         <div class="p-body">
           <h3><a href="#/termek-kartya">Igazi Egyéniség Kártyacsomag</a></h3>
@@ -1358,7 +1305,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       <article class="product" data-reveal data-delay="90">
         <a class="p-art p-art--photo" href="#/termek-menopauza" aria-label="Királynő a Változásban csomag megnyitása">
           <span class="tag">Digitális csomag</span>
-          <img src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban digitális csomag">
+          <img src="images/kiralyno-csomag.jpg" width="1024" height="765" loading="lazy" alt="A Királynő a Változásban csomag: e-book tableten és nyitott napló">
         </a>
         <div class="p-body">
           <h3><a href="#/termek-menopauza">Királynő a Változásban</a></h3>
@@ -1375,17 +1322,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       <article class="product" data-reveal data-delay="180">
         <a class="p-art" href="#/termek-meditacio" aria-label="Meditációs hanganyagtár megnyitása">
           <span class="tag">Letöltés</span>
-          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#audioBg)"/>
-            <path d="M130 90a70 70 0 0 1 140 0v54" stroke="#C99AA3" stroke-width="1.4" fill="none"/>
-            <rect x="112" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-            <rect x="258" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-            <path d="M166 214c8-5 16-5 24 0s16 5 24 0 16-5 24 0" stroke="#D4AF37" stroke-width="1.2" fill="none"/>
-            <path d="M158 226c10-6 20-6 30 0s20 6 30 0 20-6 30 0" stroke="#D4AF37" stroke-width="1" opacity=".6" fill="none"/>
-            <circle cx="200" cy="110" r="22" fill="none" stroke="#D4AF37" stroke-width="1" opacity=".5"/>
-            <path d="M194 100v20l18-10-18-10Z" fill="#C99AA3" fill-opacity=".5"/>
-            <path d="M72 250h256" stroke="#D4AF37" stroke-width="1" opacity=".35"/>
-          </svg>
+          <img src="images/meditacio.jpg" width="1024" height="765" loading="lazy" alt="Fejhallgató bársonyon, mellette égő gyertya és ametiszt">
         </a>
         <div class="p-body">
           <h3><a href="#/termek-meditacio">Meditációs Hanganyagtár</a></h3>
@@ -1417,7 +1354,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="pd mt-m">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/kartya.jpg" width="1000" height="546" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag lapjai és díszdoboza">
+          <img class="frame__art" src="images/kartyacsomag.jpg" width="1024" height="765" loading="lazy" alt="Az Igazi Egyéniség kártyacsomag díszdoboza és kiterített lapjai">
         </div>
       </div>
 
@@ -1490,7 +1427,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="pd mt-m">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <img class="frame__art" src="images/ebook.jpg" width="1000" height="546" loading="lazy" alt="A Királynő a Változásban csomag e-bookja és munkafüzete">
+          <img class="frame__art" src="images/kiralyno-csomag.jpg" width="1024" height="765" loading="lazy" alt="A Királynő a Változásban csomag: e-book tableten és nyitott napló">
         </div>
       </div>
 
@@ -1541,21 +1478,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="pd mt-m">
       <div class="hero-art" data-reveal>
         <div class="frame frame--sq">
-          <svg class="frame__art" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="url(#audioBg)"/>
-            <path d="M130 90a70 70 0 0 1 140 0v54" stroke="#C99AA3" stroke-width="1.4" fill="none"/>
-            <rect x="112" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-            <rect x="258" y="136" width="30" height="54" rx="14" fill="#1F1118" stroke="#C99AA3" stroke-width="1.3"/>
-            <path d="M166 214c8-5 16-5 24 0s16 5 24 0 16-5 24 0" stroke="#D4AF37" stroke-width="1.2" fill="none"/>
-            <path d="M158 226c10-6 20-6 30 0s20 6 30 0 20-6 30 0" stroke="#D4AF37" stroke-width="1" opacity=".6" fill="none"/>
-            <circle cx="200" cy="110" r="22" fill="none" stroke="#D4AF37" stroke-width="1" opacity=".5"/>
-            <path d="M194 100v20l18-10-18-10Z" fill="#C99AA3" fill-opacity=".5"/>
-            <path d="M72 250h256" stroke="#D4AF37" stroke-width="1" opacity=".35"/>
-          </svg>
-          <span class="frame__slot">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
-            Fotóhely — meditáció
-          </span>
+          <img class="frame__art" src="images/meditacio.jpg" width="1024" height="765" loading="lazy" alt="Fejhallgató bársonyon, mellette égő gyertya és ametiszt">
         </div>
       </div>
 
@@ -1614,7 +1537,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
 </div>
 
 <!-- ============================= BLOG ============================= -->
-<!-- a bejegyzések helye; az első írások megjelenéséig „Hamarosan” jelöléssel -->
+<!-- a bejegyzések helye; az első írás megjelenéséig csak egy rövid „hamarosan” üzenet áll itt -->
 <div class="page" id="page-blog" hidden>
   <div class="page-head">
     <div class="wrap wrap--narrow">
@@ -1625,33 +1548,13 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
   </div>
 
   <section class="section wrap">
-    <div class="grid-3">
-      <article class="post" data-reveal>
-        <span class="meta"><span>Gyász &amp; újrakezdés</span><span class="soon">Hamarosan</span></span>
-        <span class="num" aria-hidden="true">I</span>
-        <h3>A veszteség mint a lélek ébresztője</h3>
-        <p>Miért épp a legnagyobb fájdalmaink után találunk rá azokra a belső kincsekre, amelyekről nem is tudtuk, hogy léteznek?</p>
-      </article>
-      <article class="post" data-reveal data-delay="90">
-        <span class="meta"><span>Változókor</span><span class="soon">Hamarosan</span></span>
-        <span class="num" aria-hidden="true">II</span>
-        <h3>Nem a nőiesség vége, hanem a Bölcs Nő kapuja</h3>
-        <p>Mi zajlik a lélekben a fizikai tünetek mögött, és hogyan kísérheted magad gyengédebben ebben az átalakulásban?</p>
-      </article>
-      <article class="post" data-reveal data-delay="180">
-        <span class="meta"><span>Napi gyakorlat</span><span class="soon">Hamarosan</span></span>
-        <span class="num" aria-hidden="true">III</span>
-        <h3>Egy lap reggel: így kezdd a napot a kártyával</h3>
-        <p>Öt perc csend, egy gyertya és egy kihúzott mondat — egyszerű rituálé, amely a saját belső hangodhoz kapcsol.</p>
-      </article>
-    </div>
-
-    <div class="cta-band mt-l" data-reveal>
-      <div>
-        <h2>Szólj, ha megjelenik az első írás</h2>
-        <p>Írj egy rövid üzenetet, és értesítelek, amikor új bejegyzés kerül fel a blogra.</p>
+    <div class="section-head section-head--center soon-note" data-reveal>
+      <span class="eyebrow">Készülőben</span>
+      <h2 class="h-sec">Az első írás hamarosan érkezik</h2>
+      <p class="lede mt-m">Már dolgozom rajta. Ha szeretnéd, szólok, amint megjelenik.</p>
+      <div class="row-actions mt-l">
+        <a href="#/kapcsolat" class="btn btn--outline" data-topic="egyeb">Kérem az értesítést</a>
       </div>
-      <a href="#/kapcsolat" class="btn btn--primary" data-topic="egyeb">Kérem az értesítést</a>
     </div>
   </section>
 </div>
@@ -1698,7 +1601,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
   <div class="page-head">
     <div class="wrap wrap--narrow">
       <span class="eyebrow">Kapcsolat</span>
-      <h1>Lépj be a szentélybe</h1>
+      <h1>Lépj be a Szentélybe</h1>
       <p class="lede">Ha bizonytalan vagy, melyik folyamat támogatna leginkább, írj bizalommal. Minden üzenetet magam olvasok el, és maximális diszkrécióval kezelek.</p>
     </div>
   </div>
@@ -1708,15 +1611,15 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
       <div class="stack" style="gap:18px;" data-reveal>
         <div class="c-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
-          <span>+36 70 123 4567</span>
+          <a href="tel:+36704277806">+36 70 427 7806</a>
         </div>
         <div class="c-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7.5l9 6 9-6"/></svg>
-          <span>ladicstimi@gmail.com</span>
+          <a href="mailto:ladicstimea@gmail.com">ladicstimea@gmail.com</a>
         </div>
         <div class="c-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <span>Herminamező, Budapest<br><span class="small">A pontos címet a visszaigazoló levélben küldöm.</span></span>
+          <span>Budapest<br><span class="small">A pontos helyszínt a visszaigazoló levélben küldöm.</span></span>
         </div>
         <div class="socials">
           <a href="#/kapcsolat" aria-label="Facebook: Ladics Timi Lélek Titok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9.6c0-.3.3-.6.6-.6Z"/></svg></a>
@@ -1724,9 +1627,6 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
         </div>
         <p class="small">Válaszidő: általában 24–48 óra.</p>
 
-        <div class="frame frame--sq" style="margin-top:8px;">
-          <img class="frame__art" src="images/bejarat.jpg" width="1000" height="546" loading="lazy" alt="A Műhely bejárata">
-        </div>
       </div>
 
       <form class="cform" id="contactForm" data-reveal data-delay="90">
@@ -1787,7 +1687,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
   <div class="d-foot">
     <div class="d-total">Összesen <b id="cartTotal">0 Ft</b></div>
     <button class="btn btn--primary btn--full" id="checkoutBtn">Megrendelés elküldése e-mailben</button>
-    <p class="d-note">A gomb egy előre kitöltött levelet nyit meg a ladicstimi@gmail.com címre.</p>
+    <p class="d-note">A gomb egy előre kitöltött levelet nyit meg a ladicstimea@gmail.com címre.</p>
   </div>
 </aside>
 
@@ -1797,7 +1697,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     <div class="f-top">
       <div>
         <a class="brand" href="#/">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="#emblem"/></svg>
+          <img class="logo" src="images/logo.jpg" width="160" height="160" alt="" aria-hidden="true">
           <span><b>Ladics Timi</b><i>Lélektitok Műhely</i></span>
         </a>
         <p class="f-tag">„Az Út önmagadhoz benned kezdődik.”</p>
@@ -1814,7 +1714,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     </div>
     <div class="f-bottom">
       <span>© Ladics Timi — Lélektitok Műhely</span>
-      <span>ladicstimi@gmail.com · +36 70 123 4567</span>
+      <span><a href="mailto:ladicstimea@gmail.com">ladicstimea@gmail.com</a> · <a href="tel:+36704277806">+36 70 427 7806</a></span>
     </div>
   </div>
 </footer>
@@ -2380,7 +2280,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     var total = cart.reduce(function(s,i){ return s + i.qty*i.price; }, 0);
     var body = 'Kedves Timi!\n\nSzeretnék rendelni az Otthoni Lelki Menedékből:\n\n' + lines.join('\n') +
                '\n\nVégösszeg: ' + fmt(total) + '\n\nNevem:\nElérhetőségem:\nSzállítási cím (fizikai termék esetén):\n\nKöszönöm!';
-    location.href = 'mailto:ladicstimi@gmail.com?subject=' +
+    location.href = 'mailto:ladicstimea@gmail.com?subject=' +
       encodeURIComponent('Megrendelés — Otthoni Lelki Menedék') + '&body=' + encodeURIComponent(body);
   });
   render(false);
@@ -2401,7 +2301,7 @@ html.js [data-reveal].in{opacity:1;transform:none;transition:opacity .8s var(--e
     }
     var body = 'Név: ' + name + '\nE-mail: ' + email + '\nTelefon: ' + (phone || '-') +
                '\nTéma: ' + topic + '\n\nÜzenet:\n' + (msg || '-');
-    location.href = 'mailto:ladicstimi@gmail.com?subject=' +
+    location.href = 'mailto:ladicstimea@gmail.com?subject=' +
       encodeURIComponent('Kapcsolatfelvétel — ' + topic) + '&body=' + encodeURIComponent(body);
     out.textContent = 'Megnyitottam a levelet — már csak elküldeni kell.';
   });
