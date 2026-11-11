@@ -50,7 +50,7 @@ Egyoldalas alkalmazás hash-alapú útvonalakkal — minden útvonal külön alo
 | Szövegbetű | Montserrat |
 
 Minimál, letisztult stílus: egyszínű felületek, vékony arany vonalak, színátmenetek, árnyékok és háttérdíszek nélkül.
-A logó a felfelé ívelő arany nyíl sziluettje, átlátszó háttérrel (`images/logo.png`). A hero teljes háttere a fény felé vezető lépcső fotója (`images/hero-lepcso.jpg`), rajta a szöveg.
+A logó a felfelé ívelő arany nyíl sziluettje, átlátszó háttérrel (`images/logo.png`). A heróban a szöveg mellett az aranyló kehely-szimbólum áll (`images/kehely.jpg`), a sötét háttérbe olvasztva.
 
 A színek és a betűtípusok a fájl elején, a `:root` blokk CSS változóiban módosíthatók.
 
